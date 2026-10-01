@@ -62,7 +62,6 @@ header nav button:hover, header nav button.active { background: var(--gold); col
 .btn-sm { padding: 6px 12px; font-size: 0.78rem; }
 .btn-lg { padding: 12px 28px; font-size: 1rem; }
 .btn-danger { background: var(--danger); color: var(--white); }
-.btn-danger:hover { background: #b71c1c; }
 .btn-success { background: var(--success); color: var(--white); }
 .btn-info { background: var(--info); color: var(--white); }
 .btn-print { background: linear-gradient(135deg, #1976d2, #0d47a1); color: white; }
@@ -97,8 +96,14 @@ header nav button:hover, header nav button.active { background: var(--gold); col
 .form-group { margin-bottom: 16px; }
 .form-group label { display: block; font-weight: 600; font-size: 0.88rem; margin-bottom: 6px; color: var(--navy); }
 .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 10px 14px; border: 1.8px solid var(--gray-light); border-radius: var(--radius-sm); font-size: 0.92rem; background: #fcfaf7; transition: var(--transition); color: var(--navy); font-family: inherit; }
-.form-group input:focus, .form-group select:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.15); }
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.15); }
 .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+.form-section { background: #fcfaf7; border-radius: var(--radius); padding: 16px 18px; margin-bottom: 16px; border-right: 4px solid var(--gold); }
+.form-section .section-header { font-size: 0.95rem; font-weight: 700; color: var(--navy); margin-bottom: 14px; padding-bottom: 8px; border-bottom: 1px dashed var(--gray-300); display: flex; align-items: center; gap: 8px; }
+.form-section .form-group { margin-bottom: 12px; }
+.form-section .form-group label { font-size: 0.82rem; }
+.form-section .form-group input, .form-section .form-group select, .form-section .form-group textarea { padding: 8px 12px; font-size: 0.88rem; }
 
 .info-msg { background: #e3f2fd; color: var(--info); padding: 10px 14px; border-radius: var(--radius-sm); font-size: 0.88rem; margin-bottom: 14px; border-right: 4px solid var(--info); }
 .warning-msg { background: #fff8e1; color: #e65100; padding: 10px 14px; border-radius: var(--radius-sm); font-size: 0.88rem; margin-bottom: 14px; border-right: 4px solid var(--warning); }
@@ -134,11 +139,13 @@ table tbody tr:hover { background: #faf8f4; }
 .quick-eval-input { width: 60px; padding: 5px; text-align: center; border: 1.5px solid var(--gray-300); border-radius: 6px; font-size: 0.85rem; font-weight: 600; font-family: inherit; }
 .quick-eval-input:focus { outline: none; border-color: var(--gold); }
 .quick-eval-input.filled { background: #e8f5e9; border-color: var(--success); }
+.exam-input { width: 80px; padding: 6px; text-align: center; border: 1.5px solid var(--gray-300); border-radius: 6px; font-weight: 600; }
 
 .table-actions { display: flex; gap: 5px; justify-content: flex-end; }
-.icon-btn { width: 30px; height: 30px; border-radius: 6px; display: inline-flex; align-items: center; justify-content: center; font-size: 0.85rem; background: var(--gray-100); color: var(--gray-700); cursor: pointer; border: none; }
+.icon-btn { width: 30px; height: 30px; border-radius: 6px; display: inline-flex; align-items: center; justify-content: center; font-size: 0.85rem; background: var(--gray-100); color: var(--gray-700); cursor: pointer; border: none; transition: var(--transition); }
 .icon-btn:hover { background: var(--navy); color: var(--white); }
 .icon-btn.danger:hover { background: var(--danger); }
+.icon-btn.gold:hover { background: var(--gold); color: var(--navy); }
 
 .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 0.72rem; font-weight: 600; white-space: nowrap; }
 .badge-success { background: #e8f5e9; color: var(--success); }
@@ -149,8 +156,11 @@ table tbody tr:hover { background: #faf8f4; }
 
 .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(11, 31, 58, 0.6); backdrop-filter: blur(4px); display: none; align-items: flex-start; justify-content: center; z-index: 1000; padding: 20px; overflow-y: auto; }
 .modal-overlay.show { display: flex; }
-.modal { background: var(--white); border-radius: var(--radius); padding: 26px 24px; max-width: 650px; width: 100%; max-height: 90vh; overflow-y: auto; box-shadow: 0 20px 60px rgba(0,0,0,0.3); border-top: 5px solid var(--gold); animation: slideUp 0.3s ease; margin: auto; }
+.modal { background: var(--white); border-radius: var(--radius); padding: 26px 24px; max-width: 650px; width: 100%; max-height: 92vh; overflow-y: auto; box-shadow: 0 20px 60px rgba(0,0,0,0.3); border-top: 5px solid var(--gold); animation: slideUp 0.3s ease; margin: auto; }
 .modal.lg { max-width: 950px; }
+.modal::-webkit-scrollbar { width: 8px; }
+.modal::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 4px; }
+.modal::-webkit-scrollbar-track { background: var(--gray-100); border-radius: 4px; }
 @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 .modal h3 { color: var(--navy); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
 .modal-actions { display: flex; gap: 10px; justify-content: flex-start; margin-top: 20px; flex-wrap: wrap; }
@@ -211,14 +221,12 @@ table tbody tr:hover { background: #faf8f4; }
 .class-checkbox.all-option { background: linear-gradient(135deg, var(--gold), var(--gold-light)); color: var(--navy); border-color: var(--gold); }
 .class-checkbox.all-option.checked { background: linear-gradient(135deg, var(--wine), #8a1422); color: var(--white); }
 
-/* Danger zone */
 .danger-zone { background: #fdecea; border-right: 5px solid var(--danger); padding: 20px; border-radius: var(--radius); margin-bottom: 20px; }
 .danger-zone h3 { color: var(--danger); margin-bottom: 12px; }
 .danger-checkbox { display: flex; align-items: center; gap: 10px; padding: 10px 12px; background: white; border-radius: 8px; margin-bottom: 8px; cursor: pointer; border-right: 4px solid var(--gray-300); transition: var(--transition); }
 .danger-checkbox:hover { border-right-color: var(--danger); background: #fff5f5; }
 .danger-checkbox input { width: 18px; height: 18px; accent-color: var(--danger); }
 
-/* Grades calc display */
 .grade-breakdown { display: flex; gap: 6px; flex-wrap: wrap; }
 .grade-item { padding: 4px 10px; border-radius: 12px; font-size: 0.72rem; font-weight: 700; }
 .grade-attendance { background: #e3f2fd; color: #0d47a1; }
@@ -313,7 +321,7 @@ table tbody tr:hover { background: #faf8f4; }
 <script type="module">
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, doc, getDocs, getDoc, setDoc, addDoc, updateDoc, deleteDoc, onSnapshot, serverTimestamp, writeBatch } from "firebase/firestore";
-import { getAuth, signInAnonymously, onAuthStateChanged, signOut } from "firebase/auth";
+import { getAuth, signInAnonymously, onAuthStateChanged } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBVz7Afwp3Hzccz-m7UyPvd3pEH29DoJsI",
@@ -331,8 +339,7 @@ const auth = getAuth(firebaseApp);
 const COLLECTIONS = {
   STUDENTS: 'students', SERVANTS: 'servants', ADMINS: 'admins',
   ATTENDANCE: 'attendance', EVALUATIONS: 'evaluations', EXAMS: 'exams',
-  ASSIGNMENTS: 'assignments', SETTINGS: 'settings',
-  VISITATION_NOTES: 'visitation_notes', LOGS: 'logs'
+  SETTINGS: 'settings', VISITATION_NOTES: 'visitation_notes', LOGS: 'logs'
 };
 
 const STAGES_DEFAULT = ['KG1','KG2','الصف الأول الابتدائي','الصف الثاني الابتدائي','الصف الثالث الابتدائي','الصف الرابع الابتدائي','الصف الخامس الابتدائي','الصف السادس الابتدائي','الصف الأول الإعدادي','الصف الثاني الإعدادي','الصف الثالث الإعدادي','الصف الأول الثانوي','الصف الثاني الثانوي','الصف الثالث الثانوي','شباب','خريجين','أولياء أمور'];
@@ -340,81 +347,46 @@ const CLASS_GROUPS_DEFAULT = ['تمهيدي', 'أولى وثانية', 'ثالث
 const CLASS_LETTERS = ['A','B','C','D','E','F'];
 
 /* ============================================================
-   الدرجات والتقسيمات
+   نظام الدرجات
    ============================================================ */
 const GRADING_SYSTEM = {
-  // المواد العادية: 20 حضور + 30 تقييم + 50 امتحان = 100
-  regular: {
-    attendance: 20,
-    evaluations: 30,
-    exam: 50,
-    total: 100
-  },
-  // الألحان: 20 حضور + 20 تقييم + 60 امتحان = 100
-  hymns: {
-    attendance: 20,
-    evaluations: 20,
-    exam: 60,
-    total: 100
-  },
+  regular: { attendance: 20, evaluations: 30, exam: 50, total: 100 },
+  hymns: { attendance: 20, evaluations: 20, exam: 60, total: 100 },
   
-  getWeights(subject) {
-    return subject === 'hymns' ? this.hymns : this.regular;
-  },
+  getWeights(subject) { return subject === 'hymns' ? this.hymns : this.regular; },
   
-  // حساب درجة الطالب في مادة معينة
   calculateSubjectGrade(studentId, subject, totalWeeks, totalEvaluations) {
     const weights = this.getWeights(subject);
     
-    // 1. الحضور: نسبة الحضور × وزن الحضور
-    const attendanceRecords = AppData.attendance.filter(a =>
-      a.studentId === studentId && a.type !== 'visitation' && a.subject === subject
-    );
-    // إذا لم تكن هناك سجلات حضور لهذه المادة، نستخدم الحضور العام
-    let attendanceRecordsForSubject = attendanceRecords;
-    if (attendanceRecords.length === 0) {
-      attendanceRecordsForSubject = AppData.attendance.filter(a =>
-        a.studentId === studentId && a.type !== 'visitation'
-      );
+    let attRecords = AppData.attendance.filter(a => a.studentId === studentId && a.type !== 'visitation' && a.subject === subject);
+    if (attRecords.length === 0) {
+      attRecords = AppData.attendance.filter(a => a.studentId === studentId && a.type !== 'visitation');
     }
-    
-    const presentCount = attendanceRecordsForSubject.filter(a => a.status === 'present').length;
+    const presentCount = attRecords.filter(a => a.status === 'present').length;
     const attendancePercent = totalWeeks > 0 ? presentCount / totalWeeks : 0;
     const attendanceScore = Math.round(attendancePercent * weights.attendance * 100) / 100;
     
-    // 2. التقييمات: متوسط الدرجات (من 10) × وزن التقييمات
-    const evaluations = AppData.evaluations.filter(e =>
-      e.studentId === studentId && e.subject === subject
-    );
+    const evals = AppData.evaluations.filter(e => e.studentId === studentId && e.subject === subject);
     let evalScore = 0;
     if (totalEvaluations > 0) {
-      const evalTotal = evaluations.reduce((sum, e) => sum + (e.score || 0), 0);
-      // كل تقييم من 10، إجمالي ممكن = 10 × عدد التقييمات
+      const evalTotal = evals.reduce((sum, e) => sum + (e.score || 0), 0);
       const maxEvalTotal = 10 * totalEvaluations;
       const evalPercent = maxEvalTotal > 0 ? evalTotal / maxEvalTotal : 0;
       evalScore = Math.round(evalPercent * weights.evaluations * 100) / 100;
     }
     
-    // 3. الامتحان
-    const examRecord = AppData.exams.find(e =>
-      e.studentId === studentId && e.subject === subject
-    );
-    const examScore = examRecord ? (examRecord.score || 0) : 0;
+    const exam = AppData.exams.find(e => e.studentId === studentId && e.subject === subject);
+    const examScore = exam ? (exam.score || 0) : 0;
     
     return {
-      attendanceScore,
-      attendancePresent: presentCount,
-      attendanceTotal: totalWeeks,
-      evalScore,
-      evalCount: evaluations.length,
-      examScore,
-      examMax: weights.exam,
+      attendanceScore, attendancePresent: presentCount, attendanceTotal: totalWeeks,
+      evalScore, evalCount: evals.length,
+      examScore, examMax: weights.exam,
       total: Math.round((attendanceScore + evalScore + examScore) * 100) / 100,
       weights
     };
   },
   
-  // تقدير الدرجة
   getGradeLetter(score) {
     if (score >= 90) return { letter: 'A', label: 'ممتاز', color: '#2e7d32' };
     if (score >= 80) return { letter: 'B', label: 'جيد جدًا', color: '#1976d2' };
@@ -425,7 +397,7 @@ const GRADING_SYSTEM = {
 };
 
 /* ============================================================
-   Code Generator
+   مولد الأكواد
    ============================================================ */
 const CodeGenerator = {
   SERVANT_PATTERN: /^A[A-Z][0-9]{2}[A-Z]{2}[0-9]{2}$/,
@@ -486,8 +458,8 @@ const ConnectionState = {
    ============================================================ */
 const DB = {
   KEYS: { STUDENTS: 'habib_students', SERVANTS: 'habib_servants', ATTENDANCE: 'habib_attendance',
-    EVALUATIONS: 'habib_evaluations', EXAMS: 'habib_exams', ASSIGNMENTS: 'habib_assignments',
-    NOTES: 'habib_notes', LOGS: 'habib_logs', SETTINGS: 'habib_settings', SESSION: 'habib_session' },
+    EVALUATIONS: 'habib_evaluations', EXAMS: 'habib_exams', NOTES: 'habib_notes',
+    LOGS: 'habib_logs', SETTINGS: 'habib_settings', SESSION: 'habib_session' },
 
   _cacheGet(key) { try { return JSON.parse(localStorage.getItem(key) || '[]'); } catch { return []; } },
   _cacheSet(key, data) { try { localStorage.setItem(key, JSON.stringify(data)); } catch (e) {} },
@@ -522,9 +494,7 @@ const DB = {
     await deleteDoc(doc(db, COLLECTIONS.STUDENTS, id));
     this._cacheSet(this.KEYS.STUDENTS, this._cacheGet(this.KEYS.STUDENTS).filter(s => s.id !== id));
   },
-  async generateStudentCode() {
-    return CodeGenerator.generateUniqueCode('S', await this.getAllCodes());
-  },
+  async generateStudentCode() { return CodeGenerator.generateUniqueCode('S', await this.getAllCodes()); },
 
   async getServants() {
     try {
@@ -554,9 +524,7 @@ const DB = {
     await deleteDoc(doc(db, COLLECTIONS.SERVANTS, id));
     this._cacheSet(this.KEYS.SERVANTS, this._cacheGet(this.KEYS.SERVANTS).filter(s => s.id !== id));
   },
-  async generateServantCode() {
-    return CodeGenerator.generateUniqueCode('A', await this.getAllCodes());
-  },
+  async generateServantCode() { return CodeGenerator.generateUniqueCode('A', await this.getAllCodes()); },
   async getAdmins() {
     try { const snap = await getDocs(collection(db, COLLECTIONS.ADMINS)); return snap.docs.map(d => ({ id: d.id, ...d.data() })); }
     catch { return []; }
@@ -579,7 +547,7 @@ const DB = {
   async saveAttendanceBulk(records) {
     const batch = writeBatch(db);
     records.forEach(r => {
-      const docId = `${r.studentId}_W${r.week}_${r.type || 'attendance'}_${r.subject || 'general'}`;
+      const docId = `${r.studentId}_W${r.week}_${r.type || 'attendance'}`;
       batch.set(doc(db, COLLECTIONS.ATTENDANCE, docId), {
         ...r, recordedBy: AuthManager.currentUid, date: serverTimestamp()
       }, { merge: true });
@@ -609,15 +577,6 @@ const DB = {
     this._cacheSet(this.KEYS.NOTES, this._cacheGet(this.KEYS.NOTES).filter(n => n.id !== id));
   },
 
-  async getAssignments() {
-    try {
-      const snap = await getDocs(collection(db, COLLECTIONS.ASSIGNMENTS));
-      const data = snap.docs.map(d => ({ id: d.id, ...d.data() }));
-      this._cacheSet(this.KEYS.ASSIGNMENTS, data);
-      return data;
-    } catch { return this._cacheGet(this.KEYS.ASSIGNMENTS); }
-  },
-
   async getEvaluations() {
     try {
       const snap = await getDocs(collection(db, COLLECTIONS.EVALUATIONS));
@@ -640,12 +599,6 @@ const DB = {
       const snap = await getDocs(collection(db, COLLECTIONS.EXAMS));
       return snap.docs.map(d => ({ id: d.id, ...d.data() }));
     } catch { return this._cacheGet(this.KEYS.EXAMS); }
-  },
-  async saveExam(record) {
-    const docId = `${record.studentId}_${record.subject}_${record.examType || 'final'}`;
-    await setDoc(doc(db, COLLECTIONS.EXAMS, docId), {
-      ...record, recordedBy: AuthManager.currentUid, date: serverTimestamp()
-    }, { merge: true });
   },
   async saveExamsBulk(records) {
     const batch = writeBatch(db);
@@ -684,8 +637,7 @@ const DB = {
       centerName: 'مركز الحبيب للألحان والدراسات القبطية',
       slogan: 'أفهم... صلّي... استمتع',
       termStart: '2025-09-01', termEnd: '2025-12-31',
-      totalWeeks: 15, currentWeek: 1,
-      totalEvaluations: 10, // عدد التقييمات المتوقع
+      totalWeeks: 15, currentWeek: 1, totalEvaluations: 10,
       academicYear: '2025 / 2026', currentTerm: 'الترم الأول'
     };
   },
@@ -705,45 +657,26 @@ const DB = {
   listenToExams(cb) { return onSnapshot(collection(db, COLLECTIONS.EXAMS), snap => { const d = snap.docs.map(x => ({ id: x.id, ...x.data() })); this._cacheSet(this.KEYS.EXAMS, d); cb(d); }); },
   listenToVisitationNotes(cb) { return onSnapshot(collection(db, COLLECTIONS.VISITATION_NOTES), snap => { const d = snap.docs.map(x => ({ id: x.id, ...x.data() })); this._cacheSet(this.KEYS.NOTES, d); cb(d); }); },
 
-  /* ============ إعادة ضبط النظام ============ */
   async clearCollection(collectionName) {
     const batch = writeBatch(db);
     const snap = await getDocs(collection(db, collectionName));
     snap.docs.forEach(d => batch.delete(d.ref));
     await batch.commit();
   },
-  
-  async deleteAllStudents() {
-    await this.clearCollection(COLLECTIONS.STUDENTS);
-  },
-  async deleteAllServants() {
-    await this.clearCollection(COLLECTIONS.SERVANTS);
-  },
-  async deleteAllAttendance() {
-    await this.clearCollection(COLLECTIONS.ATTENDANCE);
-  },
-  async deleteAllEvaluations() {
-    await this.clearCollection(COLLECTIONS.EVALUATIONS);
-  },
-  async deleteAllExams() {
-    await this.clearCollection(COLLECTIONS.EXAMS);
-  },
-  async deleteAllVisitationNotes() {
-    await this.clearCollection(COLLECTIONS.VISITATION_NOTES);
-  },
-  async deleteAllAssignments() {
-    await this.clearCollection(COLLECTIONS.ASSIGNMENTS);
-  },
-  async deleteAllLogs() {
-    await this.clearCollection(COLLECTIONS.LOGS);
-  }
+  async deleteAllStudents() { await this.clearCollection(COLLECTIONS.STUDENTS); },
+  async deleteAllServants() { await this.clearCollection(COLLECTIONS.SERVANTS); },
+  async deleteAllAttendance() { await this.clearCollection(COLLECTIONS.ATTENDANCE); },
+  async deleteAllEvaluations() { await this.clearCollection(COLLECTIONS.EVALUATIONS); },
+  async deleteAllExams() { await this.clearCollection(COLLECTIONS.EXAMS); },
+  async deleteAllVisitationNotes() { await this.clearCollection(COLLECTIONS.VISITATION_NOTES); },
+  async deleteAllLogs() { await this.clearCollection(COLLECTIONS.LOGS); }
 };
 
 /* ============================================================
    App Data
    ============================================================ */
 const AppData = {
-  students: [], servants: [], attendance: [], evaluations: [], exams: [], assignments: [],
+  students: [], servants: [], attendance: [], evaluations: [], exams: [],
   visitationNotes: [], logs: [],
   subjects: [
     { id: 'rituals', value: 'rituals', label: 'الطقوس الكنسية', icon: '📖' },
@@ -763,12 +696,12 @@ const AppData = {
   async loadAll() {
     showLoading('جارٍ تحميل البيانات...');
     try {
-      const [students, servants, attendance, assignments, notes, settings, evaluations, exams, logs] = await Promise.all([
+      const [students, servants, attendance, notes, settings, evaluations, exams, logs] = await Promise.all([
         DB.getStudents(), DB.getServants(), DB.getAttendance(),
-        DB.getAssignments(), DB.getVisitationNotes(), DB.getSettings(),
+        DB.getVisitationNotes(), DB.getSettings(),
         DB.getEvaluations(), DB.getExams(), DB.getLogs()
       ]);
-      Object.assign(this, { students, servants, attendance, assignments, visitationNotes: notes, settings, evaluations, exams, logs });
+      Object.assign(this, { students, servants, attendance, visitationNotes: notes, settings, evaluations, exams, logs });
       this.startRealtimeListeners();
     } catch (e) { console.error(e); showToast('⚠️ فشل تحميل البيانات', 'error'); }
     finally { hideLoading(); }
@@ -862,15 +795,6 @@ const Helpers = {
   getWeekDateShort(w) { return this.getWeekWithDate(w).dateShort; },
   getStudentAdder(s) { if (!s) return '—'; return s.addedByName || 'غير محدد'; },
   
-  getEvalScore(studentId, week, subject) {
-    const e = AppData.evaluations.find(x => x.studentId === studentId && x.week === week && x.subject === subject);
-    return e ? e.score : null;
-  },
-  getExamScore(studentId, subject) {
-    const e = AppData.exams.find(x => x.studentId === studentId && x.subject === subject);
-    return e ? e.score : null;
-  },
-
   escapeHtml(text) { if (!text) return ''; const d = document.createElement('div'); d.textContent = text; return d.innerHTML; }
 };
 
@@ -1004,18 +928,66 @@ function renderStudentTab(t, s) {
 function renderStudentProfile(s) {
   return `
     <div class="grid-2">
-      <div class="card"><div class="card-title">👤 البيانات الأساسية</div><div class="gold-line"></div>
+      <div class="card">
+        <div class="card-title">👤 البيانات الشخصية</div>
+        <div class="gold-line"></div>
         <table style="min-width:auto;box-shadow:none;">
           <tr><td><strong>الاسم:</strong></td><td>${s.name}</td></tr>
           <tr><td><strong>الكود:</strong></td><td><code class="code-badge">${s.id}</code></td></tr>
           <tr><td><strong>النوع:</strong></td><td>${s.gender || '—'}</td></tr>
+          <tr><td><strong>الميلاد:</strong></td><td>${Helpers.formatDate(s.birthdate)}</td></tr>
+          ${s.nationalId ? `<tr><td><strong>الرقم القومي:</strong></td><td>${s.nationalId}</td></tr>` : ''}
+          ${s.school ? `<tr><td><strong>المدرسة:</strong></td><td>${s.school}</td></tr>` : ''}
         </table>
       </div>
-      <div class="card"><div class="card-title">📚 البيانات الدراسية</div><div class="gold-line"></div>
+      <div class="card">
+        <div class="card-title">📚 البيانات الدراسية</div>
+        <div class="gold-line"></div>
         <table style="min-width:auto;box-shadow:none;">
           <tr><td><strong>المرحلة:</strong></td><td>${s.stage}</td></tr>
-          <tr><td><strong>الفصل:</strong></td><td>${s.classGroup}</td></tr>
+          <tr><td><strong>الفصل:</strong></td><td>${s.classGroup} - ${s.class}</td></tr>
           <tr><td><strong>الرتبة:</strong></td><td>${s.deaconRank || '—'}</td></tr>
+          ${s.level ? `<tr><td><strong>المستوى:</strong></td><td>${s.level}</td></tr>` : ''}
+        </table>
+      </div>
+      <div class="card">
+        <div class="card-title">📞 بيانات الاتصال</div>
+        <div class="gold-line"></div>
+        <table style="min-width:auto;box-shadow:none;">
+          <tr><td><strong>هاتف 1:</strong></td><td>${s.phone1 || '—'}</td></tr>
+          ${s.phone2 ? `<tr><td><strong>هاتف 2:</strong></td><td>${s.phone2}</td></tr>` : ''}
+          ${s.phone3 ? `<tr><td><strong>هاتف 3:</strong></td><td>${s.phone3}</td></tr>` : ''}
+          <tr><td><strong>العنوان:</strong></td><td>${s.address || '—'}</td></tr>
+        </table>
+      </div>
+      <div class="card">
+        <div class="card-title">👨‍👩‍👧 بيانات الأسرة</div>
+        <div class="gold-line"></div>
+        <table style="min-width:auto;box-shadow:none;">
+          ${s.fatherName ? `<tr><td><strong>الأب:</strong></td><td>${s.fatherName}</td></tr>` : ''}
+          ${s.motherName ? `<tr><td><strong>الأم:</strong></td><td>${s.motherName}</td></tr>` : ''}
+          ${s.fatherPhone ? `<tr><td><strong>هاتف الأب:</strong></td><td>${s.fatherPhone}</td></tr>` : ''}
+          ${s.motherPhone ? `<tr><td><strong>هاتف الأم:</strong></td><td>${s.motherPhone}</td></tr>` : ''}
+        </table>
+      </div>
+      ${s.church || s.priest ? `
+      <div class="card">
+        <div class="card-title">⛪ البيانات الكنسية</div>
+        <div class="gold-line"></div>
+        <table style="min-width:auto;box-shadow:none;">
+          ${s.church ? `<tr><td><strong>الكنيسة:</strong></td><td>${s.church}</td></tr>` : ''}
+          ${s.priest ? `<tr><td><strong>الأب الكاهن:</strong></td><td>${s.priest}</td></tr>` : ''}
+          ${s.churchArea ? `<tr><td><strong>المنطقة:</strong></td><td>${s.churchArea}</td></tr>` : ''}
+        </table>
+      </div>
+      ` : ''}
+      <div class="card">
+        <div class="card-title">📋 الاستمارة والدفع</div>
+        <div class="gold-line"></div>
+        <table style="min-width:auto;box-shadow:none;">
+          <tr><td><strong>الاستمارة:</strong></td><td>${s.formReceived ? '✅ مستلمة' : '❌ غير مستلمة'}</td></tr>
+          <tr><td><strong>الدفع:</strong></td><td>${s.formPaid ? '✅ مدفوع' : '❌ غير مدفوع'}</td></tr>
+          ${s.paidAmount > 0 ? `<tr><td><strong>المبلغ:</strong></td><td>${s.paidAmount} جنيه</td></tr>` : ''}
         </table>
       </div>
     </div>
@@ -1031,7 +1003,7 @@ function renderStudentGradesFull(s) {
       <div class="card-title">📊 درجاتي التفصيلية</div>
       <div class="gold-line"></div>
       <div class="info-msg">
-        <strong>نظام التقييم:</strong> المواد العادية (20 حضور + 30 تقييمات + 50 امتحان) | الألحان (20 حضور + 20 تقييمات + 60 امتحان)
+        <strong>نظام التقييم:</strong> المواد العادية (20 حضور + 30 تقييمات + 50 امتحان) | الألحان (20 + 20 + 60)
       </div>
       ${subjects.map(sub => {
         const grade = GRADING_SYSTEM.calculateSubjectGrade(s.id, sub.value, tw, te);
@@ -1170,7 +1142,7 @@ function renderManageStudents(servant, students) {
   const search = State.activeTab['servant_students_search'] || '';
   if (search) {
     const q = search.toLowerCase();
-    filtered = filtered.filter(s => s.name.toLowerCase().includes(q) || s.id.toLowerCase().includes(q));
+    filtered = filtered.filter(s => s.name.toLowerCase().includes(q) || s.id.toLowerCase().includes(q) || (s.phone1 || '').includes(q));
   }
   
   return `
@@ -1181,32 +1153,38 @@ function renderManageStudents(servant, students) {
         <div class="flex gap-1">
           <button class="btn btn-gold btn-sm" onclick="openAddStudentModal()">+ إضافة دارس</button>
           <button class="btn btn-outline btn-sm" onclick="exportStudentsExcel()">📊 Excel</button>
+          <button class="btn btn-outline btn-sm" onclick="printClassList('${State.classFilter}')">🖨️ طباعة</button>
         </div>
       </div>
       <div class="gold-line"></div>
       <div class="filters-bar">
         <div class="search-box filter-item">
           <label>بحث</label>
-          <input type="text" value="${search}" placeholder="الاسم / الكود..." oninput="State.activeTab['servant_students_search']=this.value;clearTimeout(window._st);window._st=setTimeout(()=>renderApp(),400)">
+          <input type="text" value="${search}" placeholder="الاسم / الكود / الهاتف..." oninput="State.activeTab['servant_students_search']=this.value;clearTimeout(window._st);window._st=setTimeout(()=>renderApp(),400)">
         </div>
+        <button class="btn btn-outline btn-sm" onclick="State.activeTab['servant_students_search']='';renderApp()">✖ مسح</button>
       </div>
       ${filtered.length === 0 ? '<div class="empty-state">لا يوجد دارسين</div>' : `
         <div class="table-wrap">
           <table>
-            <thead><tr><th>#</th><th>الاسم</th><th>الكود</th><th>الفصل</th><th>المرحلة</th><th>أضيف بواسطة</th><th>إجراءات</th></tr></thead>
+            <thead><tr><th>#</th><th>الاسم</th><th>الكود</th><th>النوع</th><th>المرحلة</th><th>الفصل</th><th>الهاتف</th><th>الحالة</th><th>أضيف بواسطة</th><th>إجراءات</th></tr></thead>
             <tbody>
               ${filtered.map((s, i) => `
                 <tr>
                   <td>${i + 1}</td>
                   <td>${s.name}</td>
                   <td><code class="code-badge">${s.id}</code></td>
-                  <td>${s.classGroup}</td>
+                  <td>${s.gender === 'ذكر' ? '👦' : '👧'}</td>
                   <td>${s.stage}</td>
+                  <td>${s.classGroup}</td>
+                  <td>${s.phone1 || '—'}</td>
+                  <td>${s.isNew === 'جديد' ? '<span class="badge badge-success">🆕</span>' : '<span class="badge badge-info">📖</span>'}</td>
                   <td><span class="badge badge-adder">${Helpers.getStudentAdder(s)}</span></td>
                   <td>
                     <div class="table-actions">
-                      <button class="icon-btn" onclick="openEditStudentModal('${s.id}')">✏️</button>
-                      ${canDel ? `<button class="icon-btn danger" onclick="deleteStudentConfirm('${s.id}')">🗑️</button>` : ''}
+                      <button class="icon-btn gold" onclick="openEditStudentModal('${s.id}')" title="تعديل">✏️</button>
+                      <button class="icon-btn" onclick="printStudentCard('${s.id}')" title="طباعة">🖨️</button>
+                      ${canDel ? `<button class="icon-btn danger" onclick="deleteStudentConfirm('${s.id}')" title="حذف">🗑️</button>` : ''}
                     </div>
                   </td>
                 </tr>
@@ -1320,7 +1298,6 @@ function renderQuickEvalTab(servant, students) {
   `;
 }
 
-/* ✅ تبويب الامتحانات */
 function renderExamsTab(servant, students) {
   const sub = State.activeTab['exams_subject'] || 'rituals';
   const subject = Helpers.getSubjects().find(s => s.value === sub);
@@ -1344,14 +1321,13 @@ function renderExamsTab(servant, students) {
           </select>
         </div>
         <div class="filter-item">
-          <label>درجة الامتحان الكاملة</label>
+          <label>الدرجة الكاملة</label>
           <input type="text" value="${weights.exam} درجة" disabled>
         </div>
       </div>
       ${!canEdit ? '<div class="info-msg">👁️ عرض فقط</div>' : `
         <div class="info-msg">
-          💡 <strong>${subject?.label}:</strong> 
-          الحضور ${weights.attendance} + التقييمات ${weights.evaluations} + الامتحان ${weights.exam} = 100 درجة
+          💡 <strong>${subject?.label}:</strong> الحضور ${weights.attendance} + التقييمات ${weights.evaluations} + الامتحان ${weights.exam} = 100
         </div>
       `}
     </div>
@@ -1367,8 +1343,7 @@ function renderExamsTab(servant, students) {
                 return `<tr>
                   <td>${i + 1}</td><td>${s.name}</td><td>${s.classGroup}</td>
                   <td><input type="number" min="0" max="${weights.exam}" class="exam-input" 
-                    data-student="${s.id}" value="${score}" ${!canEdit ? 'disabled' : ''}
-                    style="width:80px;padding:6px;text-align:center;border:1.5px solid var(--gray-300);border-radius:6px;font-weight:600;"></td>
+                    data-student="${s.id}" value="${score}" ${!canEdit ? 'disabled' : ''}></td>
                 </tr>`;
               }).join('')}
             </tbody>
@@ -1390,9 +1365,7 @@ function renderGradesOverview(servant, students) {
     <div class="card">
       <div class="card-title">📊 نظرة عامة على الدرجات</div>
       <div class="gold-line"></div>
-      <div class="info-msg">
-        <strong>نظام التقييم:</strong> المواد العادية (20+30+50) | الألحان (20+20+60)
-      </div>
+      <div class="info-msg">💡 المواد العادية (20+30+50) | الألحان (20+20+60)</div>
       ${filtered.length === 0 ? '<div class="empty-state">لا يوجد طلاب</div>' : `
         <div class="table-wrap">
           <table>
@@ -1484,21 +1457,16 @@ function renderVisitation(servant, students) {
   `;
 }
 
-/* ✅ قسم التقارير مع فلتر الفصول */
 function renderReportsTab(servant, students) {
   const classGroups = Helpers.getClassGroups();
-  const reportClass = State.activeTab['report_class'] || 'all';
-  const filteredStudents = reportClass === 'all' 
-    ? students 
-    : students.filter(s => s.classGroup === reportClass);
+  const reportClass = State.activeTab['report_class'] || State.classFilter || 'all';
+  const filteredStudents = reportClass === 'all' ? students : students.filter(s => s.classGroup === reportClass);
   
   return `
     <div class="card mb-2">
       <div class="card-title">🖨️ اختيار الفصل للطباعة</div>
       <div class="gold-line"></div>
-      <div class="info-msg">
-        💡 اختر الفصل المطلوب طباعة تقاريره، ثم اضغط على نوع التقرير
-      </div>
+      <div class="info-msg">💡 اختر الفصل المطلوب طباعة تقاريره</div>
       
       <div class="multi-class-selector">
         <label class="class-checkbox all-option ${reportClass === 'all' ? 'checked' : ''}" onclick="State.activeTab['report_class']='all';renderApp();event.preventDefault();">
@@ -1531,16 +1499,14 @@ function renderReportsTab(servant, students) {
     <div class="card mb-2">
       <div class="card-title">📊 كشوف الحضور</div>
       <div class="gold-line"></div>
-      <div class="flex gap-1" style="flex-wrap:wrap;">
-        <button class="btn btn-print" onclick="printAttendanceReport('${reportClass}')">🖨️ كشف الحضور الكامل</button>
-      </div>
+      <button class="btn btn-print" onclick="printAttendanceReport('${reportClass}')">🖨️ كشف الحضور</button>
     </div>
     
     <div class="card mb-2">
       <div class="card-title">📝 كشوف الدرجات الكاملة</div>
       <div class="gold-line"></div>
       <div class="flex gap-1" style="flex-wrap:wrap;">
-        <button class="btn btn-print" onclick="printGradesReport('${reportClass}')">🖨️ كشف الدرجات النهائي</button>
+        <button class="btn btn-print" onclick="printGradesReport('${reportClass}')">🖨️ الدرجات النهائية</button>
         <button class="btn btn-print" onclick="printEvalReport('${reportClass}')">🖨️ كشف التقييمات</button>
         <button class="btn btn-print" onclick="printExamsReport('${reportClass}')">🖨️ كشف الامتحانات</button>
       </div>
@@ -1549,9 +1515,7 @@ function renderReportsTab(servant, students) {
     <div class="card">
       <div class="card-title">📔 تقارير الافتقاد</div>
       <div class="gold-line"></div>
-      <div class="flex gap-1" style="flex-wrap:wrap;">
-        <button class="btn btn-print" onclick="printNotesReport('${reportClass}')">🖨️ تقرير الافتقاد</button>
-      </div>
+      <button class="btn btn-print" onclick="printNotesReport('${reportClass}')">🖨️ تقرير الافتقاد</button>
     </div>
   `;
 }
@@ -1652,7 +1616,10 @@ function renderAdminStudents(students) {
     <div class="card">
       <div class="flex-between mb-2">
         <div class="card-title">👥 الدارسين (${filtered.length})</div>
-        <button class="btn btn-gold btn-sm" onclick="openAddStudentModal()">+ إضافة</button>
+        <div class="flex gap-1">
+          <button class="btn btn-gold btn-sm" onclick="openAddStudentModal()">+ إضافة</button>
+          <button class="btn btn-outline btn-sm" onclick="exportStudentsExcel()">📊 Excel</button>
+        </div>
       </div>
       <div class="gold-line"></div>
       <div class="filters-bar">
@@ -1663,17 +1630,20 @@ function renderAdminStudents(students) {
       </div>
       <div class="table-wrap">
         <table>
-          <thead><tr><th>#</th><th>الاسم</th><th>الكود</th><th>الفصل</th><th>المرحلة</th><th>أضيف بواسطة</th><th>إجراءات</th></tr></thead>
+          <thead><tr><th>#</th><th>الاسم</th><th>الكود</th><th>النوع</th><th>المرحلة</th><th>الفصل</th><th>الحالة</th><th>أضيف بواسطة</th><th>إجراءات</th></tr></thead>
           <tbody>
             ${filtered.map((s, i) => `
               <tr>
                 <td>${i + 1}</td><td>${s.name}</td>
                 <td><code class="code-badge">${s.id}</code></td>
-                <td>${s.classGroup}</td><td>${s.stage}</td>
+                <td>${s.gender === 'ذكر' ? '👦' : '👧'}</td>
+                <td>${s.stage}</td><td>${s.classGroup}</td>
+                <td>${s.isNew === 'جديد' ? '<span class="badge badge-success">🆕</span>' : '<span class="badge badge-info">📖</span>'}</td>
                 <td><span class="badge badge-adder">${Helpers.getStudentAdder(s)}</span></td>
                 <td>
                   <div class="table-actions">
-                    <button class="icon-btn" onclick="openEditStudentModal('${s.id}')">✏️</button>
+                    <button class="icon-btn gold" onclick="openEditStudentModal('${s.id}')">✏️</button>
+                    <button class="icon-btn" onclick="printStudentCard('${s.id}')">🖨️</button>
                     <button class="icon-btn danger" onclick="deleteStudentConfirm('${s.id}')">🗑️</button>
                   </div>
                 </td>
@@ -1696,7 +1666,7 @@ function renderAdminServants(servants) {
       <div class="gold-line"></div>
       <div class="table-wrap">
         <table>
-          <thead><tr><th>#</th><th>الاسم</th><th>الكود</th><th>الفصول</th><th>الأدوار</th><th>إجراءات</th></tr></thead>
+          <thead><tr><th>#</th><th>الاسم</th><th>الكود</th><th>الهاتف</th><th>الفصول</th><th>الأدوار</th><th>إجراءات</th></tr></thead>
           <tbody>
             ${servants.map((s, i) => {
               const roles = Helpers.getServantAdminRoles(s);
@@ -1704,6 +1674,7 @@ function renderAdminServants(servants) {
               return `<tr>
                 <td>${i + 1}</td><td>${s.name}</td>
                 <td><code class="code-badge">${s.code}</code></td>
+                <td>${s.phone || '—'}</td>
                 <td style="font-size:0.75rem;">${classes.join(' • ')}</td>
                 <td style="font-size:0.75rem;">${roles.map(r => {
                   const role = Helpers.getServantAdminRolesList().find(x => x.value === r);
@@ -1711,7 +1682,7 @@ function renderAdminServants(servants) {
                 }).join(' ')}</td>
                 <td>
                   <div class="table-actions">
-                    <button class="icon-btn" onclick="openEditServantModal('${s.id}')">✏️</button>
+                    <button class="icon-btn gold" onclick="openEditServantModal('${s.id}')">✏️</button>
                     <button class="icon-btn danger" onclick="deleteServantConfirm('${s.id}')">🗑️</button>
                   </div>
                 </td>
@@ -1766,7 +1737,6 @@ function renderAdminQuickEval(students) {
   const tw = AppData.settings.totalWeeks || 15;
   const cw = State.activeTab['admin_eval_week'] || AppData.settings.currentWeek || 1;
   const sub = State.activeTab['admin_eval_subject'] || 'rituals';
-  const subject = Helpers.getSubjects().find(s => s.value === sub);
   const filtered = filterStudentsByClass(students);
   const weekEvals = AppData.evaluations.filter(e => e.week === cw && e.subject === sub);
   
@@ -1816,7 +1786,6 @@ function renderAdminQuickEval(students) {
 
 function renderAdminExams(students) {
   const sub = State.activeTab['admin_exam_subject'] || 'rituals';
-  const subject = Helpers.getSubjects().find(s => s.value === sub);
   const filtered = filterStudentsByClass(students);
   const weights = GRADING_SYSTEM.getWeights(sub);
   
@@ -1836,7 +1805,7 @@ function renderAdminExams(students) {
           </select>
         </div>
         <div class="filter-item">
-          <label>درجة الامتحان</label>
+          <label>الدرجة الكاملة</label>
           <input type="text" value="${weights.exam} درجة" disabled>
         </div>
       </div>
@@ -1849,7 +1818,7 @@ function renderAdminExams(students) {
               const score = exam ? exam.score : '';
               return `<tr>
                 <td>${i + 1}</td><td>${s.name}</td><td>${s.classGroup}</td>
-                <td><input type="number" min="0" max="${weights.exam}" class="exam-input" data-student="${s.id}" value="${score}" style="width:80px;padding:6px;text-align:center;border:1.5px solid var(--gray-300);border-radius:6px;font-weight:600;"></td>
+                <td><input type="number" min="0" max="${weights.exam}" class="exam-input" data-student="${s.id}" value="${score}"></td>
               </tr>`;
             }).join('')}
           </tbody>
@@ -1893,7 +1862,6 @@ function renderAdminNotes() {
   `;
 }
 
-/* ✅ تقارير المسؤول مع فلتر الفصول */
 function renderAdminReports() {
   const classGroups = Helpers.getClassGroups();
   const reportClass = State.activeTab['admin_report_class'] || 'all';
@@ -1957,18 +1925,12 @@ function renderAdminReports() {
   `;
 }
 
-/* ✅ إدارة النظام - قسم المسؤول العام */
 function renderSystemManagement() {
-  const isSuperAdmin = State.currentUser?.type === 'admin';
-  if (!isSuperAdmin) return `<div class="danger-msg">⛔ هذا القسم للمسؤول العام فقط</div>`;
-  
   return `
     <div class="card mb-2">
       <div class="card-title">💾 المزامنة وحفظ البيانات</div>
       <div class="gold-line"></div>
-      <div class="info-msg">
-        💡 قم بحفظ نسخة احتياطية كاملة من جميع بيانات النظام بصيغة JSON. يمكنك استعادتها لاحقًا.
-      </div>
+      <div class="info-msg">💡 قم بحفظ نسخة احتياطية كاملة من جميع بيانات النظام بصيغة JSON</div>
       
       <div class="stats-grid">
         <div class="stat-card"><div class="icon">👥</div><div class="num">${AppData.students.length}</div><div class="lbl">دارس</div></div>
@@ -1989,8 +1951,6 @@ function renderSystemManagement() {
     <div class="card mb-2">
       <div class="card-title">📤 تصدير البيانات</div>
       <div class="gold-line"></div>
-      <div class="info-msg">💡 تصدير جميع البيانات بصيغ مختلفة</div>
-      
       <div class="flex gap-1" style="flex-wrap:wrap;">
         <button class="btn btn-gold" onclick="exportStudentsExcel()">📊 Excel - الدارسين</button>
         <button class="btn btn-gold" onclick="exportAllGradesExcel()">📊 Excel - الدرجات الكاملة</button>
@@ -2247,6 +2207,7 @@ function updateDeaconOptions(p) {
   if (cur) sel.value = cur;
 }
 
+/* ✅ نموذج إضافة الدارس الشامل */
 async function openAddStudentModal() {
   showLoading('جارٍ توليد الكود...');
   try {
@@ -2259,34 +2220,247 @@ async function openAddStudentModal() {
     
     showModal(`
       <h3>👤 إضافة دارس جديد</h3>
+      
       <div class="code-display">
-        <div class="code-label">كود الدارس</div>
+        <div class="code-label">كود الدارس (تلقائي)</div>
         <div class="code-value" id="newStudentCodeDisplay">${code}</div>
         <div class="code-actions">
-          <button class="btn btn-sm" style="background:rgba(255,255,255,0.15);color:white;" onclick="copyToClipboard('${code}')">📋 نسخ</button>
-          <button class="btn btn-sm" style="background:rgba(255,255,255,0.15);color:white;" onclick="regenerateStudentCode()">🔄 تغيير</button>
+          <button class="btn btn-sm" style="background:rgba(255,255,255,0.15);color:white;border:1px solid rgba(255,255,255,0.3);" onclick="copyToClipboard('${code}')">📋 نسخ</button>
+          <button class="btn btn-sm" style="background:rgba(255,255,255,0.15);color:white;border:1px solid rgba(255,255,255,0.3);" onclick="regenerateStudentCode()">🔄 تغيير</button>
         </div>
       </div>
-      <div class="info-msg">📌 سيتم التسجيل باسمك: <strong>${adderName}</strong></div>
+      
+      <div class="info-msg" style="font-size:0.82rem;">
+        📌 <strong>سيتم تسجيل الدارس باسمك:</strong> ${adderName}
+      </div>
+      
       <input type="hidden" id="addStudentCode" value="${code}">
-      <div class="form-group"><label>الاسم *</label><input type="text" id="addStudentName"></div>
-      <div class="form-grid">
-        <div class="form-group"><label>النوع *</label><select id="addStudentGender" onchange="updateDeaconOptions('add')"><option value="ذكر">ذكر</option><option value="أنثى">أنثى</option></select></div>
-        <div class="form-group"><label>الميلاد</label><input type="date" id="addStudentBirth"></div>
+      
+      <div class="form-section">
+        <div class="section-header">📋 البيانات الشخصية</div>
+        <div class="form-group">
+          <label>الاسم الكامل *</label>
+          <input type="text" id="addStudentName" placeholder="أدخل اسم الدارس بالكامل">
+        </div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label>النوع *</label>
+            <select id="addStudentGender" onchange="updateDeaconOptions('add')">
+              <option value="ذكر">ذكر</option>
+              <option value="أنثى">أنثى</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>تاريخ الميلاد</label>
+            <input type="date" id="addStudentBirth">
+          </div>
+        </div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label>الرقم القومي</label>
+            <input type="text" id="addStudentNationalId" placeholder="14 رقم" maxlength="14">
+          </div>
+          <div class="form-group">
+            <label>المدرسة / الوظيفة</label>
+            <input type="text" id="addStudentSchool" placeholder="اسم المدرسة أو الوظيفة">
+          </div>
+        </div>
       </div>
-      <div class="form-grid">
-        <div class="form-group"><label>المرحلة *</label><select id="addStudentStage">${Helpers.getStages().map(s => `<option value="${s}">${s}</option>`).join('')}</select></div>
-        <div class="form-group"><label>الفصل</label><select id="addStudentClassGroup">${Helpers.getClassGroups().map(g => `<option value="${g}">${g}</option>`).join('')}</select></div>
+      
+      <div class="form-section">
+        <div class="section-header">📚 البيانات الدراسية</div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label>المرحلة الدراسية *</label>
+            <select id="addStudentStage">
+              ${Helpers.getStages().map(s => `<option value="${s}">${s}</option>`).join('')}
+            </select>
+          </div>
+          <div class="form-group">
+            <label>الفصل *</label>
+            <select id="addStudentClassGroup">
+              ${Helpers.getClassGroups().map(g => `<option value="${g}">${g}</option>`).join('')}
+            </select>
+          </div>
+        </div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label>حرف الفصل</label>
+            <select id="addStudentClass">
+              ${Helpers.getClassLetters().map(l => `<option value="${l}">${l}</option>`).join('')}
+            </select>
+          </div>
+          <div class="form-group">
+            <label>رتبة الشماسية</label>
+            <select id="addStudentDeacon">
+              <option value="">-- اختر --</option>
+              <option value="أبصالطس">أبصالطس</option>
+              <option value="أغنسطس">أغنسطس</option>
+              <option value="لم يتم الرسامة">لم يتم الرسامة</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label>المستوى الدراسي</label>
+            <select id="addStudentLevel">
+              <option value="مبتدئ">مبتدئ</option>
+              <option value="متوسط">متوسط</option>
+              <option value="متقدم">متقدم</option>
+              <option value="متفوق">متفوق</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>حالة الدارس</label>
+            <select id="addStudentIsNew">
+              <option value="جديد">🆕 جديد</option>
+              <option value="قديم">📖 قديم (منتقل)</option>
+            </select>
+          </div>
+        </div>
       </div>
-      <div class="form-group"><label>هاتف 1 *</label><input type="tel" id="addStudentPhone1"></div>
-      <div class="form-group"><label>هاتف 2</label><input type="tel" id="addStudentPhone2"></div>
-      <div class="form-group"><label>العنوان</label><input type="text" id="addStudentAddress"></div>
-      <div class="modal-actions">
-        <button class="btn btn-gold" onclick="saveNewStudent()">💾 حفظ</button>
+      
+      <div class="form-section">
+        <div class="section-header">📞 بيانات الاتصال</div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label>هاتف الدارس *</label>
+            <input type="tel" id="addStudentPhone1" placeholder="01xxxxxxxxx">
+          </div>
+          <div class="form-group">
+            <label>هاتف ولي الأمر</label>
+            <input type="tel" id="addStudentPhone2" placeholder="01xxxxxxxxx">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>هاتف إضافي</label>
+          <input type="tel" id="addStudentPhone3" placeholder="01xxxxxxxxx">
+        </div>
+        <div class="form-group">
+          <label>العنوان بالتفصيل</label>
+          <textarea id="addStudentAddress" rows="2" placeholder="المحافظة - المدينة - الشارع - رقم العقار"></textarea>
+        </div>
+      </div>
+      
+      <div class="form-section">
+        <div class="section-header">👨‍👩‍👧 بيانات الأسرة</div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label>اسم الأب</label>
+            <input type="text" id="addStudentFather" placeholder="اسم الأب">
+          </div>
+          <div class="form-group">
+            <label>اسم الأم</label>
+            <input type="text" id="addStudentMother" placeholder="اسم الأم">
+          </div>
+        </div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label>هاتف الأب</label>
+            <input type="tel" id="addStudentFatherPhone" placeholder="01xxxxxxxxx">
+          </div>
+          <div class="form-group">
+            <label>هاتف الأم</label>
+            <input type="tel" id="addStudentMotherPhone" placeholder="01xxxxxxxxx">
+          </div>
+        </div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label>عدد الأخوات</label>
+            <input type="number" id="addStudentSiblings" min="0" value="0">
+          </div>
+          <div class="form-group">
+            <label>ترتيب الدارس</label>
+            <input type="number" id="addStudentOrder" min="1" value="1">
+          </div>
+        </div>
+      </div>
+      
+      <div class="form-section">
+        <div class="section-header">⛪ البيانات الكنسية</div>
+        <div class="form-group">
+          <label>الكنيسة التابع لها</label>
+          <input type="text" id="addStudentChurch" placeholder="اسم الكنيسة">
+        </div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label>الأب الكاهن المسؤول</label>
+            <input type="text" id="addStudentPriest" placeholder="اسم الأب الكاهن">
+          </div>
+          <div class="form-group">
+            <label>المنطقة الكنسية</label>
+            <input type="text" id="addStudentChurchArea" placeholder="المنطقة">
+          </div>
+        </div>
+      </div>
+      
+      <div class="form-section">
+        <div class="section-header">📎 المستندات والمرفقات</div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label>📷 الصورة الشخصية</label>
+            <input type="file" id="addStudentPhoto" accept="image/*">
+          </div>
+          <div class="form-group">
+            <label>📄 صورة الاستمارة</label>
+            <input type="file" id="addStudentFormPhoto" accept="image/*">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>📋 صورة شهادة الميلاد</label>
+          <input type="file" id="addStudentBirthCert" accept="image/*,application/pdf">
+        </div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label>📘 البطاقة (وجه)</label>
+            <input type="file" id="addStudentIdFront" accept="image/*">
+          </div>
+          <div class="form-group">
+            <label>📘 البطاقة (ظهر)</label>
+            <input type="file" id="addStudentIdBack" accept="image/*">
+          </div>
+        </div>
+      </div>
+      
+      <div class="form-section">
+        <div class="section-header">✅ حالة الاستمارة والدفع</div>
+        <div class="checkbox-group">
+          <input type="checkbox" id="addStudentForm">
+          <label>تم استلام الاستمارة الورقية</label>
+        </div>
+        <div class="checkbox-group">
+          <input type="checkbox" id="addStudentPaid">
+          <label>تم دفع رسوم الاشتراك</label>
+        </div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label>المبلغ المدفوع</label>
+            <input type="number" id="addStudentPaidAmount" min="0" value="0">
+          </div>
+          <div class="form-group">
+            <label>تاريخ الدفع</label>
+            <input type="date" id="addStudentPaidDate">
+          </div>
+        </div>
+      </div>
+      
+      <div class="form-section">
+        <div class="section-header">📝 ملاحظات إضافية</div>
+        <div class="form-group">
+          <label>ملاحظات عامة</label>
+          <textarea id="addStudentNotes" rows="3" placeholder="أي ملاحظات إضافية عن الدارس..."></textarea>
+        </div>
+      </div>
+      
+      <div class="modal-actions" style="position:sticky;bottom:0;background:white;padding-top:16px;border-top:2px solid var(--gray-light);margin-top:20px;">
+        <button class="btn btn-gold" onclick="saveNewStudent()" style="flex:1;">💾 حفظ الدارس</button>
         <button class="btn btn-outline" onclick="closeModal()">إلغاء</button>
       </div>
     `, 'lg');
-  } catch (e) { hideLoading(); showToast('❌ فشل', 'error'); }
+  } catch (e) { 
+    hideLoading(); 
+    showToast('❌ فشل توليد الكود', 'error'); 
+  }
 }
 
 async function regenerateStudentCode() {
@@ -2294,6 +2468,7 @@ async function regenerateStudentCode() {
     const c = await DB.generateStudentCode();
     document.getElementById('addStudentCode').value = c;
     document.getElementById('newStudentCodeDisplay').textContent = c;
+    showToast('🔄 تم تغيير الكود');
   } catch (e) {}
 }
 
@@ -2305,80 +2480,346 @@ async function saveNewStudent() {
   const code = document.getElementById('addStudentCode').value.trim().toUpperCase();
   const name = document.getElementById('addStudentName').value.trim();
   const phone1 = document.getElementById('addStudentPhone1').value.trim();
-  if (!name || !phone1) { showToast('أكمل البيانات', 'error'); return; }
-  if (!CodeGenerator.isValidStudentCode(code)) { showToast('❌ كود غير صالح', 'error'); return; }
+  
+  if (!name) { showToast('⚠️ أدخل اسم الدارس', 'error'); return; }
+  if (!phone1) { showToast('⚠️ أدخل هاتف الدارس', 'error'); return; }
+  if (!code || !CodeGenerator.isValidStudentCode(code)) {
+    showToast('❌ الكود غير صالح', 'error');
+    return;
+  }
+
   try {
     const allCodes = await DB.getAllCodes();
-    if (allCodes.has(code)) { showToast('❌ الكود مستخدم', 'error'); await regenerateStudentCode(); return; }
+    if (allCodes.has(code)) {
+      showToast('❌ الكود مستخدم بالفعل', 'error');
+      await regenerateStudentCode();
+      return;
+    }
+
     const cur = State.currentUser;
     let addedByName = 'غير محدد', addedByType = '';
     if (cur?.type === 'servant') { addedByName = cur.data.name; addedByType = 'خادم'; }
     else if (cur?.type === 'admin') { addedByName = cur.data.name || 'الأدمن'; addedByType = 'مسؤول'; }
+
+    showLoading('جارٍ حفظ الدارس...');
     
-    showLoading('جارٍ الحفظ...');
     const student = {
-      id: code, name, type: 'جديد',
+      id: code,
+      name,
+      type: 'جديد',
       gender: document.getElementById('addStudentGender').value,
       birthdate: document.getElementById('addStudentBirth').value,
+      nationalId: document.getElementById('addStudentNationalId').value.trim(),
+      school: document.getElementById('addStudentSchool').value.trim(),
       stage: document.getElementById('addStudentStage').value,
       classGroup: document.getElementById('addStudentClassGroup').value,
-      phone1, phone2: document.getElementById('addStudentPhone2').value.trim(),
+      class: document.getElementById('addStudentClass').value,
+      deaconRank: document.getElementById('addStudentDeacon').value,
+      level: document.getElementById('addStudentLevel').value,
+      isNew: document.getElementById('addStudentIsNew').value,
+      phone1,
+      phone2: document.getElementById('addStudentPhone2').value.trim(),
+      phone3: document.getElementById('addStudentPhone3').value.trim(),
       address: document.getElementById('addStudentAddress').value.trim(),
-      addedByName, addedByType, addedAt: new Date().toISOString()
+      fatherName: document.getElementById('addStudentFather').value.trim(),
+      motherName: document.getElementById('addStudentMother').value.trim(),
+      fatherPhone: document.getElementById('addStudentFatherPhone').value.trim(),
+      motherPhone: document.getElementById('addStudentMotherPhone').value.trim(),
+      siblings: parseInt(document.getElementById('addStudentSiblings').value) || 0,
+      order: parseInt(document.getElementById('addStudentOrder').value) || 1,
+      church: document.getElementById('addStudentChurch').value.trim(),
+      priest: document.getElementById('addStudentPriest').value.trim(),
+      churchArea: document.getElementById('addStudentChurchArea').value.trim(),
+      formReceived: document.getElementById('addStudentForm').checked,
+      formPaid: document.getElementById('addStudentPaid').checked,
+      paidAmount: parseFloat(document.getElementById('addStudentPaidAmount').value) || 0,
+      paidDate: document.getElementById('addStudentPaidDate').value,
+      notes: document.getElementById('addStudentNotes').value.trim(),
+      addedByName,
+      addedByType,
+      addedAt: new Date().toISOString()
     };
+    
     await DB.addStudent(student);
     AppData.students.push(student);
+    
+    DB.addLog({ 
+      action: 'إضافة دارس', 
+      target: name, 
+      details: `الكود: ${code} - أضيف بواسطة: ${addedByName} - الفصل: ${student.classGroup}` 
+    });
+    
     closeModal();
-    showToast(`✅ تمت الإضافة - ${code}`);
+    showToast(`✅ تمت إضافة الدارس بنجاح - الكود: ${code}`);
     renderApp();
-  } catch (e) { showToast('❌ فشل: ' + e.message, 'error'); }
-  finally { hideLoading(); }
+  } catch (e) {
+    console.error(e);
+    showToast('❌ فشل الحفظ: ' + e.message, 'error');
+  } finally { 
+    hideLoading(); 
+  }
 }
 
 function openEditStudentModal(id) {
   const s = AppData.students.find(x => x.id === id);
   if (!s) return;
+  
   showModal(`
-    <h3>✏️ تعديل الدارس</h3>
-    <div class="form-group"><label>الاسم</label><input type="text" id="editStudentName" value="${s.name}"></div>
-    <div class="form-grid">
-      <div class="form-group"><label>المرحلة</label><select id="editStudentStage">${Helpers.getStages().map(st => `<option value="${st}" ${st === s.stage ? 'selected' : ''}>${st}</option>`).join('')}</select></div>
-      <div class="form-group"><label>الفصل</label><select id="editStudentClassGroup">${Helpers.getClassGroups().map(g => `<option value="${g}" ${g === s.classGroup ? 'selected' : ''}>${g}</option>`).join('')}</select></div>
+    <h3>✏️ تعديل بيانات الدارس</h3>
+    
+    <div class="info-msg">
+      <strong>الكود:</strong> ${s.id} • <strong>أضيف بواسطة:</strong> ${Helpers.getStudentAdder(s)}
     </div>
-    <div class="form-group"><label>هاتف 1</label><input type="tel" id="editStudentPhone1" value="${s.phone1 || ''}"></div>
-    <div class="form-group"><label>هاتف 2</label><input type="tel" id="editStudentPhone2" value="${s.phone2 || ''}"></div>
-    <div class="modal-actions">
-      <button class="btn btn-gold" onclick="updateStudentData('${s.id}')">💾 حفظ</button>
+    
+    <div class="form-section">
+      <div class="section-header">📋 البيانات الشخصية</div>
+      <div class="form-group">
+        <label>الاسم الكامل</label>
+        <input type="text" id="editStudentName" value="${s.name || ''}">
+      </div>
+      <div class="form-grid">
+        <div class="form-group">
+          <label>النوع</label>
+          <select id="editStudentGender">
+            <option value="ذكر" ${s.gender === 'ذكر' ? 'selected' : ''}>ذكر</option>
+            <option value="أنثى" ${s.gender === 'أنثى' ? 'selected' : ''}>أنثى</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>الميلاد</label>
+          <input type="date" id="editStudentBirth" value="${s.birthdate || ''}">
+        </div>
+      </div>
+      <div class="form-grid">
+        <div class="form-group">
+          <label>الرقم القومي</label>
+          <input type="text" id="editStudentNationalId" value="${s.nationalId || ''}" maxlength="14">
+        </div>
+        <div class="form-group">
+          <label>المدرسة / الوظيفة</label>
+          <input type="text" id="editStudentSchool" value="${s.school || ''}">
+        </div>
+      </div>
+    </div>
+    
+    <div class="form-section">
+      <div class="section-header">📚 البيانات الدراسية</div>
+      <div class="form-grid">
+        <div class="form-group">
+          <label>المرحلة</label>
+          <select id="editStudentStage">
+            ${Helpers.getStages().map(st => `<option value="${st}" ${st === s.stage ? 'selected' : ''}>${st}</option>`).join('')}
+          </select>
+        </div>
+        <div class="form-group">
+          <label>الفصل</label>
+          <select id="editStudentClassGroup">
+            ${Helpers.getClassGroups().map(g => `<option value="${g}" ${g === s.classGroup ? 'selected' : ''}>${g}</option>`).join('')}
+          </select>
+        </div>
+      </div>
+      <div class="form-grid">
+        <div class="form-group">
+          <label>حرف الفصل</label>
+          <select id="editStudentClass">
+            ${Helpers.getClassLetters().map(l => `<option value="${l}" ${l === s.class ? 'selected' : ''}>${l}</option>`).join('')}
+          </select>
+        </div>
+        <div class="form-group">
+          <label>رتبة الشماسية</label>
+          <select id="editStudentDeacon">
+            ${Helpers.getDeaconRanks(s.gender).map(r => `<option value="${r}" ${r === s.deaconRank ? 'selected' : ''}>${r}</option>`).join('')}
+          </select>
+        </div>
+      </div>
+      <div class="form-grid">
+        <div class="form-group">
+          <label>المستوى</label>
+          <select id="editStudentLevel">
+            <option value="مبتدئ" ${s.level === 'مبتدئ' ? 'selected' : ''}>مبتدئ</option>
+            <option value="متوسط" ${s.level === 'متوسط' ? 'selected' : ''}>متوسط</option>
+            <option value="متقدم" ${s.level === 'متقدم' ? 'selected' : ''}>متقدم</option>
+            <option value="متفوق" ${s.level === 'متفوق' ? 'selected' : ''}>متفوق</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>حالة الدارس</label>
+          <select id="editStudentIsNew">
+            <option value="جديد" ${s.isNew === 'جديد' ? 'selected' : ''}>🆕 جديد</option>
+            <option value="قديم" ${s.isNew === 'قديم' ? 'selected' : ''}>📖 قديم</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    
+    <div class="form-section">
+      <div class="section-header">📞 بيانات الاتصال</div>
+      <div class="form-grid">
+        <div class="form-group">
+          <label>هاتف 1</label>
+          <input type="tel" id="editStudentPhone1" value="${s.phone1 || ''}">
+        </div>
+        <div class="form-group">
+          <label>هاتف 2</label>
+          <input type="tel" id="editStudentPhone2" value="${s.phone2 || ''}">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>هاتف 3</label>
+        <input type="tel" id="editStudentPhone3" value="${s.phone3 || ''}">
+      </div>
+      <div class="form-group">
+        <label>العنوان</label>
+        <textarea id="editStudentAddress" rows="2">${s.address || ''}</textarea>
+      </div>
+    </div>
+    
+    <div class="form-section">
+      <div class="section-header">👨‍👩‍👧 بيانات الأسرة</div>
+      <div class="form-grid">
+        <div class="form-group">
+          <label>اسم الأب</label>
+          <input type="text" id="editStudentFather" value="${s.fatherName || ''}">
+        </div>
+        <div class="form-group">
+          <label>اسم الأم</label>
+          <input type="text" id="editStudentMother" value="${s.motherName || ''}">
+        </div>
+      </div>
+      <div class="form-grid">
+        <div class="form-group">
+          <label>هاتف الأب</label>
+          <input type="tel" id="editStudentFatherPhone" value="${s.fatherPhone || ''}">
+        </div>
+        <div class="form-group">
+          <label>هاتف الأم</label>
+          <input type="tel" id="editStudentMotherPhone" value="${s.motherPhone || ''}">
+        </div>
+      </div>
+      <div class="form-grid">
+        <div class="form-group">
+          <label>عدد الأخوات</label>
+          <input type="number" id="editStudentSiblings" value="${s.siblings || 0}" min="0">
+        </div>
+        <div class="form-group">
+          <label>الترتيب</label>
+          <input type="number" id="editStudentOrder" value="${s.order || 1}" min="1">
+        </div>
+      </div>
+    </div>
+    
+    <div class="form-section">
+      <div class="section-header">⛪ البيانات الكنسية</div>
+      <div class="form-group">
+        <label>الكنيسة</label>
+        <input type="text" id="editStudentChurch" value="${s.church || ''}">
+      </div>
+      <div class="form-grid">
+        <div class="form-group">
+          <label>الأب الكاهن</label>
+          <input type="text" id="editStudentPriest" value="${s.priest || ''}">
+        </div>
+        <div class="form-group">
+          <label>المنطقة</label>
+          <input type="text" id="editStudentChurchArea" value="${s.churchArea || ''}">
+        </div>
+      </div>
+    </div>
+    
+    <div class="form-section">
+      <div class="section-header">✅ حالة الاستمارة والدفع</div>
+      <div class="checkbox-group">
+        <input type="checkbox" id="editStudentForm" ${s.formReceived ? 'checked' : ''}>
+        <label>تم استلام الاستمارة</label>
+      </div>
+      <div class="checkbox-group">
+        <input type="checkbox" id="editStudentPaid" ${s.formPaid ? 'checked' : ''}>
+        <label>تم الدفع</label>
+      </div>
+      <div class="form-grid">
+        <div class="form-group">
+          <label>المبلغ المدفوع</label>
+          <input type="number" id="editStudentPaidAmount" value="${s.paidAmount || 0}" min="0">
+        </div>
+        <div class="form-group">
+          <label>تاريخ الدفع</label>
+          <input type="date" id="editStudentPaidDate" value="${s.paidDate || ''}">
+        </div>
+      </div>
+    </div>
+    
+    <div class="form-section">
+      <div class="section-header">📝 ملاحظات</div>
+      <div class="form-group">
+        <textarea id="editStudentNotes" rows="3">${s.notes || ''}</textarea>
+      </div>
+    </div>
+    
+    <div class="modal-actions" style="position:sticky;bottom:0;background:white;padding-top:16px;border-top:2px solid var(--gray-light);">
+      <button class="btn btn-gold" onclick="updateStudentData('${s.id}')" style="flex:1;">💾 حفظ التعديلات</button>
       <button class="btn btn-outline" onclick="closeModal()">إلغاء</button>
     </div>
-  `);
+  `, 'lg');
 }
 
 async function updateStudentData(id) {
   const updates = {
     name: document.getElementById('editStudentName').value.trim(),
+    gender: document.getElementById('editStudentGender').value,
+    birthdate: document.getElementById('editStudentBirth').value,
+    nationalId: document.getElementById('editStudentNationalId').value.trim(),
+    school: document.getElementById('editStudentSchool').value.trim(),
     stage: document.getElementById('editStudentStage').value,
     classGroup: document.getElementById('editStudentClassGroup').value,
+    class: document.getElementById('editStudentClass').value,
+    deaconRank: document.getElementById('editStudentDeacon').value,
+    level: document.getElementById('editStudentLevel').value,
+    isNew: document.getElementById('editStudentIsNew').value,
     phone1: document.getElementById('editStudentPhone1').value.trim(),
-    phone2: document.getElementById('editStudentPhone2').value.trim()
+    phone2: document.getElementById('editStudentPhone2').value.trim(),
+    phone3: document.getElementById('editStudentPhone3').value.trim(),
+    address: document.getElementById('editStudentAddress').value.trim(),
+    fatherName: document.getElementById('editStudentFather').value.trim(),
+    motherName: document.getElementById('editStudentMother').value.trim(),
+    fatherPhone: document.getElementById('editStudentFatherPhone').value.trim(),
+    motherPhone: document.getElementById('editStudentMotherPhone').value.trim(),
+    siblings: parseInt(document.getElementById('editStudentSiblings').value) || 0,
+    order: parseInt(document.getElementById('editStudentOrder').value) || 1,
+    church: document.getElementById('editStudentChurch').value.trim(),
+    priest: document.getElementById('editStudentPriest').value.trim(),
+    churchArea: document.getElementById('editStudentChurchArea').value.trim(),
+    formReceived: document.getElementById('editStudentForm').checked,
+    formPaid: document.getElementById('editStudentPaid').checked,
+    paidAmount: parseFloat(document.getElementById('editStudentPaidAmount').value) || 0,
+    paidDate: document.getElementById('editStudentPaidDate').value,
+    notes: document.getElementById('editStudentNotes').value.trim()
   };
+  
+  if (!updates.name) { showToast('⚠️ أدخل الاسم', 'error'); return; }
+  
   try {
     showLoading('جارٍ الحفظ...');
     await DB.updateStudent(id, updates);
     const idx = AppData.students.findIndex(s => s.id === id);
     if (idx !== -1) Object.assign(AppData.students[idx], updates);
+    DB.addLog({ action: 'تعديل دارس', target: updates.name, details: '' });
     closeModal();
-    showToast('✅ تم');
+    showToast('✅ تم تحديث البيانات');
     renderApp();
-  } catch (e) { showToast('❌ فشل', 'error'); }
-  finally { hideLoading(); }
+  } catch (e) { 
+    showToast('❌ فشل الحفظ', 'error'); 
+  } finally { 
+    hideLoading(); 
+  }
 }
 
 async function deleteStudentConfirm(id) {
   if (!confirm('حذف الدارس؟')) return;
   try {
+    const s = AppData.students.find(x => x.id === id);
     await DB.deleteStudent(id);
     AppData.students = AppData.students.filter(s => s.id !== id);
+    DB.addLog({ action: 'حذف دارس', target: s?.name || id, details: '' });
     showToast('🗑️ تم');
     renderApp();
   } catch (e) { showToast('❌ فشل', 'error'); }
@@ -2406,7 +2847,7 @@ async function openAddServantModal() {
         <div class="form-group"><label>كلمة المرور *</label><input type="text" id="addServantPassword" value="1234"></div>
       </div>
       <div class="form-group">
-        <label>🏫 الفصول (يمكن اختيار أكثر من فصل)</label>
+        <label>🏫 الفصول (متعدد)</label>
         <div class="multi-class-selector" style="box-shadow:none;">
           <label class="class-checkbox all-option"><input type="checkbox" class="servant-class" value="الكل" onchange="toggleAllClasses(this)"><span>📋 الكل</span></label>
           ${Helpers.getClassGroups().map(g => `<label class="class-checkbox"><input type="checkbox" class="servant-class" value="${g}" onchange="updateAllClassesCheckbox()"><span>${g}</span></label>`).join('')}
@@ -2627,7 +3068,7 @@ async function saveSettings() {
 }
 
 /* ============================================================
-   SYSTEM MANAGEMENT - Backup & Reset
+   SYSTEM MANAGEMENT
    ============================================================ */
 function backupFullData() {
   const data = {
@@ -2680,7 +3121,7 @@ function restoreFullData(input) {
       }
       if (data.settings) await DB.setSettings(data.settings);
       
-      showToast('✅ تمت الاستعادة - جارٍ إعادة التحميل...');
+      showToast('✅ تمت الاستعادة');
       setTimeout(() => location.reload(), 1500);
     } catch (err) { showToast('❌ فشل: ' + err.message, 'error'); }
     finally { hideLoading(); }
@@ -2717,7 +3158,7 @@ async function executeSystemReset() {
   if (delNotes) items.push('الافتقاد');
   if (delLogs) items.push('السجل');
   
-  if (!confirm(`⚠️ سيتم حذف: ${items.join(' • ')}\n\nلا يمكن التراجع! متابعة؟`)) return;
+  if (!confirm(`⚠️ سيتم حذف: ${items.join(' • ')}\n\nلا يمكن التراجع!`)) return;
   
   try {
     showLoading('جارٍ الحذف...');
@@ -2738,12 +3179,23 @@ async function executeSystemReset() {
 }
 
 /* ============================================================
-   EXPORT FUNCTIONS
+   EXPORT
    ============================================================ */
 function exportStudentsExcel() {
   const rows = AppData.students.map(s => ({
-    'الكود': s.id, 'الاسم': s.name, 'المرحلة': s.stage, 'الفصل': s.classGroup,
-    'النوع': s.gender, 'هاتف 1': s.phone1, 'أضيف بواسطة': Helpers.getStudentAdder(s)
+    'الكود': s.id, 'الاسم': s.name, 'النوع': s.gender, 'الميلاد': s.birthdate,
+    'الرقم القومي': s.nationalId || '', 'المدرسة': s.school || '',
+    'المرحلة': s.stage, 'الفصل': s.classGroup, 'حرف الفصل': s.class,
+    'الرتبة': s.deaconRank || '', 'المستوى': s.level || '', 'الحالة': s.isNew || '',
+    'هاتف 1': s.phone1, 'هاتف 2': s.phone2 || '', 'هاتف 3': s.phone3 || '',
+    'العنوان': s.address || '',
+    'الأب': s.fatherName || '', 'الأم': s.motherName || '',
+    'هاتف الأب': s.fatherPhone || '', 'هاتف الأم': s.motherPhone || '',
+    'الكنيسة': s.church || '', 'الأب الكاهن': s.priest || '',
+    'الاستمارة': s.formReceived ? 'نعم' : 'لا',
+    'الدفع': s.formPaid ? 'نعم' : 'لا',
+    'المبلغ': s.paidAmount || 0,
+    'أضيف بواسطة': Helpers.getStudentAdder(s)
   }));
   const ws = XLSX.utils.json_to_sheet(rows);
   const wb = XLSX.utils.book_new();
@@ -2756,6 +3208,7 @@ function exportServantsExcel() {
   const rows = AppData.servants.map(s => ({
     'الكود': s.code, 'الاسم': s.name, 'الهاتف': s.phone,
     'الفصول': Helpers.getServantClassGroups(s).join(' • '),
+    'المواد': Helpers.getServantSubjects(s).map(x => Helpers.getSubjectLabel(x)).join(' • '),
     'الأدوار': Helpers.getServantAdminRoles(s).map(r => Helpers.getServantAdminRoleLabel(r)).join(' • ')
   }));
   const ws = XLSX.utils.json_to_sheet(rows);
@@ -2775,9 +3228,9 @@ function exportAllGradesExcel() {
     let totalAll = 0;
     subjects.forEach(sub => {
       const g = GRADING_SYSTEM.calculateSubjectGrade(s.id, sub.value, tw, te);
-      row[`${sub.label} - حضور (${g.weights.attendance})`] = g.attendanceScore;
-      row[`${sub.label} - تقييم (${g.weights.evaluations})`] = g.evalScore;
-      row[`${sub.label} - امتحان (${g.weights.exam})`] = g.examScore;
+      row[`${sub.label} - حضور`] = g.attendanceScore;
+      row[`${sub.label} - تقييم`] = g.evalScore;
+      row[`${sub.label} - امتحان`] = g.examScore;
       row[`${sub.label} - المجموع`] = g.total;
       totalAll += g.total;
     });
@@ -2816,11 +3269,8 @@ function exportEvaluationsExcel() {
   const rows = AppData.evaluations.map(e => {
     const st = AppData.students.find(s => s.id === e.studentId);
     return {
-      'الطالب': st ? st.name : e.studentId,
-      'الفصل': st?.classGroup || '',
-      'المادة': Helpers.getSubjectLabel(e.subject),
-      'الأسبوع': e.week,
-      'الدرجة': e.score
+      'الطالب': st ? st.name : e.studentId, 'الفصل': st?.classGroup || '',
+      'المادة': Helpers.getSubjectLabel(e.subject), 'الأسبوع': e.week, 'الدرجة': e.score
     };
   });
   const ws = XLSX.utils.json_to_sheet(rows);
@@ -2834,11 +3284,8 @@ function exportExamsExcel() {
   const rows = AppData.exams.map(e => {
     const st = AppData.students.find(s => s.id === e.studentId);
     return {
-      'الطالب': st ? st.name : e.studentId,
-      'الفصل': st?.classGroup || '',
-      'المادة': Helpers.getSubjectLabel(e.subject),
-      'الدرجة': e.score,
-      'الدرجة الكاملة': e.maxScore || ''
+      'الطالب': st ? st.name : e.studentId, 'الفصل': st?.classGroup || '',
+      'المادة': Helpers.getSubjectLabel(e.subject), 'الدرجة': e.score, 'الدرجة الكاملة': e.maxScore || ''
     };
   });
   const ws = XLSX.utils.json_to_sheet(rows);
@@ -2867,7 +3314,7 @@ function exportPDF() {
 }
 
 /* ============================================================
-   PRINT FUNCTIONS
+   PRINT
    ============================================================ */
 function printClassList(classGroup) {
   const students = AppData.students.filter(s => classGroup === 'all' || classGroup === 'الكل' || s.classGroup === classGroup)
@@ -2899,7 +3346,7 @@ function printAttendanceReport(classGroup) {
   const weeks = Array.from({length: tw}, (_, i) => i + 1);
   const headerCols = weeks.map(w => {
     const wd = Helpers.getWeekWithDate(w);
-    return `<th><div style="display:flex;flex-direction:column;"><span>أ${w}</span><span style="opacity:0.7;font-size:0.6rem;">${wd.dateShort}</span></div></th>`;
+    return `<th style="font-size:0.6rem;"><div><span>أ${w}</span><br><span style="opacity:0.7;">${wd.dateShort}</span></div></th>`;
   }).join('');
   
   const rows = students.map((s, i) => {
@@ -2950,7 +3397,7 @@ function printGradesReport(classGroup) {
     <div class="print-area">
       <div class="print-header">
         <h1>☩ كشف الدرجات النهائي - ${title} ☩</h1>
-        <p style="font-size:0.8rem;">المواد العادية: 20 حضور + 30 تقييم + 50 امتحان | الألحان: 20 + 20 + 60</p>
+        <p style="font-size:0.8rem;">المواد العادية: 20+30+50 | الألحان: 20+20+60</p>
       </div>
       <table style="font-size:0.7rem;">
         <thead><tr><th>#</th><th>الاسم</th><th>الفصل</th>${subjects.map(s => `<th>${s.icon} ${s.label}</th>`).join('')}<th>المجموع</th><th>المتوسط</th><th>التقدير</th></tr></thead>
@@ -3051,6 +3498,33 @@ function printNotesReport(classGroup) {
       ${sections || '<p style="text-align:center;padding:20px;">لا توجد ملاحظات</p>'}
     </div>
   `, `افتقاد_${title}`);
+}
+
+function printStudentCard(studentId) {
+  const s = AppData.students.find(x => x.id === studentId);
+  if (!s) return;
+  openPrintWindow(`
+    <div class="print-area">
+      <div class="print-header">
+        <h1>☩ ${AppData.settings.centerName} ☩</h1>
+        <p>${AppData.settings.slogan || ''}</p>
+      </div>
+      <div style="text-align:center;padding:20px;border:3px double var(--navy);border-radius:12px;max-width:450px;margin:20px auto;">
+        <div style="font-size:30px;color:var(--gold)">☩</div>
+        <h3 style="color:var(--navy);margin:10px 0">${s.name}</h3>
+        <code style="background:#f0f0f0;padding:4px 10px;border-radius:6px;font-weight:bold">${s.id}</code>
+        <div style="margin-top:14px;text-align:right;font-size:13px;">
+          <p><strong>المرحلة:</strong> ${s.stage}</p>
+          <p><strong>الفصل:</strong> ${s.classGroup} - ${s.class}</p>
+          <p><strong>النوع:</strong> ${s.gender}</p>
+          <p><strong>الهاتف:</strong> ${s.phone1 || '—'}</p>
+          <p><strong>الرتبة:</strong> ${s.deaconRank || '—'}</p>
+          <p><strong>الكنيسة:</strong> ${s.church || '—'}</p>
+          <p><strong>أضيف بواسطة:</strong> ${Helpers.getStudentAdder(s)}</p>
+        </div>
+      </div>
+    </div>
+  `, `بطاقة_${s.name}`);
 }
 
 function openPrintWindow(html, title) {
@@ -3191,7 +3665,7 @@ Object.assign(window, {
   exportStudentsExcel, exportServantsExcel, exportAllGradesExcel,
   exportAttendanceExcel, exportEvaluationsExcel, exportExamsExcel, exportPDF,
   printClassList, printAttendanceReport, printGradesReport,
-  printEvalReport, printExamsReport, printNotesReport
+  printEvalReport, printExamsReport, printNotesReport, printStudentCard
 });
 </script>
 </body>
