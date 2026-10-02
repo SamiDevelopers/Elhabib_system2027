@@ -4,15 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0B1F3A">
-<meta name="description" content="مركز الحبيب للألحان والدراسات القبطية - نظام إدارة متكامل">
 <title>مركز الحبيب للألحان والدراسات القبطية</title>
 
-<!-- ✅ PWA Manifest -->
 <link rel="manifest" href="./manifest.json">
 <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxOTIgMTkyIj48cmVjdCB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgZmlsbD0iIzBCMUYzQSIgcng9IjI0Ii8+PHRleHQgeD0iOTYiIHk9IjEyMCIgZm9udC1zaXplPSIxMDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNDOUEyMjciPuKYqTwvdGV4dD48L3N2Zz4=">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="مركز الحبيب">
 
 <script type="importmap">
 {
@@ -165,12 +161,7 @@ table tbody tr:hover { background: #faf8f4; }
 .badge-warning { background: #fff8e1; color: #e65100; }
 .badge-info { background: #e3f2fd; color: #0d47a1; }
 .badge-adder { background: linear-gradient(135deg, #6B0F1A, #8a1422); color: white; font-size: 0.7rem; }
-.badge-online { background: linear-gradient(135deg, #2e7d32, #1b5e20); color: white; animation: pulse 2s infinite; }
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.7; }
-}
+.badge-me { background: linear-gradient(135deg, #C9A227, #e0bc4a); color: var(--navy); font-size: 0.7rem; font-weight: 800; padding: 4px 12px; }
 
 .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(11, 31, 58, 0.6); backdrop-filter: blur(4px); display: none; align-items: flex-start; justify-content: center; z-index: 1000; padding: 20px; overflow-y: auto; }
 .modal-overlay.show { display: flex; }
@@ -247,90 +238,41 @@ table tbody tr:hover { background: #faf8f4; }
 .class-checkbox-btn.all-btn { background: linear-gradient(135deg, var(--gold), var(--gold-light)); color: var(--navy); border-color: var(--gold); }
 .class-checkbox-btn.all-btn.checked { background: linear-gradient(135deg, var(--wine), #8a1422); color: white; border-color: var(--wine); }
 
-.report-section { background: var(--white); border-radius: var(--radius); padding: 24px 20px; margin-bottom: 20px; box-shadow: var(--shadow); border-right: 5px solid var(--gold); }
-.report-section-title { font-size: 1.15rem; font-weight: 700; color: var(--navy); display: flex; align-items: center; gap: 8px; margin-bottom: 4px; justify-content: flex-end; }
-.report-section-title .icon { color: var(--gold); font-size: 1.3rem; }
-.report-section-underline { width: 100px; height: 3px; background: var(--gold); margin: 8px 0 20px auto; border-radius: 4px; }
-
-.report-buttons-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; padding: 16px; background: #fcfaf7; border-radius: 12px; border: 1.5px solid var(--gray-200); }
-.report-btn { padding: 12px 16px; border-radius: 30px; border: none; background: linear-gradient(135deg, #1976d2, #1565c0); color: white; font-size: 0.88rem; font-weight: 700; cursor: pointer; transition: var(--transition); text-align: center; font-family: inherit; box-shadow: 0 3px 10px rgba(25, 118, 210, 0.3); display: inline-flex; align-items: center; justify-content: center; gap: 6px; }
-.report-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(25, 118, 210, 0.4); }
-.report-btn.all-btn { background: linear-gradient(135deg, var(--wine), #8a1422); box-shadow: 0 3px 10px rgba(107, 15, 26, 0.3); }
-.report-btn.excel-btn { background: linear-gradient(135deg, #2e7d32, #1b5e20); box-shadow: 0 3px 10px rgba(46, 125, 50, 0.3); }
+.report-section { background: var(--white); border-radius: var(--radius); padding: 24px 28px; margin-bottom: 20px; box-shadow: var(--shadow); border-right: 5px solid var(--gold); }
+.report-header-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; margin-bottom: 18px; padding-bottom: 14px; border-bottom: 2px dashed var(--gray-light); }
+.report-section-title { font-size: 1.15rem; font-weight: 800; color: var(--navy); display: flex; align-items: center; gap: 10px; order: 2; }
+.report-section-title .icon { color: var(--gold); font-size: 1.5rem; background: linear-gradient(135deg, var(--cream), var(--gray-100)); width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; border: 2px solid var(--gold); box-shadow: 0 3px 10px rgba(201, 162, 39, 0.2); }
+.report-buttons-grid { display: flex; flex-wrap: wrap; gap: 10px; order: 1; justify-content: flex-start; }
+.report-btn { padding: 11px 20px; border-radius: 25px; border: none; background: linear-gradient(135deg, #1976d2, #1565c0); color: white; font-size: 0.85rem; font-weight: 700; cursor: pointer; transition: var(--transition); text-align: center; font-family: inherit; box-shadow: 0 3px 10px rgba(25, 118, 210, 0.25); display: inline-flex; align-items: center; justify-content: center; gap: 6px; white-space: nowrap; }
+.report-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(25, 118, 210, 0.35); }
+.report-btn:active { transform: translateY(0); }
+.report-btn.all-btn { background: linear-gradient(135deg, var(--wine), #8a1422); box-shadow: 0 3px 10px rgba(107, 15, 26, 0.25); }
+.report-btn.all-btn:hover { box-shadow: 0 6px 16px rgba(107, 15, 26, 0.35); }
+.report-btn.excel-btn { background: linear-gradient(135deg, #2e7d32, #1b5e20); box-shadow: 0 3px 10px rgba(46, 125, 50, 0.25); }
+.report-btn.excel-btn:hover { box-shadow: 0 6px 16px rgba(46, 125, 50, 0.35); }
 
 .selected-class-info { padding: 12px 18px; background: linear-gradient(135deg, #e3f2fd, #bbdefb); border-radius: 10px; border-right: 4px solid var(--info); font-size: 0.9rem; color: var(--navy); margin-bottom: 16px; font-weight: 600; }
 .selected-class-info strong { color: var(--wine); }
 
-/* ============================================================
-   ✅ نظام تتبع المستخدمين النشطين
-   ============================================================ */
-.active-users-section {
-  background: linear-gradient(135deg, #f0f7ff, #e3f2fd);
-  border-radius: var(--radius);
-  padding: 20px;
-  margin-bottom: 20px;
-  border-right: 5px solid var(--info);
-}
-.active-users-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 12px;
-  margin-top: 16px;
-}
-.active-user-card {
-  background: var(--white);
-  border-radius: 10px;
-  padding: 14px 16px;
-  box-shadow: 0 2px 10px rgba(11,31,58,0.08);
-  border-right: 4px solid var(--success);
-  transition: var(--transition);
-}
+.active-users-section { background: linear-gradient(135deg, #f0f7ff, #e3f2fd); border-radius: var(--radius); padding: 20px; margin-bottom: 20px; border-right: 5px solid var(--info); }
+.active-users-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 12px; margin-top: 16px; }
+.active-user-card { background: var(--white); border-radius: 10px; padding: 14px 16px; box-shadow: 0 2px 10px rgba(11,31,58,0.08); border-right: 4px solid var(--success); transition: var(--transition); position: relative; }
 .active-user-card:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(11,31,58,0.15); }
-.active-user-card .user-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 8px;
-}
+.active-user-card.this-device { border-right-color: var(--gold); background: linear-gradient(135deg, #fffbf0, #fff8e1); box-shadow: 0 4px 16px rgba(201, 162, 39, 0.25); }
+.active-user-card.this-device::before { content: "📱"; position: absolute; top: -8px; left: 12px; background: var(--gold); color: var(--navy); padding: 2px 8px; border-radius: 10px; font-size: 0.7rem; font-weight: 800; }
+.active-user-card .user-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; flex-wrap: wrap; gap: 6px; }
 .active-user-card .user-name { font-weight: 700; color: var(--navy); font-size: 0.95rem; }
 .active-user-card .user-info { font-size: 0.78rem; color: #666; line-height: 1.6; }
 .active-user-card .user-info strong { color: var(--navy); }
-.active-user-card .user-actions { margin-top: 10px; display: flex; gap: 6px; }
-.active-user-card.online-now { border-right-color: var(--success); animation: borderPulse 3s infinite; }
+.active-user-card .user-actions { margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap; }
+.active-user-card.online-now { border-right-color: var(--success); }
 .active-user-card.idle { border-right-color: var(--warning); }
 
-@keyframes borderPulse {
-  0%, 100% { border-right-color: var(--success); }
-  50% { border-right-color: var(--gold); }
-}
+.online-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: var(--success); margin-left: 6px; animation: pulse 1.5s infinite; box-shadow: 0 0 8px rgba(46, 125, 50, 0.6); }
 
-.online-dot {
-  display: inline-block;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: var(--success);
-  margin-left: 6px;
-  animation: pulse 1.5s infinite;
-  box-shadow: 0 0 8px rgba(46, 125, 50, 0.6);
-}
+@keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.7; transform: scale(1.1); } }
 
-/* PWA Install Banner */
-.pwa-banner {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 2500;
-  background: linear-gradient(135deg, var(--navy), var(--navy-light));
-  color: white;
-  padding: 16px 20px;
-  border-radius: 12px;
-  box-shadow: 0 10px 40px rgba(11,31,58,0.3);
-  border: 2px solid var(--gold);
-  max-width: 340px;
-  display: none;
-  animation: slideUp 0.4s ease;
-}
+.pwa-banner { position: fixed; bottom: 20px; right: 20px; z-index: 2500; background: linear-gradient(135deg, var(--navy), var(--navy-light)); color: white; padding: 16px 20px; border-radius: 12px; box-shadow: 0 10px 40px rgba(11,31,58,0.3); border: 2px solid var(--gold); max-width: 340px; display: none; animation: slideUp 0.4s ease; }
 .pwa-banner.show { display: block; }
 .pwa-banner h4 { font-size: 1rem; margin-bottom: 8px; color: var(--gold); }
 .pwa-banner p { font-size: 0.82rem; margin-bottom: 12px; opacity: 0.9; }
@@ -373,11 +315,15 @@ table tbody tr:hover { background: #faf8f4; }
   .form-grid { grid-template-columns: 1fr; }
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
   .class-filter-chips { overflow-x: auto; flex-wrap: nowrap; }
+  .report-header-row { flex-direction: column; align-items: stretch; }
+  .report-section-title { justify-content: center; }
+  .report-buttons-grid { justify-content: center; }
 }
 @media (max-width: 480px) {
   .hero h1 { font-size: 1.4rem; }
   .stats-grid { grid-template-columns: 1fr; }
   .grid-2, .grid-3 { grid-template-columns: 1fr; }
+  .report-btn { font-size: 0.78rem; padding: 9px 14px; }
 }
 
 .text-center { text-align: center; }
@@ -418,7 +364,6 @@ table tbody tr:hover { background: #faf8f4; }
   <span style="color: var(--gold);">☩</span> مركز الحبيب للألحان والدراسات القبطية &copy; 2025
 </footer>
 
-<!-- PWA Install Banner -->
 <div class="pwa-banner" id="pwaBanner">
   <h4>📲 تثبيت التطبيق</h4>
   <p>ثبّت مركز الحبيب على جهازك للوصول السريع</p>
@@ -558,12 +503,40 @@ const ConnectionState = {
 };
 
 /* ============================================================
-   Session Tracker - تتبع المستخدمين النشطين
+   Device Fingerprint
+   ============================================================ */
+function getDeviceFingerprint() {
+  let fingerprint = localStorage.getItem('habib_device_fp');
+  if (!fingerprint) {
+    const nav = window.navigator;
+    const screen = window.screen;
+    const data = [
+      nav.userAgent, nav.language, screen.colorDepth,
+      screen.width + 'x' + screen.height,
+      new Date().getTimezoneOffset(),
+      nav.hardwareConcurrency || 'unknown',
+      nav.platform || 'unknown'
+    ].join('|');
+    let hash = 0;
+    for (let i = 0; i < data.length; i++) {
+      const char = data.charCodeAt(i);
+      hash = ((hash << 5) - hash) + char;
+      hash = hash & hash;
+    }
+    fingerprint = 'dev_' + Math.abs(hash).toString(36);
+    localStorage.setItem('habib_device_fp', fingerprint);
+  }
+  return fingerprint;
+}
+
+/* ============================================================
+   Session Tracker
    ============================================================ */
 const SessionTracker = {
   currentSessionId: null,
   heartbeatInterval: null,
   unsubscribe: null,
+  deviceFingerprint: null,
 
   generateSessionId() {
     return 'sess_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
@@ -571,9 +544,9 @@ const SessionTracker = {
 
   async startSession(user) {
     try {
+      this.deviceFingerprint = getDeviceFingerprint();
       this.currentSessionId = this.generateSessionId();
       
-      // تسجيل الجلسة في Firestore
       await setDoc(doc(db, COLLECTIONS.ACTIVE_SESSIONS, this.currentSessionId), {
         sessionId: this.currentSessionId,
         userType: user.type,
@@ -584,28 +557,21 @@ const SessionTracker = {
         roles: Helpers.getServantAdminRoles(user.data),
         classes: Helpers.getServantClassGroups(user.data),
         device: navigator.userAgent,
+        deviceFingerprint: this.deviceFingerprint,
+        deviceType: /Mobile|Android|iPhone/i.test(navigator.userAgent) ? '📱 جوال' : '💻 كمبيوتر',
         loginAt: new Date().toISOString(),
         lastSeen: new Date().toISOString(),
         isActive: true
       }, { merge: true });
 
-      // تخزين sessionId محلياً
       localStorage.setItem('habib_session_id', this.currentSessionId);
-
-      // بدء نبضات القلب (كل 30 ثانية)
       this.startHeartbeat();
-      
       console.log('✅ Session started:', this.currentSessionId);
-    } catch (e) {
-      console.error('Failed to start session:', e);
-    }
+    } catch (e) { console.error('Failed to start session:', e); }
   },
 
   startHeartbeat() {
-    // إيقاف أي heartbeat سابق
     if (this.heartbeatInterval) clearInterval(this.heartbeatInterval);
-    
-    // تحديث lastSeen كل 30 ثانية
     this.heartbeatInterval = setInterval(async () => {
       if (!this.currentSessionId) return;
       try {
@@ -613,16 +579,12 @@ const SessionTracker = {
           lastSeen: new Date().toISOString(),
           isActive: true
         });
-      } catch (e) { /* تجاهل الأخطاء */ }
+      } catch (e) {}
     }, 30000);
   },
 
   async endSession() {
-    if (this.heartbeatInterval) {
-      clearInterval(this.heartbeatInterval);
-      this.heartbeatInterval = null;
-    }
-    
+    if (this.heartbeatInterval) { clearInterval(this.heartbeatInterval); this.heartbeatInterval = null; }
     if (this.currentSessionId) {
       try {
         await updateDoc(doc(db, COLLECTIONS.ACTIVE_SESSIONS, this.currentSessionId), {
@@ -630,7 +592,6 @@ const SessionTracker = {
           logoutAt: new Date().toISOString()
         });
       } catch (e) {}
-      
       localStorage.removeItem('habib_session_id');
       this.currentSessionId = null;
     }
@@ -644,13 +605,14 @@ const SessionTracker = {
         logoutAt: new Date().toISOString()
       });
       return true;
-    } catch (e) {
-      console.error('Force logout failed:', e);
-      return false;
-    }
+    } catch (e) { return false; }
   },
 
-  // بدء مراقبة الجلسات (للمسؤول العام فقط)
+  isThisDevice(session) {
+    if (!this.deviceFingerprint) this.deviceFingerprint = getDeviceFingerprint();
+    return session.deviceFingerprint === this.deviceFingerprint;
+  },
+
   startMonitoring(callback) {
     if (this.unsubscribe) this.unsubscribe();
     this.unsubscribe = onSnapshot(collection(db, COLLECTIONS.ACTIVE_SESSIONS), (snap) => {
@@ -659,39 +621,29 @@ const SessionTracker = {
     });
   },
 
-  // التحقق من الجلسات النشطة (آخر نشاط خلال 2 دقيقة)
   isSessionActive(session) {
     if (!session.isActive) return false;
-    const lastSeen = new Date(session.lastSeen).getTime();
-    const now = Date.now();
-    return (now - lastSeen) < 120000; // دقيقتان
+    return (Date.now() - new Date(session.lastSeen).getTime()) < 120000;
   },
 
-  // التحقق من الجلسات الخاملة (بين 2 و 5 دقائق)
   isSessionIdle(session) {
     if (!session.isActive) return false;
-    const lastSeen = new Date(session.lastSeen).getTime();
-    const now = Date.now();
-    const diff = now - lastSeen;
+    const diff = Date.now() - new Date(session.lastSeen).getTime();
     return diff >= 120000 && diff < 300000;
   },
 
-  // تنظيف الجلسات القديمة (أكثر من 5 دقائق)
   async cleanupOldSessions() {
     try {
       const snap = await getDocs(collection(db, COLLECTIONS.ACTIVE_SESSIONS));
       const batch = writeBatch(db);
       let count = 0;
-      
       snap.docs.forEach(d => {
         const data = d.data();
-        const lastSeen = new Date(data.lastSeen).getTime();
-        if (Date.now() - lastSeen > 300000) { // 5 دقائق
+        if (Date.now() - new Date(data.lastSeen).getTime() > 300000) {
           batch.update(d.ref, { isActive: false });
           count++;
         }
       });
-      
       if (count > 0) await batch.commit();
     } catch (e) {}
   }
@@ -903,9 +855,6 @@ const DB = {
   async deleteAllLogs() { await this.clearCollection(COLLECTIONS.LOGS); }
 };
 
-/* ============================================================
-   App Data
-   ============================================================ */
 const AppData = {
   students: [], servants: [], attendance: [], evaluations: [], exams: [],
   visitationNotes: [], logs: [], activeSessions: [],
@@ -1090,7 +1039,7 @@ function filterStudentsByClass(students) {
 function filterStudentsByServantClasses(students, servant) { return students; }
 
 /* ============================================================
-   RENDER FUNCTIONS
+   RENDER
    ============================================================ */
 function renderHome() {
   return `
@@ -1108,7 +1057,6 @@ function renderHome() {
     </div>
   `;
 }
-
 function renderLogin() {
   return `
     <div class="login-box">
@@ -1431,33 +1379,6 @@ function renderAttendanceTab(servant, students) {
   `;
 }
 
-function markAllPresent() { document.querySelectorAll('input[type="radio"][value="present"]').forEach(r => { if (!r.disabled) r.checked = true; }); showToast('✅ تم تحديد الجميع كحاضر', 'info'); }
-function markAllAbsent() { document.querySelectorAll('input[type="radio"][value="absent"]').forEach(r => { if (!r.disabled) r.checked = true; }); showToast('⚠️ تم تحديد الجميع كغائب', 'warning'); }
-
-async function saveAttendanceBulk(week) {
-  const records = [];
-  const allRadios = document.querySelectorAll('input[type="radio"][name^="att_"]');
-  const studentIds = new Set();
-  allRadios.forEach(r => { if (r.checked && !r.disabled) studentIds.add(r.name.replace('att_', '')); });
-  if (studentIds.size === 0) { showToast('⚠️ لم يتم تحديد أي طالب', 'warning'); return; }
-  studentIds.forEach(studentId => {
-    const selected = document.querySelector(`input[name="att_${studentId}"]:checked`);
-    if (selected) records.push({ studentId, week, status: selected.value, type: 'attendance' });
-  });
-  try {
-    showLoading(`جارٍ حفظ ${records.length} سجل...`);
-    await DB.saveAttendanceBulk(records);
-    records.forEach(r => {
-      const idx = AppData.attendance.findIndex(a => a.studentId === r.studentId && a.week === r.week && a.type === 'attendance');
-      if (idx !== -1) AppData.attendance[idx] = { ...AppData.attendance[idx], ...r };
-      else AppData.attendance.push(r);
-    });
-    showToast(`✅ تم حفظ ${records.length} سجل حضور`);
-    renderApp();
-  } catch (e) { showToast('❌ فشل', 'error'); }
-  finally { hideLoading(); }
-}
-
 function renderQuickEvalTab(servant, students) {
   const tw = AppData.settings.totalWeeks || 15;
   const cw = State.activeTab['quick_eval_week'] || AppData.settings.currentWeek || 1;
@@ -1533,10 +1454,6 @@ function renderExamsTab(servant, students) {
           <select onchange="State.activeTab['exams_subject']=this.value;renderApp()">
             ${Helpers.getSubjects().map(s => `<option value="${s.value}" ${s.value === sub ? 'selected' : ''}>${s.icon} ${s.label}</option>`).join('')}
           </select>
-        </div>
-        <div class="filter-item">
-          <label>الدرجة الكاملة</label>
-          <input type="text" value="${weights.exam} درجة" disabled>
         </div>
       </div>
       ${!canEdit ? '<div class="info-msg">👁️ عرض فقط</div>' : ''}
@@ -1658,53 +1575,74 @@ function renderReportsTab(servant, students) {
   const classGroups = Helpers.getClassGroups();
   const selectedClass = State.activeTab['report_class'] || 'all';
   const filteredStudents = selectedClass === 'all' ? students : students.filter(s => s.classGroup === selectedClass);
+  
   return `
     <div class="report-section">
-      <div class="report-section-title"><span>📋 اختيار الفصل للطباعة</span></div>
-      <div class="report-section-underline"></div>
+      <div class="report-header-row">
+        <div class="report-buttons-grid">
+          <button class="report-btn all-btn" onclick="selectReportClass('all')">📋 كل الفصول (${students.length})</button>
+          ${classGroups.map(g => {
+            const count = students.filter(s => s.classGroup === g).length;
+            return `<button class="report-btn" onclick="selectReportClass('${g.replace(/'/g, "\\'")}')" style="${selectedClass === g ? 'background:linear-gradient(135deg,var(--wine),#8a1422);' : ''}">${g} (${count})</button>`;
+          }).join('')}
+        </div>
+        <div class="report-section-title">
+          <span>اختيار الفصل للطباعة</span>
+          <span class="icon">📋</span>
+        </div>
+      </div>
       <div class="selected-class-info"><strong>✅ الفصل المختار:</strong> ${selectedClass === 'all' ? 'كل الفصول' : selectedClass} — ${filteredStudents.length} دارس</div>
-      <div class="report-buttons-grid">
-        <button class="report-btn all-btn ${selectedClass === 'all' ? 'active' : ''}" onclick="selectReportClass('all')">📋 كل الفصول (${students.length})</button>
-        ${classGroups.map(g => {
-          const count = students.filter(s => s.classGroup === g).length;
-          return `<button class="report-btn" onclick="selectReportClass('${g.replace(/'/g, "\\'")}')" style="${selectedClass === g ? 'background:linear-gradient(135deg,var(--wine),#8a1422);' : ''}">${g} (${count})</button>`;
-        }).join('')}
+    </div>
+    
+    <div class="report-section">
+      <div class="report-header-row">
+        <div class="report-buttons-grid">
+          <button class="report-btn excel-btn" onclick="exportStudentsExcel()">📊 Excel</button>
+          <button class="report-btn" onclick="printClassList('${selectedClass}')">🖨️ طباعة القائمة</button>
+        </div>
+        <div class="report-section-title">
+          <span>قوائم الفصول</span>
+          <span class="icon">📋</span>
+        </div>
       </div>
     </div>
     
     <div class="report-section">
-      <div class="report-section-title"><span>📋 قوائم الفصول</span></div>
-      <div class="report-section-underline"></div>
-      <div class="report-buttons-grid">
-        <button class="report-btn excel-btn" onclick="exportStudentsExcel()">📊 Excel</button>
-        <button class="report-btn" onclick="printClassList('${selectedClass}')">🖨️ طباعة القائمة</button>
+      <div class="report-header-row">
+        <div class="report-buttons-grid">
+          <button class="report-btn all-btn" onclick="printAttendanceReport('all')">📋 شامل</button>
+          ${classGroups.map(g => `<button class="report-btn" onclick="printAttendanceReport('${g.replace(/'/g, "\\'")}')">${g}</button>`).join('')}
+        </div>
+        <div class="report-section-title">
+          <span>كشوف الحضور</span>
+          <span class="icon">📊</span>
+        </div>
       </div>
     </div>
     
     <div class="report-section">
-      <div class="report-section-title"><span>📊 كشوف الحضور</span></div>
-      <div class="report-section-underline"></div>
-      <div class="report-buttons-grid">
-        <button class="report-btn all-btn" onclick="printAttendanceReport('all')">📋 شامل</button>
-        ${classGroups.map(g => `<button class="report-btn" onclick="printAttendanceReport('${g.replace(/'/g, "\\'")}')">${g}</button>`).join('')}
+      <div class="report-header-row">
+        <div class="report-buttons-grid">
+          <button class="report-btn all-btn" onclick="printClassGradesReport('all', 'all')">📋 كل الفصول</button>
+          ${classGroups.map(g => `<button class="report-btn" onclick="printClassGradesReport('${g.replace(/'/g, "\\'")}', 'all')">${g}</button>`).join('')}
+        </div>
+        <div class="report-section-title">
+          <span>كشوف التقييمات</span>
+          <span class="icon">📝</span>
+        </div>
       </div>
     </div>
     
     <div class="report-section">
-      <div class="report-section-title"><span>📝 كشوف التقييمات</span></div>
-      <div class="report-section-underline"></div>
-      <div class="report-buttons-grid">
-        <button class="report-btn all-btn" onclick="printClassGradesReport('all', 'all')">📋 كل الفصول</button>
-        ${classGroups.map(g => `<button class="report-btn" onclick="printClassGradesReport('${g.replace(/'/g, "\\'")}', 'all')">${g}</button>`).join('')}
-      </div>
-    </div>
-    
-    <div class="report-section">
-      <div class="report-section-title"><span>📔 تقارير الافتقاد</span></div>
-      <div class="report-section-underline"></div>
-      <div class="report-buttons-grid">
-        <button class="report-btn all-btn" onclick="printAllVisitationReports()">📋 شاملة</button>
-        ${classGroups.map(g => `<button class="report-btn" onclick="printClassNotesReport('${g.replace(/'/g, "\\'")}')">${g}</button>`).join('')}
+      <div class="report-header-row">
+        <div class="report-buttons-grid">
+          <button class="report-btn all-btn" onclick="printAllVisitationReports()">📋 شاملة</button>
+          ${classGroups.map(g => `<button class="report-btn" onclick="printClassNotesReport('${g.replace(/'/g, "\\'")}')">${g}</button>`).join('')}
+        </div>
+        <div class="report-section-title">
+          <span>تقارير الافتقاد</span>
+          <span class="icon">📔</span>
+        </div>
       </div>
     </div>
   `;
@@ -1802,9 +1740,6 @@ function renderAdminTab(tab, students, servants) {
   }
 }
 
-/* ============================================================
-   ✅ قسم المتصلين الآن
-   ============================================================ */
 function renderActiveSessionsTab() {
   const allSessions = AppData.activeSessions;
   const activeSessions = allSessions.filter(s => SessionTracker.isSessionActive(s));
@@ -1820,11 +1755,12 @@ function renderActiveSessionsTab() {
     const statusClass = status === 'active' ? 'online-now' : status === 'idle' ? 'idle' : '';
     const userIcon = s.userType === 'servant' ? '👨‍🏫' : s.userType === 'admin' ? '👨‍💼' : '👨‍🎓';
     const typeLabel = s.userType === 'servant' ? 'خادم' : s.userType === 'admin' ? 'مسؤول' : 'دارس';
+    const isThisDevice = SessionTracker.isThisDevice(s);
     
     return `
-      <div class="active-user-card ${statusClass}">
+      <div class="active-user-card ${statusClass} ${isThisDevice ? 'this-device' : ''}">
         <div class="user-header">
-          <span class="user-name">${userIcon} ${s.userName}</span>
+          <span class="user-name">${userIcon} ${s.userName}${isThisDevice ? ' <span class="badge badge-me">📱 هذا جهازك</span>' : ''}</span>
           <span class="badge ${status === 'active' ? 'badge-success' : status === 'idle' ? 'badge-warning' : 'badge-info'}" style="${status === 'active' ? 'background:#2e7d32;color:white;' : ''}">
             ${status === 'active' ? '<span class="online-dot"></span>' : ''}${statusLabel}
           </span>
@@ -1832,14 +1768,19 @@ function renderActiveSessionsTab() {
         <div class="user-info">
           <strong>النوع:</strong> ${typeLabel} • 
           <strong>الكود:</strong> ${s.userCode || '—'}<br>
+          <strong>الجهاز:</strong> ${s.deviceType || '—'}<br>
           <strong>تسجيل الدخول:</strong> ${Helpers.formatDateTime(s.loginAt)}<br>
           <strong>آخر نشاط:</strong> ${Helpers.formatTimeAgo(s.lastSeen)}
         </div>
         <div class="user-actions">
           ${status !== 'inactive' && s.isActive ? `
-            <button class="btn btn-sm btn-danger" onclick="forceLogoutUser('${s.id}', '${s.userName.replace(/'/g, "\\'")}')">
-              🚫 إخراج من النظام
-            </button>
+            ${isThisDevice ? `
+              <button class="btn btn-sm btn-primary" onclick="State.logout()">🚪 خروج من هذا الجهاز</button>
+            ` : `
+              <button class="btn btn-sm btn-danger" onclick="forceLogoutUser('${s.id}', '${s.userName.replace(/'/g, "\\'")}')">
+                🚫 إخراج من النظام
+              </button>
+            `}
           ` : `<span class="badge badge-info">انتهت الجلسة</span>`}
         </div>
       </div>
@@ -1905,7 +1846,7 @@ function renderActiveSessionsTab() {
             <tbody>
               ${inactiveSessions.slice(0, 20).map(s => `
                 <tr>
-                  <td>${s.userName}</td>
+                  <td>${s.userName}${SessionTracker.isThisDevice(s) ? ' <span class="badge badge-me">📱 جهازك</span>' : ''}</td>
                   <td>${s.userType === 'servant' ? '👨‍🏫 خادم' : s.userType === 'admin' ? '👨‍💼 مسؤول' : '👨‍🎓 دارس'}</td>
                   <td><code class="code-badge">${s.userCode || '—'}</code></td>
                   <td>${Helpers.formatDateTime(s.loginAt)}</td>
@@ -1927,29 +1868,6 @@ function renderActiveSessionsTab() {
       </div>
     ` : ''}
   `;
-}
-
-async function forceLogoutUser(sessionId, userName) {
-  if (!confirm(`هل تريد إخراج "${userName}" من النظام؟`)) return;
-  try {
-    showLoading('جارٍ إخراج المستخدم...');
-    await SessionTracker.forceLogout(sessionId);
-    DB.addLog({ action: 'إخراج مستخدم', target: userName, details: 'إخراج قسري بواسطة المسؤول' });
-    showToast(`✅ تم إخراج "${userName}" من النظام`);
-    renderApp();
-  } catch (e) { showToast('❌ فشل الإخراج', 'error'); }
-  finally { hideLoading(); }
-}
-
-async function cleanupSessions() {
-  if (!confirm('هل تريد تنظيف الجلسات القديمة (أكثر من 5 دقائق)؟')) return;
-  try {
-    showLoading('جارٍ التنظيف...');
-    await SessionTracker.cleanupOldSessions();
-    showToast('✅ تم تنظيف الجلسات القديمة');
-    renderApp();
-  } catch (e) { showToast('❌ فشل', 'error'); }
-  finally { hideLoading(); }
 }
 
 function renderAdminStudents(students) {
@@ -2216,43 +2134,58 @@ function renderAdminReports() {
   const classGroups = Helpers.getClassGroups();
   return `
     <div class="report-section">
-      <div class="report-section-title"><span>📋 قوائم الفصول</span></div>
-      <div class="report-section-underline"></div>
-      <div class="report-buttons-grid">
-        <button class="report-btn all-btn" onclick="printClassList('all')">📋 كل الفصول</button>
-        ${classGroups.map(g => `<button class="report-btn" onclick="printClassList('${g.replace(/'/g, "\\'")}')">${g}</button>`).join('')}
+      <div class="report-header-row">
+        <div class="report-buttons-grid">
+          <button class="report-btn all-btn" onclick="printClassList('all')">📋 كل الفصول</button>
+          ${classGroups.map(g => `<button class="report-btn" onclick="printClassList('${g.replace(/'/g, "\\'")}')">${g}</button>`).join('')}
+        </div>
+        <div class="report-section-title">
+          <span>قوائم الفصول</span>
+          <span class="icon">📋</span>
+        </div>
       </div>
     </div>
     
     <div class="report-section">
-      <div class="report-section-title"><span>📊 كشوف الحضور</span></div>
-      <div class="report-section-underline"></div>
-      <div class="report-buttons-grid">
-        <button class="report-btn all-btn" onclick="printAttendanceReport('all')">📋 شامل</button>
-        ${classGroups.map(g => `<button class="report-btn" onclick="printAttendanceReport('${g.replace(/'/g, "\\'")}')">${g}</button>`).join('')}
+      <div class="report-header-row">
+        <div class="report-buttons-grid">
+          <button class="report-btn all-btn" onclick="printAttendanceReport('all')">📋 شامل</button>
+          ${classGroups.map(g => `<button class="report-btn" onclick="printAttendanceReport('${g.replace(/'/g, "\\'")}')">${g}</button>`).join('')}
+        </div>
+        <div class="report-section-title">
+          <span>كشوف الحضور</span>
+          <span class="icon">📊</span>
+        </div>
       </div>
     </div>
     
     <div class="report-section">
-      <div class="report-section-title"><span>📝 كشوف التقييمات</span></div>
-      <div class="report-section-underline"></div>
-      <div class="report-buttons-grid">
-        <button class="report-btn all-btn" onclick="printClassGradesReport('all', 'all')">📋 كل الفصول</button>
-        ${classGroups.map(g => `<button class="report-btn" onclick="printClassGradesReport('${g.replace(/'/g, "\\'")}', 'all')">${g}</button>`).join('')}
+      <div class="report-header-row">
+        <div class="report-buttons-grid">
+          <button class="report-btn all-btn" onclick="printClassGradesReport('all', 'all')">📋 كل الفصول</button>
+          ${classGroups.map(g => `<button class="report-btn" onclick="printClassGradesReport('${g.replace(/'/g, "\\'")}', 'all')">${g}</button>`).join('')}
+        </div>
+        <div class="report-section-title">
+          <span>كشوف التقييمات</span>
+          <span class="icon">📝</span>
+        </div>
       </div>
     </div>
     
     <div class="report-section">
-      <div class="report-section-title"><span>📔 تقارير الافتقاد</span></div>
-      <div class="report-section-underline"></div>
-      <div class="report-buttons-grid">
-        <button class="report-btn all-btn" onclick="printAllVisitationReports()">📋 شاملة</button>
-        ${classGroups.map(g => `<button class="report-btn" onclick="printClassNotesReport('${g.replace(/'/g, "\\'")}')">${g}</button>`).join('')}
+      <div class="report-header-row">
+        <div class="report-buttons-grid">
+          <button class="report-btn all-btn" onclick="printAllVisitationReports()">📋 شاملة</button>
+          ${classGroups.map(g => `<button class="report-btn" onclick="printClassNotesReport('${g.replace(/'/g, "\\'")}')">${g}</button>`).join('')}
+        </div>
+        <div class="report-section-title">
+          <span>تقارير الافتقاد</span>
+          <span class="icon">📔</span>
+        </div>
       </div>
     </div>
   `;
 }
-
 function renderSystemManagement() {
   return `
     <div class="card mb-2">
@@ -2401,6 +2334,33 @@ async function changeWeek(w) {
   renderApp();
 }
 
+function markAllPresent() { document.querySelectorAll('input[type="radio"][value="present"]').forEach(r => { if (!r.disabled) r.checked = true; }); showToast('✅ تم تحديد الجميع كحاضر', 'info'); }
+function markAllAbsent() { document.querySelectorAll('input[type="radio"][value="absent"]').forEach(r => { if (!r.disabled) r.checked = true; }); showToast('⚠️ تم تحديد الجميع كغائب', 'warning'); }
+
+async function saveAttendanceBulk(week) {
+  const records = [];
+  const allRadios = document.querySelectorAll('input[type="radio"][name^="att_"]');
+  const studentIds = new Set();
+  allRadios.forEach(r => { if (r.checked && !r.disabled) studentIds.add(r.name.replace('att_', '')); });
+  if (studentIds.size === 0) { showToast('⚠️ لم يتم تحديد أي طالب', 'warning'); return; }
+  studentIds.forEach(studentId => {
+    const selected = document.querySelector(`input[name="att_${studentId}"]:checked`);
+    if (selected) records.push({ studentId, week, status: selected.value, type: 'attendance' });
+  });
+  try {
+    showLoading(`جارٍ حفظ ${records.length} سجل...`);
+    await DB.saveAttendanceBulk(records);
+    records.forEach(r => {
+      const idx = AppData.attendance.findIndex(a => a.studentId === r.studentId && a.week === r.week && a.type === 'attendance');
+      if (idx !== -1) AppData.attendance[idx] = { ...AppData.attendance[idx], ...r };
+      else AppData.attendance.push(r);
+    });
+    showToast(`✅ تم حفظ ${records.length} سجل حضور`);
+    renderApp();
+  } catch (e) { showToast('❌ فشل', 'error'); }
+  finally { hideLoading(); }
+}
+
 async function saveQuickEvaluations(subject, week) {
   const inputs = document.querySelectorAll('.quick-eval-input');
   const records = [];
@@ -2501,6 +2461,9 @@ function updateDeaconOptions(p) {
   if (cur) sel.value = cur;
 }
 
+/* ============================================================
+   ✅ استمارة إضافة دارس جديدة شاملة (8 أقسام)
+   ============================================================ */
 async function openAddStudentModal() {
   showLoading('جارٍ توليد الكود...');
   try {
@@ -2513,6 +2476,7 @@ async function openAddStudentModal() {
     
     showModal(`
       <h3>👤 إضافة دارس جديد</h3>
+      
       <div class="code-display">
         <div class="code-label">كود الدارس (تلقائي)</div>
         <div class="code-value" id="newStudentCodeDisplay">${code}</div>
@@ -2521,65 +2485,226 @@ async function openAddStudentModal() {
           <button class="btn btn-sm" style="background:rgba(255,255,255,0.15);color:white;border:1px solid rgba(255,255,255,0.3);" onclick="regenerateStudentCode()">🔄 تغيير</button>
         </div>
       </div>
-      <div class="info-msg" style="font-size:0.82rem;">📌 <strong>سيتم تسجيل الدارس باسمك:</strong> ${adderName}</div>
+      
+      <div class="info-msg" style="font-size:0.82rem;">
+        📌 <strong>سيتم تسجيل الدارس باسمك:</strong> ${adderName}
+      </div>
+      
       <input type="hidden" id="addStudentCode" value="${code}">
       
       <div class="form-section">
         <div class="section-header">📋 البيانات الشخصية</div>
-        <div class="form-group"><label>الاسم الكامل *</label><input type="text" id="addStudentName" placeholder="أدخل اسم الدارس بالكامل"></div>
-        <div class="form-grid">
-          <div class="form-group"><label>النوع *</label><select id="addStudentGender" onchange="updateDeaconOptions('add')"><option value="ذكر">ذكر</option><option value="أنثى">أنثى</option></select></div>
-          <div class="form-group"><label>تاريخ الميلاد</label><input type="date" id="addStudentBirth"></div>
+        <div class="form-group">
+          <label>الاسم الكامل *</label>
+          <input type="text" id="addStudentName" placeholder="أدخل اسم الدارس بالكامل">
         </div>
         <div class="form-grid">
-          <div class="form-group"><label>الرقم القومي</label><input type="text" id="addStudentNationalId" placeholder="14 رقم" maxlength="14"></div>
-          <div class="form-group"><label>المدرسة / الوظيفة</label><input type="text" id="addStudentSchool" placeholder="اسم المدرسة أو الوظيفة"></div>
+          <div class="form-group">
+            <label>النوع *</label>
+            <select id="addStudentGender" onchange="updateDeaconOptions('add')">
+              <option value="ذكر">ذكر</option>
+              <option value="أنثى">أنثى</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>تاريخ الميلاد</label>
+            <input type="date" id="addStudentBirth">
+          </div>
+        </div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label>الرقم القومي</label>
+            <input type="text" id="addStudentNationalId" placeholder="14 رقم" maxlength="14">
+          </div>
+          <div class="form-group">
+            <label>المدرسة / الوظيفة</label>
+            <input type="text" id="addStudentSchool" placeholder="اسم المدرسة أو الوظيفة">
+          </div>
         </div>
       </div>
       
       <div class="form-section">
         <div class="section-header">📚 البيانات الدراسية</div>
         <div class="form-grid">
-          <div class="form-group"><label>المرحلة الدراسية *</label><select id="addStudentStage">${Helpers.getStages().map(s => `<option value="${s}">${s}</option>`).join('')}</select></div>
-          <div class="form-group"><label>الفصل *</label><select id="addStudentClassGroup">${Helpers.getClassGroups().map(g => `<option value="${g}">${g}</option>`).join('')}</select></div>
+          <div class="form-group">
+            <label>المرحلة الدراسية *</label>
+            <select id="addStudentStage">
+              ${Helpers.getStages().map(s => `<option value="${s}">${s}</option>`).join('')}
+            </select>
+          </div>
+          <div class="form-group">
+            <label>الفصل *</label>
+            <select id="addStudentClassGroup">
+              ${Helpers.getClassGroups().map(g => `<option value="${g}">${g}</option>`).join('')}
+            </select>
+          </div>
         </div>
         <div class="form-grid">
-          <div class="form-group"><label>حرف الفصل</label><select id="addStudentClass">${Helpers.getClassLetters().map(l => `<option value="${l}">${l}</option>`).join('')}</select></div>
-          <div class="form-group"><label>رتبة الشماسية</label><select id="addStudentDeacon"><option value="">-- اختر --</option><option value="أبصالطس">أبصالطس</option><option value="أغنسطس">أغنسطس</option><option value="لم يتم الرسامة">لم يتم الرسامة</option></select></div>
+          <div class="form-group">
+            <label>حرف الفصل</label>
+            <select id="addStudentClass">
+              ${Helpers.getClassLetters().map(l => `<option value="${l}">${l}</option>`).join('')}
+            </select>
+          </div>
+          <div class="form-group">
+            <label>رتبة الشماسية</label>
+            <select id="addStudentDeacon">
+              <option value="">-- اختر --</option>
+              <option value="أبصالطس">أبصالطس</option>
+              <option value="أغنسطس">أغنسطس</option>
+              <option value="لم يتم الرسامة">لم يتم الرسامة</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label>المستوى الدراسي</label>
+            <select id="addStudentLevel">
+              <option value="مبتدئ">مبتدئ</option>
+              <option value="متوسط">متوسط</option>
+              <option value="متقدم">متقدم</option>
+              <option value="متفوق">متفوق</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>حالة الدارس</label>
+            <select id="addStudentIsNew">
+              <option value="جديد">🆕 جديد</option>
+              <option value="قديم">📖 قديم (منتقل)</option>
+            </select>
+          </div>
         </div>
       </div>
       
       <div class="form-section">
         <div class="section-header">📞 بيانات الاتصال</div>
         <div class="form-grid">
-          <div class="form-group"><label>هاتف الدارس *</label><input type="tel" id="addStudentPhone1" placeholder="01xxxxxxxxx"></div>
-          <div class="form-group"><label>هاتف ولي الأمر</label><input type="tel" id="addStudentPhone2" placeholder="01xxxxxxxxx"></div>
+          <div class="form-group">
+            <label>هاتف الدارس *</label>
+            <input type="tel" id="addStudentPhone1" placeholder="01xxxxxxxxx">
+          </div>
+          <div class="form-group">
+            <label>هاتف ولي الأمر</label>
+            <input type="tel" id="addStudentPhone2" placeholder="01xxxxxxxxx">
+          </div>
         </div>
-        <div class="form-group"><label>العنوان بالتفصيل</label><textarea id="addStudentAddress" rows="2" placeholder="المحافظة - المدينة - الشارع"></textarea></div>
+        <div class="form-group">
+          <label>هاتف إضافي</label>
+          <input type="tel" id="addStudentPhone3" placeholder="01xxxxxxxxx">
+        </div>
+        <div class="form-group">
+          <label>العنوان بالتفصيل</label>
+          <textarea id="addStudentAddress" rows="2" placeholder="المحافظة - المدينة - الشارع - رقم العقار"></textarea>
+        </div>
       </div>
       
       <div class="form-section">
         <div class="section-header">👨‍👩‍👧 بيانات الأسرة</div>
         <div class="form-grid">
-          <div class="form-group"><label>اسم الأب</label><input type="text" id="addStudentFather" placeholder="اسم الأب"></div>
-          <div class="form-group"><label>اسم الأم</label><input type="text" id="addStudentMother" placeholder="اسم الأم"></div>
+          <div class="form-group">
+            <label>اسم الأب</label>
+            <input type="text" id="addStudentFather" placeholder="اسم الأب">
+          </div>
+          <div class="form-group">
+            <label>اسم الأم</label>
+            <input type="text" id="addStudentMother" placeholder="اسم الأم">
+          </div>
+        </div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label>هاتف الأب</label>
+            <input type="tel" id="addStudentFatherPhone" placeholder="01xxxxxxxxx">
+          </div>
+          <div class="form-group">
+            <label>هاتف الأم</label>
+            <input type="tel" id="addStudentMotherPhone" placeholder="01xxxxxxxxx">
+          </div>
+        </div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label>عدد الأخوات</label>
+            <input type="number" id="addStudentSiblings" min="0" value="0">
+          </div>
+          <div class="form-group">
+            <label>ترتيب الدارس</label>
+            <input type="number" id="addStudentOrder" min="1" value="1">
+          </div>
         </div>
       </div>
       
       <div class="form-section">
         <div class="section-header">⛪ البيانات الكنسية</div>
-        <div class="form-group"><label>الكنيسة التابع لها</label><input type="text" id="addStudentChurch" placeholder="اسم الكنيسة"></div>
+        <div class="form-group">
+          <label>الكنيسة التابع لها</label>
+          <input type="text" id="addStudentChurch" placeholder="اسم الكنيسة">
+        </div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label>الأب الكاهن المسؤول</label>
+            <input type="text" id="addStudentPriest" placeholder="اسم الأب الكاهن">
+          </div>
+          <div class="form-group">
+            <label>المنطقة الكنسية</label>
+            <input type="text" id="addStudentChurchArea" placeholder="المنطقة">
+          </div>
+        </div>
+      </div>
+      
+      <div class="form-section">
+        <div class="section-header">📎 المستندات</div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label>📷 الصورة الشخصية</label>
+            <input type="file" id="addStudentPhoto" accept="image/*">
+          </div>
+          <div class="form-group">
+            <label>📄 صورة الاستمارة</label>
+            <input type="file" id="addStudentFormPhoto" accept="image/*">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>📋 شهادة الميلاد</label>
+          <input type="file" id="addStudentBirthCert" accept="image/*,application/pdf">
+        </div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label>📘 البطاقة (وجه)</label>
+            <input type="file" id="addStudentIdFront" accept="image/*">
+          </div>
+          <div class="form-group">
+            <label>📘 البطاقة (ظهر)</label>
+            <input type="file" id="addStudentIdBack" accept="image/*">
+          </div>
+        </div>
       </div>
       
       <div class="form-section">
         <div class="section-header">✅ حالة الاستمارة والدفع</div>
-        <div class="checkbox-group"><input type="checkbox" id="addStudentForm"><label>تم استلام الاستمارة</label></div>
-        <div class="checkbox-group"><input type="checkbox" id="addStudentPaid"><label>تم الدفع</label></div>
+        <div class="checkbox-group">
+          <input type="checkbox" id="addStudentForm">
+          <label>تم استلام الاستمارة الورقية</label>
+        </div>
+        <div class="checkbox-group">
+          <input type="checkbox" id="addStudentPaid">
+          <label>تم دفع رسوم الاشتراك</label>
+        </div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label>المبلغ المدفوع</label>
+            <input type="number" id="addStudentPaidAmount" min="0" value="0">
+          </div>
+          <div class="form-group">
+            <label>تاريخ الدفع</label>
+            <input type="date" id="addStudentPaidDate">
+          </div>
+        </div>
       </div>
       
       <div class="form-section">
-        <div class="section-header">📝 ملاحظات</div>
-        <div class="form-group"><textarea id="addStudentNotes" rows="3" placeholder="أي ملاحظات..."></textarea></div>
+        <div class="section-header">📝 ملاحظات إضافية</div>
+        <div class="form-group">
+          <textarea id="addStudentNotes" rows="3" placeholder="أي ملاحظات إضافية..."></textarea>
+        </div>
       </div>
       
       <div class="modal-actions" style="position:sticky;bottom:0;background:white;padding-top:16px;border-top:2px solid var(--gray-light);margin-top:20px;">
@@ -2587,7 +2712,10 @@ async function openAddStudentModal() {
         <button class="btn btn-outline" onclick="closeModal()">إلغاء</button>
       </div>
     `, 'lg');
-  } catch (e) { hideLoading(); showToast('❌ فشل توليد الكود', 'error'); }
+  } catch (e) { 
+    hideLoading(); 
+    showToast('❌ فشل توليد الكود', 'error'); 
+  }
 }
 
 async function regenerateStudentCode() {
@@ -2605,17 +2733,22 @@ async function saveNewStudent() {
   const code = document.getElementById('addStudentCode').value.trim().toUpperCase();
   const name = document.getElementById('addStudentName').value.trim();
   const phone1 = document.getElementById('addStudentPhone1').value.trim();
+  
   if (!name) { showToast('⚠️ أدخل اسم الدارس', 'error'); return; }
   if (!phone1) { showToast('⚠️ أدخل هاتف الدارس', 'error'); return; }
   if (!code || !CodeGenerator.isValidStudentCode(code)) { showToast('❌ الكود غير صالح', 'error'); return; }
+
   try {
     const allCodes = await DB.getAllCodes();
     if (allCodes.has(code)) { showToast('❌ الكود مستخدم', 'error'); await regenerateStudentCode(); return; }
+
     const cur = State.currentUser;
     let addedByName = 'غير محدد', addedByType = '';
     if (cur?.type === 'servant') { addedByName = cur.data.name; addedByType = 'خادم'; }
     else if (cur?.type === 'admin') { addedByName = cur.data.name || 'الأدمن'; addedByType = 'مسؤول'; }
+
     showLoading('جارٍ حفظ الدارس...');
+    
     const student = {
       id: code, name, type: 'جديد',
       gender: document.getElementById('addStudentGender').value,
@@ -2626,25 +2759,41 @@ async function saveNewStudent() {
       classGroup: document.getElementById('addStudentClassGroup').value,
       class: document.getElementById('addStudentClass').value,
       deaconRank: document.getElementById('addStudentDeacon').value,
+      level: document.getElementById('addStudentLevel').value,
+      isNew: document.getElementById('addStudentIsNew').value,
       phone1,
       phone2: document.getElementById('addStudentPhone2').value.trim(),
+      phone3: document.getElementById('addStudentPhone3').value.trim(),
       address: document.getElementById('addStudentAddress').value.trim(),
       fatherName: document.getElementById('addStudentFather').value.trim(),
       motherName: document.getElementById('addStudentMother').value.trim(),
+      fatherPhone: document.getElementById('addStudentFatherPhone').value.trim(),
+      motherPhone: document.getElementById('addStudentMotherPhone').value.trim(),
+      siblings: parseInt(document.getElementById('addStudentSiblings').value) || 0,
+      order: parseInt(document.getElementById('addStudentOrder').value) || 1,
       church: document.getElementById('addStudentChurch').value.trim(),
+      priest: document.getElementById('addStudentPriest').value.trim(),
+      churchArea: document.getElementById('addStudentChurchArea').value.trim(),
       formReceived: document.getElementById('addStudentForm').checked,
       formPaid: document.getElementById('addStudentPaid').checked,
+      paidAmount: parseFloat(document.getElementById('addStudentPaidAmount').value) || 0,
+      paidDate: document.getElementById('addStudentPaidDate').value,
       notes: document.getElementById('addStudentNotes').value.trim(),
-      addedByName, addedByType, addedAt: new Date().toISOString()
+      addedByName, addedByType,
+      addedAt: new Date().toISOString()
     };
+    
     await DB.addStudent(student);
     AppData.students.push(student);
     DB.addLog({ action: 'إضافة دارس', target: name, details: `الكود: ${code} - بواسطة: ${addedByName}` });
+    
     closeModal();
     showToast(`✅ تمت إضافة الدارس - الكود: ${code}`);
     renderApp();
-  } catch (e) { showToast('❌ فشل الحفظ: ' + e.message, 'error'); }
-  finally { hideLoading(); }
+  } catch (e) {
+    console.error(e);
+    showToast('❌ فشل الحفظ: ' + e.message, 'error');
+  } finally { hideLoading(); }
 }
 
 function openEditStudentModal(id) {
@@ -2653,6 +2802,7 @@ function openEditStudentModal(id) {
   showModal(`
     <h3>✏️ تعديل بيانات الدارس</h3>
     <div class="info-msg"><strong>الكود:</strong> ${s.id} • <strong>أضيف بواسطة:</strong> ${Helpers.getStudentAdder(s)}</div>
+    
     <div class="form-section">
       <div class="section-header">📋 البيانات الشخصية</div>
       <div class="form-group"><label>الاسم الكامل</label><input type="text" id="editStudentName" value="${s.name || ''}"></div>
@@ -2660,14 +2810,24 @@ function openEditStudentModal(id) {
         <div class="form-group"><label>النوع</label><select id="editStudentGender"><option value="ذكر" ${s.gender === 'ذكر' ? 'selected' : ''}>ذكر</option><option value="أنثى" ${s.gender === 'أنثى' ? 'selected' : ''}>أنثى</option></select></div>
         <div class="form-group"><label>الميلاد</label><input type="date" id="editStudentBirth" value="${s.birthdate || ''}"></div>
       </div>
+      <div class="form-grid">
+        <div class="form-group"><label>الرقم القومي</label><input type="text" id="editStudentNationalId" value="${s.nationalId || ''}" maxlength="14"></div>
+        <div class="form-group"><label>المدرسة / الوظيفة</label><input type="text" id="editStudentSchool" value="${s.school || ''}"></div>
+      </div>
     </div>
+    
     <div class="form-section">
       <div class="section-header">📚 البيانات الدراسية</div>
       <div class="form-grid">
         <div class="form-group"><label>المرحلة</label><select id="editStudentStage">${Helpers.getStages().map(st => `<option value="${st}" ${st === s.stage ? 'selected' : ''}>${st}</option>`).join('')}</select></div>
         <div class="form-group"><label>الفصل</label><select id="editStudentClassGroup">${Helpers.getClassGroups().map(g => `<option value="${g}" ${g === s.classGroup ? 'selected' : ''}>${g}</option>`).join('')}</select></div>
       </div>
+      <div class="form-grid">
+        <div class="form-group"><label>حرف الفصل</label><select id="editStudentClass">${Helpers.getClassLetters().map(l => `<option value="${l}" ${l === s.class ? 'selected' : ''}>${l}</option>`).join('')}</select></div>
+        <div class="form-group"><label>رتبة الشماسية</label><select id="editStudentDeacon">${Helpers.getDeaconRanks(s.gender).map(r => `<option value="${r}" ${r === s.deaconRank ? 'selected' : ''}>${r}</option>`).join('')}</select></div>
+      </div>
     </div>
+    
     <div class="form-section">
       <div class="section-header">📞 بيانات الاتصال</div>
       <div class="form-grid">
@@ -2676,8 +2836,41 @@ function openEditStudentModal(id) {
       </div>
       <div class="form-group"><label>العنوان</label><textarea id="editStudentAddress" rows="2">${s.address || ''}</textarea></div>
     </div>
+    
+    <div class="form-section">
+      <div class="section-header">👨‍👩‍👧 بيانات الأسرة</div>
+      <div class="form-grid">
+        <div class="form-group"><label>اسم الأب</label><input type="text" id="editStudentFather" value="${s.fatherName || ''}"></div>
+        <div class="form-group"><label>اسم الأم</label><input type="text" id="editStudentMother" value="${s.motherName || ''}"></div>
+      </div>
+    </div>
+    
+    <div class="form-section">
+      <div class="section-header">⛪ البيانات الكنسية</div>
+      <div class="form-group"><label>الكنيسة</label><input type="text" id="editStudentChurch" value="${s.church || ''}"></div>
+      <div class="form-grid">
+        <div class="form-group"><label>الأب الكاهن</label><input type="text" id="editStudentPriest" value="${s.priest || ''}"></div>
+        <div class="form-group"><label>المنطقة</label><input type="text" id="editStudentChurchArea" value="${s.churchArea || ''}"></div>
+      </div>
+    </div>
+    
+    <div class="form-section">
+      <div class="section-header">✅ حالة الاستمارة والدفع</div>
+      <div class="checkbox-group"><input type="checkbox" id="editStudentForm" ${s.formReceived ? 'checked' : ''}><label>تم استلام الاستمارة</label></div>
+      <div class="checkbox-group"><input type="checkbox" id="editStudentPaid" ${s.formPaid ? 'checked' : ''}><label>تم الدفع</label></div>
+      <div class="form-grid">
+        <div class="form-group"><label>المبلغ المدفوع</label><input type="number" id="editStudentPaidAmount" value="${s.paidAmount || 0}" min="0"></div>
+        <div class="form-group"><label>تاريخ الدفع</label><input type="date" id="editStudentPaidDate" value="${s.paidDate || ''}"></div>
+      </div>
+    </div>
+    
+    <div class="form-section">
+      <div class="section-header">📝 ملاحظات</div>
+      <div class="form-group"><textarea id="editStudentNotes" rows="3">${s.notes || ''}</textarea></div>
+    </div>
+    
     <div class="modal-actions" style="position:sticky;bottom:0;background:white;padding-top:16px;border-top:2px solid var(--gray-light);">
-      <button class="btn btn-gold" onclick="updateStudentData('${s.id}')" style="flex:1;">💾 حفظ</button>
+      <button class="btn btn-gold" onclick="updateStudentData('${s.id}')" style="flex:1;">💾 حفظ التعديلات</button>
       <button class="btn btn-outline" onclick="closeModal()">إلغاء</button>
     </div>
   `, 'lg');
@@ -2688,11 +2881,25 @@ async function updateStudentData(id) {
     name: document.getElementById('editStudentName').value.trim(),
     gender: document.getElementById('editStudentGender').value,
     birthdate: document.getElementById('editStudentBirth').value,
+    nationalId: document.getElementById('editStudentNationalId').value.trim(),
+    school: document.getElementById('editStudentSchool').value.trim(),
     stage: document.getElementById('editStudentStage').value,
     classGroup: document.getElementById('editStudentClassGroup').value,
+    class: document.getElementById('editStudentClass').value,
+    deaconRank: document.getElementById('editStudentDeacon').value,
     phone1: document.getElementById('editStudentPhone1').value.trim(),
     phone2: document.getElementById('editStudentPhone2').value.trim(),
-    address: document.getElementById('editStudentAddress').value.trim()
+    address: document.getElementById('editStudentAddress').value.trim(),
+    fatherName: document.getElementById('editStudentFather').value.trim(),
+    motherName: document.getElementById('editStudentMother').value.trim(),
+    church: document.getElementById('editStudentChurch').value.trim(),
+    priest: document.getElementById('editStudentPriest').value.trim(),
+    churchArea: document.getElementById('editStudentChurchArea').value.trim(),
+    formReceived: document.getElementById('editStudentForm').checked,
+    formPaid: document.getElementById('editStudentPaid').checked,
+    paidAmount: parseFloat(document.getElementById('editStudentPaidAmount').value) || 0,
+    paidDate: document.getElementById('editStudentPaidDate').value,
+    notes: document.getElementById('editStudentNotes').value.trim()
   };
   if (!updates.name) { showToast('⚠️ أدخل الاسم', 'error'); return; }
   try {
@@ -2717,6 +2924,7 @@ async function deleteStudentConfirm(id) {
   } catch (e) { showToast('❌ فشل', 'error'); }
 }
 
+/* Servants */
 async function openAddServantModal() {
   showLoading('جارٍ توليد الكود...');
   try {
@@ -2932,6 +3140,29 @@ async function saveNote(studentId, week, servantName) {
   } catch (e) { showToast('❌ فشل', 'error'); }
 }
 
+async function forceLogoutUser(sessionId, userName) {
+  if (!confirm(`هل تريد إخراج "${userName}" من النظام؟`)) return;
+  try {
+    showLoading('جارٍ إخراج المستخدم...');
+    await SessionTracker.forceLogout(sessionId);
+    DB.addLog({ action: 'إخراج مستخدم', target: userName, details: 'إخراج قسري بواسطة المسؤول' });
+    showToast(`✅ تم إخراج "${userName}" من النظام`);
+    renderApp();
+  } catch (e) { showToast('❌ فشل الإخراج', 'error'); }
+  finally { hideLoading(); }
+}
+
+async function cleanupSessions() {
+  if (!confirm('هل تريد تنظيف الجلسات القديمة (أكثر من 5 دقائق)؟')) return;
+  try {
+    showLoading('جارٍ التنظيف...');
+    await SessionTracker.cleanupOldSessions();
+    showToast('✅ تم تنظيف الجلسات القديمة');
+    renderApp();
+  } catch (e) { showToast('❌ فشل', 'error'); }
+  finally { hideLoading(); }
+}
+
 async function saveSettings() {
   const settings = {
     centerName: document.getElementById('setCenterName')?.value || AppData.settings.centerName,
@@ -2954,7 +3185,7 @@ async function saveSettings() {
 
 function backupFullData() {
   const data = {
-    version: '7.0', timestamp: new Date().toISOString(),
+    version: '9.0', timestamp: new Date().toISOString(),
     students: AppData.students, servants: AppData.servants,
     attendance: AppData.attendance, evaluations: AppData.evaluations,
     exams: AppData.exams, visitationNotes: AppData.visitationNotes,
@@ -2996,7 +3227,7 @@ function restoreFullData(input) {
 
 async function executeSystemReset() {
   const confirmText = document.getElementById('confirmDelete').value.trim();
-  if (confirmText !== 'تأكيد الحذف') { showToast('⚠️ اكتب "تأكيد الحذف" للمتابعة', 'error'); return; }
+  if (confirmText !== 'تأكيد الحذف') { showToast('⚠️ اكتب "تأكيد الحذف"', 'error'); return; }
   const delStudents = document.getElementById('del_students').checked;
   const delServants = document.getElementById('del_servants').checked;
   const delAttendance = document.getElementById('del_attendance').checked;
@@ -3004,7 +3235,7 @@ async function executeSystemReset() {
   const delExams = document.getElementById('del_exams').checked;
   const delNotes = document.getElementById('del_notes').checked;
   const delLogs = document.getElementById('del_logs').checked;
-  if (!delStudents && !delServants && !delAttendance && !delEvaluations && !delExams && !delNotes && !delLogs) { showToast('⚠️ اختر عنصر واحد', 'warning'); return; }
+  if (!delStudents && !delServants && !delAttendance && !delEvaluations && !delExams && !delNotes && !delLogs) { showToast('⚠️ اختر عنصر', 'warning'); return; }
   const items = [];
   if (delStudents) items.push('الدارسين');
   if (delServants) items.push('الخدام');
@@ -3030,7 +3261,7 @@ async function executeSystemReset() {
 }
 
 /* ============================================================
-   EXPORT
+   EXPORT FUNCTIONS
    ============================================================ */
 function exportStudentsExcel() {
   const rows = AppData.students.map(s => ({
@@ -3142,7 +3373,7 @@ function exportPDF() {
 }
 
 /* ============================================================
-   PRINT
+   PRINT FUNCTIONS
    ============================================================ */
 function printClassList(classGroup) {
   const students = AppData.students.filter(s => classGroup === 'all' || classGroup === 'الكل' || s.classGroup === classGroup).sort((a, b) => a.name.localeCompare(b.name, 'ar'));
@@ -3166,6 +3397,7 @@ function printClassList(classGroup) {
     </div>
   `, `قائمة_${title}`);
 }
+
 function printAttendanceReport(classGroup) {
   const students = AppData.students.filter(s => classGroup === 'all' || classGroup === 'الكل' || s.classGroup === classGroup).sort((a, b) => a.name.localeCompare(b.name, 'ar'));
   if (students.length === 0) { showToast('لا يوجد دارسين', 'error'); return; }
@@ -3189,6 +3421,7 @@ function printAttendanceReport(classGroup) {
   const title = classGroup === 'all' || classGroup === 'الكل' ? 'كل الفصول' : classGroup;
   openPrintWindow(`<div class="print-area"><div class="print-header"><h1>☩ كشف الحضور - ${title} ☩</h1></div><table style="font-size:0.7rem;"><thead><tr><th>#</th><th>الاسم</th>${headerCols}<th>الحضور</th><th>%</th></tr></thead><tbody>${rows}</tbody></table><div class="print-footer">تم الطباعة بواسطة: ${State.currentUser?.data?.name || '—'}</div></div>`, `حضور_${title}`);
 }
+
 function printClassGradesReport(classGroup, subjectFilter = 'all') {
   const students = AppData.students.filter(s => classGroup === 'all' || classGroup === 'الكل' || s.classGroup === classGroup).sort((a, b) => a.name.localeCompare(b.name, 'ar'));
   if (students.length === 0) { showToast('لا يوجد دارسين', 'error'); return; }
@@ -3205,6 +3438,7 @@ function printClassGradesReport(classGroup, subjectFilter = 'all') {
   const title = classGroup === 'all' || classGroup === 'الكل' ? 'كل الفصول' : classGroup;
   openPrintWindow(`<div class="print-area"><div class="print-header"><h1>☩ كشف التقييمات - ${title} ☩</h1><p style="font-size:0.8rem;">المواد العادية: 20+30+50 | الألحان: 20+20+60</p></div><table style="font-size:0.7rem;"><thead><tr><th>#</th><th>الاسم</th><th>الفصل</th>${subjects.map(s => `<th>${s.icon} ${s.label}</th>`).join('')}<th>المجموع</th><th>المتوسط</th><th>التقدير</th></tr></thead><tbody>${rows}</tbody></table><div class="print-footer">تم الطباعة بواسطة: ${State.currentUser?.data?.name || '—'}</div></div>`, `تقييمات_${title}`);
 }
+
 function printAllVisitationReports() {
   const students = AppData.students;
   if (students.length === 0) { showToast('لا يوجد دارسين', 'error'); return; }
@@ -3216,6 +3450,7 @@ function printAllVisitationReports() {
   }).join('');
   openPrintWindow(pages, 'تقارير_الافتقاد');
 }
+
 function printClassNotesReport(classGroup) {
   const students = AppData.students.filter(s => s.classGroup === classGroup);
   if (students.length === 0) { showToast('لا يوجد دارسين', 'error'); return; }
@@ -3227,11 +3462,12 @@ function printClassNotesReport(classGroup) {
   const sections = Object.values(byStudent).filter(x => x.notes.length > 0).map(item => `
     <div style="margin-bottom:20px;">
       <h4>${item.student.name} (${item.student.id})</h4>
-      ${item.notes.map(n => `<div style="background:#fff8e1;border-right:4px solid #C9A227;padding:10px;margin-bottom:8px;border-radius:6px;"><div style="font-size:0.8rem;color:#666;">أسبوع ${n.week} - ${Helpers.getCategoryLabel(n.category)} • ${Helpers.formatDate(n.createdAt)}</div><div>${Helpers.escapeHtml(n.text)}</div></div>`).join('')}
+      ${item.notes.map(n => `<div style="background:#fff8e1;border-right:4px solid #C9A227;padding:10px;margin-bottom:8px;border-radius:6px;"><div style="font-size:0.8rem;color:#666;">أسبوع ${n.week} - ${Helpers.getCategoryLabel(n.category)}</div><div>${Helpers.escapeHtml(n.text)}</div></div>`).join('')}
     </div>
   `).join('');
   openPrintWindow(`<div class="print-area"><div class="print-header"><h1>☩ ملاحظات ${classGroup} ☩</h1></div>${sections || '<p>لا توجد ملاحظات</p>'}</div>`, `ملاحظات_${classGroup}`);
 }
+
 function printStudentCard(studentId) {
   const s = AppData.students.find(x => x.id === studentId);
   if (!s) return;
@@ -3255,6 +3491,7 @@ function printStudentCard(studentId) {
     </div>
   `, `بطاقة_${s.name}`);
 }
+
 function openPrintWindow(html, title) {
   const win = window.open('', '_blank');
   if (!win) { showToast('❌ يرجى السماح بالنوافذ', 'error'); return; }
@@ -3264,7 +3501,7 @@ function openPrintWindow(html, title) {
 }
 
 /* ============================================================
-   SIDEBAR
+   SIDEBAR & MAIN RENDER
    ============================================================ */
 function buildSidebar() {
   const nav = document.getElementById('sideNav');
@@ -3364,11 +3601,9 @@ function renderApp() {
    PWA - Service Worker Registration
    ============================================================ */
 let deferredPrompt = null;
-
 window.addEventListener('beforeinstallprompt', (e) => {
   e.preventDefault();
   deferredPrompt = e;
-  // إظهار الـ banner بعد 5 ثوان
   setTimeout(() => {
     if (deferredPrompt && !localStorage.getItem('pwa_dismissed')) {
       document.getElementById('pwaBanner').classList.add('show');
@@ -3377,42 +3612,24 @@ window.addEventListener('beforeinstallprompt', (e) => {
 });
 
 function installPWA() {
-  if (!deferredPrompt) {
-    showToast('⚠️ التطبيق مثبت بالفعل أو غير مدعوم', 'warning');
-    return;
-  }
+  if (!deferredPrompt) { showToast('⚠️ التطبيق مثبت بالفعل', 'warning'); return; }
   deferredPrompt.prompt();
   deferredPrompt.userChoice.then((choiceResult) => {
-    if (choiceResult.outcome === 'accepted') {
-      showToast('✅ تم تثبيت التطبيق بنجاح');
-    }
+    if (choiceResult.outcome === 'accepted') showToast('✅ تم تثبيت التطبيق');
     deferredPrompt = null;
     document.getElementById('pwaBanner').classList.remove('show');
   });
 }
-
 function dismissPWA() {
   document.getElementById('pwaBanner').classList.remove('show');
   localStorage.setItem('pwa_dismissed', 'true');
 }
-
 async function registerServiceWorker() {
   if ('serviceWorker' in navigator) {
     try {
       const registration = await navigator.serviceWorker.register('./sw.js', { scope: './' });
       console.log('✅ Service Worker registered:', registration.scope);
-      
-      registration.addEventListener('updatefound', () => {
-        const newWorker = registration.installing;
-        newWorker.addEventListener('statechange', () => {
-          if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-            showToast('🔄 يتوفر تحديث جديد - أعد تحميل الصفحة', 'info');
-          }
-        });
-      });
-    } catch (e) {
-      console.warn('❌ Service Worker registration failed:', e);
-    }
+    } catch (e) { console.warn('❌ Service Worker registration failed:', e); }
   }
 }
 
@@ -3422,17 +3639,15 @@ async function registerServiceWorker() {
 async function init() {
   ConnectionState.init();
   await AuthManager.init();
-  
-  // تسجيل Service Worker
   await registerServiceWorker();
   
   const session = DB.getSession();
   if (session) {
     State.currentUser = session;
-    // استعادة الجلسة
     const savedSessionId = localStorage.getItem('habib_session_id');
     if (savedSessionId) {
       SessionTracker.currentSessionId = savedSessionId;
+      SessionTracker.deviceFingerprint = getDeviceFingerprint();
       SessionTracker.startHeartbeat();
     } else {
       await SessionTracker.startSession(session);
@@ -3442,14 +3657,10 @@ async function init() {
   document.getElementById('navLogoutBtn').addEventListener('click', () => State.logout());
   document.getElementById('modalOverlay').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
   
-  // إغلاق الجلسة عند إغلاق النافذة
-  window.addEventListener('beforeunload', () => {
-    SessionTracker.endSession();
-  });
+  window.addEventListener('beforeunload', () => { SessionTracker.endSession(); });
   
   await AppData.loadAll();
   
-  // بدء مراقبة الجلسات (للمسؤول فقط)
   if (State.currentUser?.type === 'admin') {
     SessionTracker.startMonitoring((sessions) => {
       AppData.activeSessions = sessions;
@@ -3457,7 +3668,6 @@ async function init() {
     });
   }
   
-  // تحديث الجلسات بشكل دوري
   setInterval(() => {
     if (State.currentUser?.type === 'admin' && State.currentPage === 'dashboard' && State.getTab() === 'sessions') {
       renderApp();
@@ -3469,6 +3679,9 @@ async function init() {
 }
 document.addEventListener('DOMContentLoaded', init);
 
+/* ============================================================
+   Global Exports
+   ============================================================ */
 Object.assign(window, {
   State, AppData, Helpers, GRADING_SYSTEM, SessionTracker,
   handleLogin, switchLoginTab, closeModal, showToast, toggleSidebar,
@@ -3493,4 +3706,4 @@ Object.assign(window, {
 });
 </script>
 </body>
-</html>
+</html>  
