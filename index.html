@@ -141,6 +141,16 @@ table tbody tr:hover { background: #faf8f4; }
 .quick-eval-input.filled { background: #e8f5e9; border-color: var(--success); }
 .exam-input { width: 80px; padding: 6px; text-align: center; border: 1.5px solid var(--gray-300); border-radius: 6px; font-weight: 600; }
 
+.attendance-radio {
+  width: 22px; height: 22px; cursor: pointer;
+  appearance: none; border: 2px solid var(--gray-300);
+  border-radius: 50%; position: relative; transition: var(--transition);
+}
+.attendance-radio:checked.present { background: var(--success); border-color: var(--success); }
+.attendance-radio:checked.present::after { content: '✓'; color: white; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 0.9rem; font-weight: bold; }
+.attendance-radio:checked.absent { background: var(--danger); border-color: var(--danger); }
+.attendance-radio:checked.absent::after { content: '✗'; color: white; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 0.9rem; font-weight: bold; }
+
 .table-actions { display: flex; gap: 5px; justify-content: flex-end; }
 .icon-btn { width: 30px; height: 30px; border-radius: 6px; display: inline-flex; align-items: center; justify-content: center; font-size: 0.85rem; background: var(--gray-100); color: var(--gray-700); cursor: pointer; border: none; transition: var(--transition); }
 .icon-btn:hover { background: var(--navy); color: var(--white); }
@@ -207,10 +217,10 @@ table tbody tr:hover { background: #faf8f4; }
 .note-card .note-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; font-size: 0.82rem; color: #666; flex-wrap: wrap; gap: 6px; }
 .note-card .note-body { font-size: 0.9rem; color: var(--navy); white-space: pre-wrap; }
 
-.class-filter-chips { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; padding: 12px; background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); }
+.class-filter-chips { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; padding: 12px; background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); transition: var(--transition); }
 .class-chip { padding: 7px 14px; border-radius: 20px; border: 1.5px solid var(--gray-300); background: var(--white); color: var(--gray-700); font-size: 0.82rem; font-weight: 600; cursor: pointer; transition: var(--transition); }
-.class-chip:hover { background: var(--gray-100); border-color: var(--gold); }
-.class-chip.active { background: var(--navy); color: var(--white); border-color: var(--navy); }
+.class-chip:hover { background: var(--gray-100); border-color: var(--gold); transform: translateY(-1px); }
+.class-chip.active { background: var(--navy); color: var(--white); border-color: var(--navy); box-shadow: 0 4px 12px rgba(11,31,58,0.25); }
 .class-chip .count { display: inline-block; margin-right: 6px; background: rgba(255,255,255,0.25); padding: 1px 7px; border-radius: 10px; font-size: 0.72rem; }
 .class-chip.active .count { background: rgba(201,162,39,0.4); }
 
@@ -234,18 +244,30 @@ table tbody tr:hover { background: #faf8f4; }
 .grade-exam { background: #f3e5f5; color: #6a1b9a; }
 .grade-total { background: #e8f5e9; color: var(--success); }
 
+/* ✅ تحسين سرعة الفلترة */
+.class-filter-chips.loading { opacity: 0.6; pointer-events: none; }
+
+/* ✅ Print CSS محسّن */
 @media print {
+  @page { size: A4; margin: 10mm; }
+  body { background: white !important; font-size: 11pt; color: #000; }
   body * { visibility: hidden; }
   .print-area, .print-area * { visibility: visible; }
-  .print-area { position: absolute; left: 0; top: 0; width: 100%; padding: 20px; background: white; }
-  header, footer, .fb-status, .toast-container, .tabs, .btn, .modal-overlay, .loading-overlay, .print-actions, .stats-grid, .sidebar, .menu-toggle, .class-filter-chips, .multi-class-selector, .filters-bar { display: none !important; }
-  .print-header { text-align: center; margin-bottom: 20px; border-bottom: 3px solid #C9A227; padding-bottom: 12px; }
-  .print-header h1 { font-size: 1.5rem; color: #0B1F3A; margin-bottom: 6px; }
-  table { width: 100%; border-collapse: collapse; font-size: 0.75rem; min-width: auto; }
+  .print-area { position: absolute; left: 0; top: 0; width: 100%; padding: 0; background: white; }
+  .print-header { text-align: center; margin-bottom: 20px; border-bottom: 3px double #0B1F3A; padding-bottom: 12px; }
+  .print-header h1 { font-size: 20pt; color: #0B1F3A; margin-bottom: 8px; font-weight: 800; }
+  .print-header p { color: #555; font-size: 12pt; margin: 4px 0; }
+  .print-meta { display: flex; justify-content: space-between; padding: 8px 12px; background: #f5f1e6 !important; border: 1px solid #C9A227; border-radius: 6px; margin-bottom: 16px; font-size: 10pt; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  table { width: 100%; border-collapse: collapse; font-size: 10pt; min-width: auto; }
   table thead { background: #0B1F3A !important; color: white !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-  table thead th { padding: 6px 4px; text-align: right; font-size: 0.72rem; }
-  table tbody td { padding: 5px 6px; border: 1px solid #ddd; }
-  .print-footer { margin-top: 24px; text-align: center; font-size: 0.8rem; color: #888; border-top: 1px solid #ddd; padding-top: 12px; }
+  table thead th { padding: 8px 6px; text-align: right; font-size: 10pt; font-weight: 700; border: 1px solid #0B1F3A; }
+  table tbody td { padding: 6px 8px; border: 1px solid #ccc; font-size: 10pt; }
+  table tbody tr:nth-child(even) { background: #f9f7f2 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .print-footer { margin-top: 24px; text-align: center; font-size: 9pt; color: #666; border-top: 2px solid #C9A227; padding-top: 12px; page-break-inside: avoid; }
+  .page-break { page-break-after: always; }
+  header, footer, .fb-status, .toast-container, .tabs, .btn, .modal-overlay, .loading-overlay, .print-actions, .stats-grid, .sidebar, .menu-toggle, .class-filter-chips, .multi-class-selector, .filters-bar, .form-section, .gold-line, .card-title { display: none !important; }
+  .code-badge { background: #f0f0f0 !important; padding: 2px 6px; font-family: 'Courier New', monospace; font-weight: 700; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .week-col { font-size: 8pt; text-align: center; padding: 4px 2px; }
 }
 
 @media (max-width: 1024px) {
@@ -270,16 +292,11 @@ table tbody tr:hover { background: #faf8f4; }
 
 .text-center { text-align: center; }
 .text-muted { color: #777; font-size: 0.85rem; }
-.mt-1 { margin-top: 8px; }
-.mt-2 { margin-top: 16px; }
-.mt-3 { margin-top: 24px; }
-.mb-1 { margin-bottom: 8px; }
-.mb-2 { margin-bottom: 16px; }
-.mb-3 { margin-bottom: 24px; }
+.mt-1 { margin-top: 8px; } .mt-2 { margin-top: 16px; } .mt-3 { margin-top: 24px; }
+.mb-1 { margin-bottom: 8px; } .mb-2 { margin-bottom: 16px; } .mb-3 { margin-bottom: 24px; }
 .flex { display: flex; }
 .flex-between { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
-.gap-1 { gap: 8px; }
-.gap-2 { gap: 16px; }
+.gap-1 { gap: 8px; } .gap-2 { gap: 16px; }
 .hidden { display: none !important; }
 .code-badge { background: var(--gray-100); padding: 2px 8px; border-radius: 4px; font-family: 'Courier New', monospace; font-size: 0.78rem; font-weight: 700; color: var(--wine); }
 </style>
@@ -724,7 +741,11 @@ const State = {
   async logout() { this.currentUser = null; DB.clearSession(); this.currentPage = 'home'; renderApp(); showToast('👋 تم تسجيل الخروج'); },
   setTab(tab) { this.activeTab[this.currentPage] = tab; renderApp(); },
   getTab() { return this.activeTab[this.currentPage] || null; },
-  setClassFilter(cls) { this.classFilter = cls; renderApp(); }
+  setClassFilter(cls) { 
+    // ✅ تحسين سرعة الفلترة - تحديث فوري بدون انتظار
+    this.classFilter = cls; 
+    requestAnimationFrame(() => renderApp());
+  }
 };
 
 const Helpers = {
@@ -815,6 +836,7 @@ function showModal(html, size = '') {
 function closeModal() { document.getElementById('modalOverlay').classList.remove('show'); }
 function toggleSidebar() { State.sidebarOpen = !State.sidebarOpen; document.getElementById('sidebar').classList.toggle('open', State.sidebarOpen); }
 
+/* ✅ تحسين فلتر الفصول - استخدام requestAnimationFrame */
 function renderClassFilterChips() {
   const cg = Helpers.getClassGroups();
   const cf = State.classFilter;
@@ -832,20 +854,42 @@ function renderClassFilterChips() {
     </div>
   `;
 }
+
 function filterStudentsByClass(students) {
   if (State.classFilter === 'all') return students;
   return students.filter(s => s.classGroup === State.classFilter);
 }
+
+/* ✅ إصلاح: إظهار الدارسين للخادم الذين أضافهم + فصوله */
 function filterStudentsByServantClasses(students, servant) {
+  const curUserName = State.currentUser?.data?.name;
+  
+  let byClass = [];
+  
   if (Helpers.canViewAllData(servant)) {
     const sc = Helpers.getServantClassGroups(servant);
-    if (sc.length === 0 || servant.classGroup === 'الكل') return students;
-    if (Array.isArray(servant.classGroup) && servant.classGroup.length > 0) return students.filter(s => servant.classGroup.includes(s.classGroup));
-    return students;
+    if (sc.length === 0 || servant.classGroup === 'الكل') {
+      byClass = students;
+    } else if (Array.isArray(servant.classGroup) && servant.classGroup.length > 0) {
+      byClass = students.filter(s => servant.classGroup.includes(s.classGroup));
+    } else {
+      byClass = students;
+    }
+  } else {
+    const sc = Helpers.getServantClassGroups(servant);
+    byClass = sc.length === 0 ? students : students.filter(s => sc.includes(s.classGroup));
   }
-  const sc = Helpers.getServantClassGroups(servant);
-  if (sc.length === 0) return students;
-  return students.filter(s => sc.includes(s.classGroup));
+  
+  // ✅ إضافة الدارسين الذين أضافهم الخادم شخصياً
+  const byAdder = students.filter(s => s.addedByName === curUserName);
+  
+  // دمج بدون تكرار
+  const merged = [...byClass];
+  byAdder.forEach(s => {
+    if (!merged.find(m => m.id === s.id)) merged.push(s);
+  });
+  
+  return merged;
 }
 
 /* ============================================================
@@ -936,8 +980,6 @@ function renderStudentProfile(s) {
           <tr><td><strong>الكود:</strong></td><td><code class="code-badge">${s.id}</code></td></tr>
           <tr><td><strong>النوع:</strong></td><td>${s.gender || '—'}</td></tr>
           <tr><td><strong>الميلاد:</strong></td><td>${Helpers.formatDate(s.birthdate)}</td></tr>
-          ${s.nationalId ? `<tr><td><strong>الرقم القومي:</strong></td><td>${s.nationalId}</td></tr>` : ''}
-          ${s.school ? `<tr><td><strong>المدرسة:</strong></td><td>${s.school}</td></tr>` : ''}
         </table>
       </div>
       <div class="card">
@@ -945,49 +987,16 @@ function renderStudentProfile(s) {
         <div class="gold-line"></div>
         <table style="min-width:auto;box-shadow:none;">
           <tr><td><strong>المرحلة:</strong></td><td>${s.stage}</td></tr>
-          <tr><td><strong>الفصل:</strong></td><td>${s.classGroup} - ${s.class}</td></tr>
+          <tr><td><strong>الفصل:</strong></td><td>${s.classGroup}</td></tr>
           <tr><td><strong>الرتبة:</strong></td><td>${s.deaconRank || '—'}</td></tr>
-          ${s.level ? `<tr><td><strong>المستوى:</strong></td><td>${s.level}</td></tr>` : ''}
         </table>
       </div>
       <div class="card">
         <div class="card-title">📞 بيانات الاتصال</div>
         <div class="gold-line"></div>
         <table style="min-width:auto;box-shadow:none;">
-          <tr><td><strong>هاتف 1:</strong></td><td>${s.phone1 || '—'}</td></tr>
-          ${s.phone2 ? `<tr><td><strong>هاتف 2:</strong></td><td>${s.phone2}</td></tr>` : ''}
-          ${s.phone3 ? `<tr><td><strong>هاتف 3:</strong></td><td>${s.phone3}</td></tr>` : ''}
+          <tr><td><strong>هاتف:</strong></td><td>${s.phone1 || '—'}</td></tr>
           <tr><td><strong>العنوان:</strong></td><td>${s.address || '—'}</td></tr>
-        </table>
-      </div>
-      <div class="card">
-        <div class="card-title">👨‍👩‍👧 بيانات الأسرة</div>
-        <div class="gold-line"></div>
-        <table style="min-width:auto;box-shadow:none;">
-          ${s.fatherName ? `<tr><td><strong>الأب:</strong></td><td>${s.fatherName}</td></tr>` : ''}
-          ${s.motherName ? `<tr><td><strong>الأم:</strong></td><td>${s.motherName}</td></tr>` : ''}
-          ${s.fatherPhone ? `<tr><td><strong>هاتف الأب:</strong></td><td>${s.fatherPhone}</td></tr>` : ''}
-          ${s.motherPhone ? `<tr><td><strong>هاتف الأم:</strong></td><td>${s.motherPhone}</td></tr>` : ''}
-        </table>
-      </div>
-      ${s.church || s.priest ? `
-      <div class="card">
-        <div class="card-title">⛪ البيانات الكنسية</div>
-        <div class="gold-line"></div>
-        <table style="min-width:auto;box-shadow:none;">
-          ${s.church ? `<tr><td><strong>الكنيسة:</strong></td><td>${s.church}</td></tr>` : ''}
-          ${s.priest ? `<tr><td><strong>الأب الكاهن:</strong></td><td>${s.priest}</td></tr>` : ''}
-          ${s.churchArea ? `<tr><td><strong>المنطقة:</strong></td><td>${s.churchArea}</td></tr>` : ''}
-        </table>
-      </div>
-      ` : ''}
-      <div class="card">
-        <div class="card-title">📋 الاستمارة والدفع</div>
-        <div class="gold-line"></div>
-        <table style="min-width:auto;box-shadow:none;">
-          <tr><td><strong>الاستمارة:</strong></td><td>${s.formReceived ? '✅ مستلمة' : '❌ غير مستلمة'}</td></tr>
-          <tr><td><strong>الدفع:</strong></td><td>${s.formPaid ? '✅ مدفوع' : '❌ غير مدفوع'}</td></tr>
-          ${s.paidAmount > 0 ? `<tr><td><strong>المبلغ:</strong></td><td>${s.paidAmount} جنيه</td></tr>` : ''}
         </table>
       </div>
     </div>
@@ -1002,9 +1011,7 @@ function renderStudentGradesFull(s) {
     <div class="card">
       <div class="card-title">📊 درجاتي التفصيلية</div>
       <div class="gold-line"></div>
-      <div class="info-msg">
-        <strong>نظام التقييم:</strong> المواد العادية (20 حضور + 30 تقييمات + 50 امتحان) | الألحان (20 + 20 + 60)
-      </div>
+      <div class="info-msg">المواد العادية (20+30+50) | الألحان (20+20+60)</div>
       ${subjects.map(sub => {
         const grade = GRADING_SYSTEM.calculateSubjectGrade(s.id, sub.value, tw, te);
         const letter = GRADING_SYSTEM.getGradeLetter(grade.total);
@@ -1021,12 +1028,7 @@ function renderStudentGradesFull(s) {
               <span class="grade-item grade-attendance">📋 الحضور: ${grade.attendanceScore} / ${grade.weights.attendance}</span>
               <span class="grade-item grade-eval">📝 التقييمات: ${grade.evalScore} / ${grade.weights.evaluations}</span>
               <span class="grade-item grade-exam">🎓 الامتحان: ${grade.examScore} / ${grade.weights.exam}</span>
-              <span class="grade-item grade-total">🏆 المجموع: ${grade.total} / 100</span>
             </div>
-            <p class="text-muted mt-1">
-              ✅ حضر ${grade.attendancePresent} من ${grade.attendanceTotal} أسبوع •
-              📝 تم تسجيل ${grade.evalCount} تقييم
-            </p>
           </div>
         `;
       }).join('')}
@@ -1037,14 +1039,12 @@ function renderStudentAttendance(s) {
   const tw = AppData.settings.totalWeeks || 15;
   const att = AppData.attendance.filter(a => a.studentId === s.id && a.type !== 'visitation');
   const present = att.filter(a => a.status === 'present').length;
-  const absent = att.filter(a => a.status === 'absent').length;
   const pct = Helpers.percentage(present, tw);
   
   return `
     <div class="stats-grid">
       <div class="stat-card"><div class="icon">📅</div><div class="num">${tw}</div><div class="lbl">الأسابيع</div></div>
       <div class="stat-card"><div class="icon">✅</div><div class="num">${present}</div><div class="lbl">حضور</div></div>
-      <div class="stat-card"><div class="icon">❌</div><div class="num">${absent}</div><div class="lbl">غياب</div></div>
       <div class="stat-card"><div class="icon">📊</div><div class="num">${pct}%</div><div class="lbl">النسبة</div></div>
     </div>
     <div class="card">
@@ -1167,7 +1167,7 @@ function renderManageStudents(servant, students) {
       ${filtered.length === 0 ? '<div class="empty-state">لا يوجد دارسين</div>' : `
         <div class="table-wrap">
           <table>
-            <thead><tr><th>#</th><th>الاسم</th><th>الكود</th><th>النوع</th><th>المرحلة</th><th>الفصل</th><th>الهاتف</th><th>الحالة</th><th>أضيف بواسطة</th><th>إجراءات</th></tr></thead>
+            <thead><tr><th>#</th><th>الاسم</th><th>الكود</th><th>النوع</th><th>المرحلة</th><th>الفصل</th><th>الهاتف</th><th>أضيف بواسطة</th><th>إجراءات</th></tr></thead>
             <tbody>
               ${filtered.map((s, i) => `
                 <tr>
@@ -1178,7 +1178,6 @@ function renderManageStudents(servant, students) {
                   <td>${s.stage}</td>
                   <td>${s.classGroup}</td>
                   <td>${s.phone1 || '—'}</td>
-                  <td>${s.isNew === 'جديد' ? '<span class="badge badge-success">🆕</span>' : '<span class="badge badge-info">📖</span>'}</td>
                   <td><span class="badge badge-adder">${Helpers.getStudentAdder(s)}</span></td>
                   <td>
                     <div class="table-actions">
@@ -1197,6 +1196,7 @@ function renderManageStudents(servant, students) {
   `;
 }
 
+/* ✅ تسجيل حضور سهل */
 function renderAttendanceTab(servant, students) {
   const cw = AppData.settings.currentWeek || 1;
   const canEdit = Helpers.canEditAttendance(servant);
@@ -1207,10 +1207,17 @@ function renderAttendanceTab(servant, students) {
     <div class="card">
       <div class="flex-between mb-2">
         <div class="card-title">📋 الحضور - الأسبوع ${cw} (${Helpers.getWeekDate(cw)})</div>
-        ${canEdit ? `<button class="btn btn-success btn-sm" onclick="saveAttendanceBulk(${cw})">💾 حفظ</button>` : ''}
+        ${canEdit ? `
+          <div class="flex gap-1" style="flex-wrap:wrap;">
+            <button class="btn btn-info btn-sm" onclick="markAllPresent()">✅ تحديد الكل حاضر</button>
+            <button class="btn btn-outline btn-sm" onclick="markAllAbsent()">❌ تحديد الكل غائب</button>
+            <button class="btn btn-success btn-sm" onclick="saveAttendanceBulk(${cw})">💾 حفظ الحضور</button>
+          </div>
+        ` : ''}
       </div>
       <div class="gold-line"></div>
-      <div class="form-group" style="max-width:300px;">
+      
+      <div class="form-group" style="max-width:400px;">
         <label>الأسبوع</label>
         <select onchange="changeWeek(this.value)">
           ${Array.from({length: AppData.settings.totalWeeks || 15}, (_, i) => {
@@ -1219,17 +1226,33 @@ function renderAttendanceTab(servant, students) {
           }).join('')}
         </select>
       </div>
+      
       ${filtered.length === 0 ? '<div class="empty-state">لا يوجد طلاب</div>' : `
+        <div class="info-msg">
+          💡 <strong>${filtered.length} طالب</strong> - اضغط "تحديد الكل حاضر" ثم أزل الغائبين فقط
+        </div>
         <div class="table-wrap">
           <table>
-            <thead><tr><th>#</th><th>الطالب</th><th>الفصل</th><th>حاضر</th></tr></thead>
+            <thead><tr><th>#</th><th>الطالب</th><th>الفصل</th><th style="text-align:center;">حاضر</th><th style="text-align:center;">غائب</th></tr></thead>
             <tbody>
               ${filtered.map((s, i) => {
                 const r = AppData.attendance.find(a => a.studentId === s.id && a.week === cw && a.type !== 'visitation');
-                const checked = r && r.status === 'present' ? 'checked' : '';
+                const isPresent = r && r.status === 'present';
+                const isAbsent = r && r.status === 'absent';
                 return `<tr>
-                  <td>${i + 1}</td><td>${s.name}</td><td>${s.classGroup}</td>
-                  <td><input type="checkbox" class="attendance-check" data-student="${s.id}" ${checked} ${!canEdit ? 'disabled' : ''} style="width:20px;height:20px;accent-color:var(--success);"></td>
+                  <td>${i + 1}</td>
+                  <td><strong>${s.name}</strong></td>
+                  <td>${s.classGroup}</td>
+                  <td style="text-align:center;">
+                    <input type="radio" name="att_${s.id}" value="present" 
+                      ${isPresent ? 'checked' : ''} ${!canEdit ? 'disabled' : ''}
+                      class="attendance-radio present">
+                  </td>
+                  <td style="text-align:center;">
+                    <input type="radio" name="att_${s.id}" value="absent" 
+                      ${isAbsent ? 'checked' : ''} ${!canEdit ? 'disabled' : ''}
+                      class="attendance-radio absent">
+                  </td>
                 </tr>`;
               }).join('')}
             </tbody>
@@ -1238,6 +1261,60 @@ function renderAttendanceTab(servant, students) {
       `}
     </div>
   `;
+}
+
+function markAllPresent() {
+  document.querySelectorAll('input[type="radio"][value="present"]').forEach(r => { if (!r.disabled) r.checked = true; });
+  showToast('✅ تم تحديد الجميع كحاضر - عدّل الغائبين ثم احفظ', 'info');
+}
+
+function markAllAbsent() {
+  document.querySelectorAll('input[type="radio"][value="absent"]').forEach(r => { if (!r.disabled) r.checked = true; });
+  showToast('⚠️ تم تحديد الجميع كغائب', 'warning');
+}
+
+async function saveAttendanceBulk(week) {
+  const records = [];
+  const allRadios = document.querySelectorAll('input[type="radio"][name^="att_"]');
+  const studentIds = new Set();
+  allRadios.forEach(r => {
+    if (r.checked && !r.disabled) {
+      const studentId = r.name.replace('att_', '');
+      studentIds.add(studentId);
+    }
+  });
+  
+  if (studentIds.size === 0) {
+    showToast('⚠️ لم يتم تحديد أي طالب', 'warning');
+    return;
+  }
+  
+  studentIds.forEach(studentId => {
+    const selected = document.querySelector(`input[name="att_${studentId}"]:checked`);
+    if (selected) {
+      records.push({
+        studentId: studentId,
+        week: week,
+        status: selected.value,
+        type: 'attendance'
+      });
+    }
+  });
+  
+  try {
+    showLoading(`جارٍ حفظ ${records.length} سجل...`);
+    await DB.saveAttendanceBulk(records);
+    records.forEach(r => {
+      const idx = AppData.attendance.findIndex(a => 
+        a.studentId === r.studentId && a.week === r.week && a.type === 'attendance'
+      );
+      if (idx !== -1) AppData.attendance[idx] = { ...AppData.attendance[idx], ...r };
+      else AppData.attendance.push(r);
+    });
+    showToast(`✅ تم حفظ ${records.length} سجل حضور`);
+    renderApp();
+  } catch (e) { showToast('❌ فشل', 'error'); }
+  finally { hideLoading(); }
 }
 
 function renderQuickEvalTab(servant, students) {
@@ -1307,7 +1384,7 @@ function renderExamsTab(servant, students) {
   
   return `
     ${renderClassFilterChips()}
-    <div class="card mb-2">
+    <div class="card">
       <div class="flex-between mb-2">
         <div class="card-title">🎓 درجات الامتحانات</div>
         ${canEdit ? `<button class="btn btn-success btn-sm" onclick="saveExamsBulk('${sub}')">💾 حفظ</button>` : ''}
@@ -1330,8 +1407,6 @@ function renderExamsTab(servant, students) {
           💡 <strong>${subject?.label}:</strong> الحضور ${weights.attendance} + التقييمات ${weights.evaluations} + الامتحان ${weights.exam} = 100
         </div>
       `}
-    </div>
-    <div class="card">
       ${filtered.length === 0 ? '<div class="empty-state">لا يوجد طلاب</div>' : `
         <div class="table-wrap">
           <table>
@@ -1365,7 +1440,6 @@ function renderGradesOverview(servant, students) {
     <div class="card">
       <div class="card-title">📊 نظرة عامة على الدرجات</div>
       <div class="gold-line"></div>
-      <div class="info-msg">💡 المواد العادية (20+30+50) | الألحان (20+20+60)</div>
       ${filtered.length === 0 ? '<div class="empty-state">لا يوجد طلاب</div>' : `
         <div class="table-wrap">
           <table>
@@ -1373,7 +1447,7 @@ function renderGradesOverview(servant, students) {
               <tr>
                 <th>الطالب</th><th>الفصل</th>
                 ${subjects.map(s => `<th>${s.icon} ${s.label}</th>`).join('')}
-                <th>المجموع</th><th>النسبة</th><th>التقدير</th>
+                <th>المجموع</th><th>التقدير</th>
               </tr>
             </thead>
             <tbody>
@@ -1386,7 +1460,6 @@ function renderGradesOverview(servant, students) {
                   <td>${s.name}</td><td>${s.classGroup}</td>
                   ${grades.map(g => `<td><strong style="color:${GRADING_SYSTEM.getGradeLetter(g.total).color};">${g.total}</strong></td>`).join('')}
                   <td><strong>${total.toFixed(1)}</strong></td>
-                  <td>${avg.toFixed(1)}%</td>
                   <td><span class="badge" style="background:${letter.color};color:white;">${letter.label}</span></td>
                 </tr>`;
               }).join('')}
@@ -1630,7 +1703,7 @@ function renderAdminStudents(students) {
       </div>
       <div class="table-wrap">
         <table>
-          <thead><tr><th>#</th><th>الاسم</th><th>الكود</th><th>النوع</th><th>المرحلة</th><th>الفصل</th><th>الحالة</th><th>أضيف بواسطة</th><th>إجراءات</th></tr></thead>
+          <thead><tr><th>#</th><th>الاسم</th><th>الكود</th><th>النوع</th><th>المرحلة</th><th>الفصل</th><th>أضيف بواسطة</th><th>إجراءات</th></tr></thead>
           <tbody>
             ${filtered.map((s, i) => `
               <tr>
@@ -1638,7 +1711,6 @@ function renderAdminStudents(students) {
                 <td><code class="code-badge">${s.id}</code></td>
                 <td>${s.gender === 'ذكر' ? '👦' : '👧'}</td>
                 <td>${s.stage}</td><td>${s.classGroup}</td>
-                <td>${s.isNew === 'جديد' ? '<span class="badge badge-success">🆕</span>' : '<span class="badge badge-info">📖</span>'}</td>
                 <td><span class="badge badge-adder">${Helpers.getStudentAdder(s)}</span></td>
                 <td>
                   <div class="table-actions">
@@ -1701,9 +1773,16 @@ function renderAdminAttendance(students) {
   return `
     ${renderClassFilterChips()}
     <div class="card">
-      <div class="card-title">📋 الحضور - الأسبوع ${cw} (${Helpers.getWeekDate(cw)})</div>
+      <div class="flex-between mb-2">
+        <div class="card-title">📋 الحضور - الأسبوع ${cw} (${Helpers.getWeekDate(cw)})</div>
+        <div class="flex gap-1">
+          <button class="btn btn-info btn-sm" onclick="markAllPresent()">✅ الكل حاضر</button>
+          <button class="btn btn-outline btn-sm" onclick="markAllAbsent()">❌ الكل غائب</button>
+          <button class="btn btn-success btn-sm" onclick="saveAttendanceBulk(${cw})">💾 حفظ</button>
+        </div>
+      </div>
       <div class="gold-line"></div>
-      <div class="form-group" style="max-width:300px;">
+      <div class="form-group" style="max-width:400px;">
         <label>الأسبوع</label>
         <select onchange="changeWeek(this.value)">
           ${Array.from({length: AppData.settings.totalWeeks || 15}, (_, i) => {
@@ -1714,16 +1793,20 @@ function renderAdminAttendance(students) {
       </div>
       <div class="table-wrap">
         <table>
-          <thead><tr><th>#</th><th>الطالب</th><th>الفصل</th><th>حاضر</th><th>غائب</th></tr></thead>
+          <thead><tr><th>#</th><th>الطالب</th><th>الفصل</th><th style="text-align:center;">حاضر</th><th style="text-align:center;">غائب</th></tr></thead>
           <tbody>
             ${filtered.map((s, i) => {
               const r = AppData.attendance.find(a => a.studentId === s.id && a.week === cw && a.type !== 'visitation');
-              const isP = r && r.status === 'present';
-              const isA = r && r.status === 'absent';
+              const isPresent = r && r.status === 'present';
+              const isAbsent = r && r.status === 'absent';
               return `<tr>
-                <td>${i + 1}</td><td>${s.name}</td><td>${s.classGroup}</td>
-                <td><input type="radio" name="att_${s.id}" ${isP ? 'checked' : ''} onchange="adminSetAttendance('${s.id}', ${cw}, 'present')" style="accent-color:var(--success);transform:scale(1.3);"></td>
-                <td><input type="radio" name="att_${s.id}" ${isA ? 'checked' : ''} onchange="adminSetAttendance('${s.id}', ${cw}, 'absent')" style="accent-color:var(--danger);transform:scale(1.3);"></td>
+                <td>${i + 1}</td><td><strong>${s.name}</strong></td><td>${s.classGroup}</td>
+                <td style="text-align:center;">
+                  <input type="radio" name="att_${s.id}" value="present" ${isPresent ? 'checked' : ''} class="attendance-radio present">
+                </td>
+                <td style="text-align:center;">
+                  <input type="radio" name="att_${s.id}" value="absent" ${isAbsent ? 'checked' : ''} class="attendance-radio absent">
+                </td>
               </tr>`;
             }).join('')}
           </tbody>
@@ -1928,9 +2011,33 @@ function renderAdminReports() {
 function renderSystemManagement() {
   return `
     <div class="card mb-2">
-      <div class="card-title">💾 المزامنة وحفظ البيانات</div>
+      <div class="card-title">🔑 تغيير كلمة مرور المسؤول</div>
       <div class="gold-line"></div>
-      <div class="info-msg">💡 قم بحفظ نسخة احتياطية كاملة من جميع بيانات النظام بصيغة JSON</div>
+      <div class="info-msg">💡 يمكنك تغيير كلمة المرور الخاصة بحسابك</div>
+      
+      <div class="form-group">
+        <label>كلمة المرور الحالية *</label>
+        <input type="password" id="adminCurrentPassword" placeholder="أدخل كلمة المرور الحالية">
+      </div>
+      
+      <div class="form-grid">
+        <div class="form-group">
+          <label>كلمة المرور الجديدة *</label>
+          <input type="password" id="adminNewPassword" placeholder="6 أحرف على الأقل">
+        </div>
+        <div class="form-group">
+          <label>تأكيد كلمة المرور *</label>
+          <input type="password" id="adminConfirmPassword" placeholder="أعد إدخال كلمة المرور">
+        </div>
+      </div>
+      
+      <button class="btn btn-primary" onclick="changeAdminPassword()">🔑 تغيير كلمة المرور</button>
+    </div>
+    
+    <div class="card mb-2">
+      <div class="card-title">💾 النسخ الاحتياطي والاستعادة</div>
+      <div class="gold-line"></div>
+      <div class="info-msg">💡 احفظ نسخة احتياطية كاملة من جميع بيانات النظام</div>
       
       <div class="stats-grid">
         <div class="stat-card"><div class="icon">👥</div><div class="num">${AppData.students.length}</div><div class="lbl">دارس</div></div>
@@ -1942,8 +2049,8 @@ function renderSystemManagement() {
       </div>
       
       <div class="flex gap-1 mt-2" style="flex-wrap:wrap;">
-        <button class="btn btn-success" onclick="backupFullData()">💾 إنشاء نسخة احتياطية (JSON)</button>
-        <button class="btn btn-outline" onclick="document.getElementById('restoreFile').click()">📥 استعادة من نسخة</button>
+        <button class="btn btn-success" onclick="backupFullData()">💾 إنشاء نسخة احتياطية</button>
+        <button class="btn btn-outline" onclick="document.getElementById('restoreFile').click()">📥 استعادة</button>
         <input type="file" id="restoreFile" accept=".json" style="display:none" onchange="restoreFullData(this)">
       </div>
     </div>
@@ -1952,12 +2059,12 @@ function renderSystemManagement() {
       <div class="card-title">📤 تصدير البيانات</div>
       <div class="gold-line"></div>
       <div class="flex gap-1" style="flex-wrap:wrap;">
-        <button class="btn btn-gold" onclick="exportStudentsExcel()">📊 Excel - الدارسين</button>
-        <button class="btn btn-gold" onclick="exportAllGradesExcel()">📊 Excel - الدرجات الكاملة</button>
-        <button class="btn btn-gold" onclick="exportServantsExcel()">📊 Excel - الخدام</button>
-        <button class="btn btn-gold" onclick="exportAttendanceExcel()">📊 Excel - الحضور</button>
-        <button class="btn btn-gold" onclick="exportEvaluationsExcel()">📊 Excel - التقييمات</button>
-        <button class="btn btn-gold" onclick="exportExamsExcel()">📊 Excel - الامتحانات</button>
+        <button class="btn btn-gold" onclick="exportStudentsExcel()">📊 الدارسين</button>
+        <button class="btn btn-gold" onclick="exportAllGradesExcel()">📊 الدرجات الكاملة</button>
+        <button class="btn btn-gold" onclick="exportServantsExcel()">📊 الخدام</button>
+        <button class="btn btn-gold" onclick="exportAttendanceExcel()">📊 الحضور</button>
+        <button class="btn btn-gold" onclick="exportEvaluationsExcel()">📊 التقييمات</button>
+        <button class="btn btn-gold" onclick="exportExamsExcel()">📊 الامتحانات</button>
         <button class="btn btn-print" onclick="exportPDF()">📄 PDF</button>
       </div>
     </div>
@@ -1982,7 +2089,6 @@ function renderSystemManagement() {
           const w = Helpers.getWeekWithDate(i + 1);
           return `الأسبوع ${w.week}: ${w.date}`;
         }).join('<br>')}
-        ${(AppData.settings.totalWeeks || 15) > 5 ? `<br>... حتى الأسبوع ${AppData.settings.totalWeeks}` : ''}
       </div>
     </div>
     
@@ -2097,36 +2203,6 @@ async function changeWeek(w) {
   renderApp();
 }
 
-async function saveAttendanceBulk(week) {
-  const cbs = document.querySelectorAll('.attendance-check');
-  const records = [];
-  cbs.forEach(cb => records.push({
-    studentId: cb.dataset.student, week,
-    status: cb.checked ? 'present' : 'absent', type: 'attendance'
-  }));
-  try {
-    showLoading('جارٍ الحفظ...');
-    await DB.saveAttendanceBulk(records);
-    records.forEach(r => {
-      const idx = AppData.attendance.findIndex(a => a.studentId === r.studentId && a.week === r.week && a.type === 'attendance');
-      if (idx !== -1) AppData.attendance[idx] = { ...AppData.attendance[idx], ...r };
-      else AppData.attendance.push(r);
-    });
-    showToast('✅ تم الحفظ');
-    renderApp();
-  } catch (e) { showToast('❌ فشل', 'error'); }
-  finally { hideLoading(); }
-}
-
-async function adminSetAttendance(studentId, week, status) {
-  try {
-    await DB.saveAttendanceBulk([{ studentId, week, status, type: 'attendance' }]);
-    const idx = AppData.attendance.findIndex(a => a.studentId === studentId && a.week === week && a.type === 'attendance');
-    if (idx !== -1) AppData.attendance[idx].status = status;
-    else AppData.attendance.push({ studentId, week, status, type: 'attendance' });
-  } catch (e) { showToast('❌ فشل', 'error'); }
-}
-
 async function saveQuickEvaluations(subject, week) {
   const inputs = document.querySelectorAll('.quick-eval-input');
   const records = [];
@@ -2199,6 +2275,48 @@ async function changeServantPassword(id) {
   finally { hideLoading(); }
 }
 
+/* ✅ تغيير كلمة مرور المسؤول العام */
+async function changeAdminPassword() {
+  const current = document.getElementById('adminCurrentPassword').value.trim();
+  const newPass = document.getElementById('adminNewPassword').value.trim();
+  const confirmPass = document.getElementById('adminConfirmPassword').value.trim();
+  const admin = State.currentUser?.data;
+  
+  if (!admin) { showToast('❌ لا يوجد مستخدم', 'error'); return; }
+  if (!current) { showToast('⚠️ أدخل كلمة المرور الحالية', 'error'); return; }
+  if (current !== admin.password) { showToast('❌ كلمة المرور الحالية غير صحيحة', 'error'); return; }
+  if (!newPass || newPass.length < 6) { showToast('⚠️ 6 أحرف على الأقل', 'error'); return; }
+  if (newPass !== confirmPass) { showToast('⚠️ غير متطابقتين', 'error'); return; }
+  if (newPass === current) { showToast('⚠️ يجب أن تكون مختلفة عن الحالية', 'error'); return; }
+  
+  try {
+    showLoading('جارٍ التغيير...');
+    await setDoc(doc(db, COLLECTIONS.ADMINS, admin.id), { 
+      password: newPass, 
+      updatedAt: serverTimestamp() 
+    }, { merge: true });
+    
+    admin.password = newPass;
+    State.currentUser.data.password = newPass;
+    DB.setSession(State.currentUser);
+    
+    DB.addLog({ 
+      action: 'تغيير كلمة مرور المسؤول', 
+      target: admin.name || admin.username, 
+      details: '' 
+    });
+    
+    document.getElementById('adminCurrentPassword').value = '';
+    document.getElementById('adminNewPassword').value = '';
+    document.getElementById('adminConfirmPassword').value = '';
+    
+    showToast('✅ تم تغيير كلمة المرور بنجاح');
+  } catch (e) {
+    console.error(e);
+    showToast('❌ فشل التغيير', 'error');
+  } finally { hideLoading(); }
+}
+
 function updateDeaconOptions(p) {
   const g = document.getElementById(`${p}StudentGender`).value;
   const sel = document.getElementById(`${p}StudentDeacon`);
@@ -2207,7 +2325,9 @@ function updateDeaconOptions(p) {
   if (cur) sel.value = cur;
 }
 
-/* ✅ نموذج إضافة الدارس الشامل */
+/* ============================================================
+   نموذج إضافة الدارس الشامل
+   ============================================================ */
 async function openAddStudentModal() {
   showLoading('جارٍ توليد الكود...');
   try {
@@ -2395,7 +2515,7 @@ async function openAddStudentModal() {
       </div>
       
       <div class="form-section">
-        <div class="section-header">📎 المستندات والمرفقات</div>
+        <div class="section-header">📎 المستندات</div>
         <div class="form-grid">
           <div class="form-group">
             <label>📷 الصورة الشخصية</label>
@@ -2407,7 +2527,7 @@ async function openAddStudentModal() {
           </div>
         </div>
         <div class="form-group">
-          <label>📋 صورة شهادة الميلاد</label>
+          <label>📋 شهادة الميلاد</label>
           <input type="file" id="addStudentBirthCert" accept="image/*,application/pdf">
         </div>
         <div class="form-grid">
@@ -2447,8 +2567,7 @@ async function openAddStudentModal() {
       <div class="form-section">
         <div class="section-header">📝 ملاحظات إضافية</div>
         <div class="form-group">
-          <label>ملاحظات عامة</label>
-          <textarea id="addStudentNotes" rows="3" placeholder="أي ملاحظات إضافية عن الدارس..."></textarea>
+          <textarea id="addStudentNotes" rows="3" placeholder="أي ملاحظات إضافية..."></textarea>
         </div>
       </div>
       
@@ -2632,24 +2751,6 @@ function openEditStudentModal(id) {
           </select>
         </div>
       </div>
-      <div class="form-grid">
-        <div class="form-group">
-          <label>المستوى</label>
-          <select id="editStudentLevel">
-            <option value="مبتدئ" ${s.level === 'مبتدئ' ? 'selected' : ''}>مبتدئ</option>
-            <option value="متوسط" ${s.level === 'متوسط' ? 'selected' : ''}>متوسط</option>
-            <option value="متقدم" ${s.level === 'متقدم' ? 'selected' : ''}>متقدم</option>
-            <option value="متفوق" ${s.level === 'متفوق' ? 'selected' : ''}>متفوق</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>حالة الدارس</label>
-          <select id="editStudentIsNew">
-            <option value="جديد" ${s.isNew === 'جديد' ? 'selected' : ''}>🆕 جديد</option>
-            <option value="قديم" ${s.isNew === 'قديم' ? 'selected' : ''}>📖 قديم</option>
-          </select>
-        </div>
-      </div>
     </div>
     
     <div class="form-section">
@@ -2665,10 +2766,6 @@ function openEditStudentModal(id) {
         </div>
       </div>
       <div class="form-group">
-        <label>هاتف 3</label>
-        <input type="tel" id="editStudentPhone3" value="${s.phone3 || ''}">
-      </div>
-      <div class="form-group">
         <label>العنوان</label>
         <textarea id="editStudentAddress" rows="2">${s.address || ''}</textarea>
       </div>
@@ -2677,52 +2774,17 @@ function openEditStudentModal(id) {
     <div class="form-section">
       <div class="section-header">👨‍👩‍👧 بيانات الأسرة</div>
       <div class="form-grid">
-        <div class="form-group">
-          <label>اسم الأب</label>
-          <input type="text" id="editStudentFather" value="${s.fatherName || ''}">
-        </div>
-        <div class="form-group">
-          <label>اسم الأم</label>
-          <input type="text" id="editStudentMother" value="${s.motherName || ''}">
-        </div>
-      </div>
-      <div class="form-grid">
-        <div class="form-group">
-          <label>هاتف الأب</label>
-          <input type="tel" id="editStudentFatherPhone" value="${s.fatherPhone || ''}">
-        </div>
-        <div class="form-group">
-          <label>هاتف الأم</label>
-          <input type="tel" id="editStudentMotherPhone" value="${s.motherPhone || ''}">
-        </div>
-      </div>
-      <div class="form-grid">
-        <div class="form-group">
-          <label>عدد الأخوات</label>
-          <input type="number" id="editStudentSiblings" value="${s.siblings || 0}" min="0">
-        </div>
-        <div class="form-group">
-          <label>الترتيب</label>
-          <input type="number" id="editStudentOrder" value="${s.order || 1}" min="1">
-        </div>
+        <div class="form-group"><label>اسم الأب</label><input type="text" id="editStudentFather" value="${s.fatherName || ''}"></div>
+        <div class="form-group"><label>اسم الأم</label><input type="text" id="editStudentMother" value="${s.motherName || ''}"></div>
       </div>
     </div>
     
     <div class="form-section">
       <div class="section-header">⛪ البيانات الكنسية</div>
-      <div class="form-group">
-        <label>الكنيسة</label>
-        <input type="text" id="editStudentChurch" value="${s.church || ''}">
-      </div>
+      <div class="form-group"><label>الكنيسة</label><input type="text" id="editStudentChurch" value="${s.church || ''}"></div>
       <div class="form-grid">
-        <div class="form-group">
-          <label>الأب الكاهن</label>
-          <input type="text" id="editStudentPriest" value="${s.priest || ''}">
-        </div>
-        <div class="form-group">
-          <label>المنطقة</label>
-          <input type="text" id="editStudentChurchArea" value="${s.churchArea || ''}">
-        </div>
+        <div class="form-group"><label>الأب الكاهن</label><input type="text" id="editStudentPriest" value="${s.priest || ''}"></div>
+        <div class="form-group"><label>المنطقة</label><input type="text" id="editStudentChurchArea" value="${s.churchArea || ''}"></div>
       </div>
     </div>
     
@@ -2735,16 +2797,6 @@ function openEditStudentModal(id) {
       <div class="checkbox-group">
         <input type="checkbox" id="editStudentPaid" ${s.formPaid ? 'checked' : ''}>
         <label>تم الدفع</label>
-      </div>
-      <div class="form-grid">
-        <div class="form-group">
-          <label>المبلغ المدفوع</label>
-          <input type="number" id="editStudentPaidAmount" value="${s.paidAmount || 0}" min="0">
-        </div>
-        <div class="form-group">
-          <label>تاريخ الدفع</label>
-          <input type="date" id="editStudentPaidDate" value="${s.paidDate || ''}">
-        </div>
       </div>
     </div>
     
@@ -2773,25 +2825,16 @@ async function updateStudentData(id) {
     classGroup: document.getElementById('editStudentClassGroup').value,
     class: document.getElementById('editStudentClass').value,
     deaconRank: document.getElementById('editStudentDeacon').value,
-    level: document.getElementById('editStudentLevel').value,
-    isNew: document.getElementById('editStudentIsNew').value,
     phone1: document.getElementById('editStudentPhone1').value.trim(),
     phone2: document.getElementById('editStudentPhone2').value.trim(),
-    phone3: document.getElementById('editStudentPhone3').value.trim(),
     address: document.getElementById('editStudentAddress').value.trim(),
     fatherName: document.getElementById('editStudentFather').value.trim(),
     motherName: document.getElementById('editStudentMother').value.trim(),
-    fatherPhone: document.getElementById('editStudentFatherPhone').value.trim(),
-    motherPhone: document.getElementById('editStudentMotherPhone').value.trim(),
-    siblings: parseInt(document.getElementById('editStudentSiblings').value) || 0,
-    order: parseInt(document.getElementById('editStudentOrder').value) || 1,
     church: document.getElementById('editStudentChurch').value.trim(),
     priest: document.getElementById('editStudentPriest').value.trim(),
     churchArea: document.getElementById('editStudentChurchArea').value.trim(),
     formReceived: document.getElementById('editStudentForm').checked,
     formPaid: document.getElementById('editStudentPaid').checked,
-    paidAmount: parseFloat(document.getElementById('editStudentPaidAmount').value) || 0,
-    paidDate: document.getElementById('editStudentPaidDate').value,
     notes: document.getElementById('editStudentNotes').value.trim()
   };
   
@@ -3072,7 +3115,7 @@ async function saveSettings() {
    ============================================================ */
 function backupFullData() {
   const data = {
-    version: '3.0', timestamp: new Date().toISOString(),
+    version: '4.0', timestamp: new Date().toISOString(),
     students: AppData.students, servants: AppData.servants,
     attendance: AppData.attendance, evaluations: AppData.evaluations,
     exams: AppData.exams, visitationNotes: AppData.visitationNotes,
@@ -3184,17 +3227,14 @@ async function executeSystemReset() {
 function exportStudentsExcel() {
   const rows = AppData.students.map(s => ({
     'الكود': s.id, 'الاسم': s.name, 'النوع': s.gender, 'الميلاد': s.birthdate,
-    'الرقم القومي': s.nationalId || '', 'المدرسة': s.school || '',
     'المرحلة': s.stage, 'الفصل': s.classGroup, 'حرف الفصل': s.class,
-    'الرتبة': s.deaconRank || '', 'المستوى': s.level || '', 'الحالة': s.isNew || '',
-    'هاتف 1': s.phone1, 'هاتف 2': s.phone2 || '', 'هاتف 3': s.phone3 || '',
+    'الرتبة': s.deaconRank || '', 'المستوى': s.level || '',
+    'هاتف 1': s.phone1, 'هاتف 2': s.phone2 || '',
     'العنوان': s.address || '',
     'الأب': s.fatherName || '', 'الأم': s.motherName || '',
-    'هاتف الأب': s.fatherPhone || '', 'هاتف الأم': s.motherPhone || '',
-    'الكنيسة': s.church || '', 'الأب الكاهن': s.priest || '',
+    'الكنيسة': s.church || '',
     'الاستمارة': s.formReceived ? 'نعم' : 'لا',
     'الدفع': s.formPaid ? 'نعم' : 'لا',
-    'المبلغ': s.paidAmount || 0,
     'أضيف بواسطة': Helpers.getStudentAdder(s)
   }));
   const ws = XLSX.utils.json_to_sheet(rows);
@@ -3321,17 +3361,29 @@ function printClassList(classGroup) {
     .sort((a, b) => a.name.localeCompare(b.name, 'ar'));
   if (students.length === 0) { showToast('لا يوجد دارسين', 'error'); return; }
   
+  const stats = Helpers.getClassStatistics ? Helpers.getClassStatistics(classGroup) : { total: students.length, males: 0, females: 0, absaltus: 0, aghnostos: 0 };
   const rows = students.map((s, i) => `
     <tr><td>${i + 1}</td><td>${s.name}</td><td>${s.id}</td>
     <td>${s.gender}</td><td>${s.stage}</td><td>${s.classGroup}</td>
-    <td>${s.phone1 || ''}</td><td>${Helpers.getStudentAdder(s)}</td></tr>
+    <td>${s.phone1 || ''}</td><td>${s.deaconRank || 'غير مطلوب'}</td><td>${Helpers.getStudentAdder(s)}</td></tr>
   `).join('');
   
   const title = classGroup === 'all' || classGroup === 'الكل' ? 'كل الفصول' : classGroup;
   openPrintWindow(`
     <div class="print-area">
-      <div class="print-header"><h1>☩ ${AppData.settings.centerName} ☩</h1><p>قائمة دارسي ${title}</p></div>
-      <table><thead><tr><th>#</th><th>الاسم</th><th>الكود</th><th>النوع</th><th>المرحلة</th><th>الفصل</th><th>الهاتف</th><th>أضيف بواسطة</th></tr></thead><tbody>${rows}</tbody></table>
+      <div class="print-header">
+        <h1>☩ ${AppData.settings.centerName} ☩</h1>
+        <p>قائمة دارسي ${title}</p>
+      </div>
+      <div class="print-meta">
+        <span><strong>إجمالي:</strong> ${students.length}</span>
+        <span><strong>ذكور:</strong> ${students.filter(s => s.gender === 'ذكر').length}</span>
+        <span><strong>إناث:</strong> ${students.filter(s => s.gender === 'أنثى').length}</span>
+      </div>
+      <table>
+        <thead><tr><th>#</th><th>الاسم</th><th>الكود</th><th>النوع</th><th>المرحلة</th><th>الفصل</th><th>الهاتف</th><th>الرتبة</th><th>أضيف بواسطة</th></tr></thead>
+        <tbody>${rows}</tbody>
+      </table>
       <div class="print-footer">تم الطباعة بواسطة: ${State.currentUser?.data?.name || '—'} • ${new Date().toLocaleString('ar-EG')}</div>
     </div>
   `, `قائمة_${title}`);
@@ -3346,7 +3398,7 @@ function printAttendanceReport(classGroup) {
   const weeks = Array.from({length: tw}, (_, i) => i + 1);
   const headerCols = weeks.map(w => {
     const wd = Helpers.getWeekWithDate(w);
-    return `<th style="font-size:0.6rem;"><div><span>أ${w}</span><br><span style="opacity:0.7;">${wd.dateShort}</span></div></th>`;
+    return `<th class="week-col"><span class="week-num">أ${w}</span><span class="week-date">${wd.dateShort}</span></th>`;
   }).join('');
   
   const rows = students.map((s, i) => {
@@ -3354,17 +3406,25 @@ function printAttendanceReport(classGroup) {
     const cells = weeks.map(w => {
       const r = att.find(a => a.week === w);
       if (!r) return '<td style="text-align:center;color:#ccc;">—</td>';
-      return r.status === 'present' ? '<td style="text-align:center;">✅</td>' : '<td style="text-align:center;">❌</td>';
+      return r.status === 'present' ? '<td style="text-align:center;color:#2e7d32;font-weight:bold;">✓</td>' : '<td style="text-align:center;color:#c62828;font-weight:bold;">✗</td>';
     }).join('');
     const present = att.filter(a => a.status === 'present').length;
-    return `<tr><td>${i + 1}</td><td>${s.name}</td>${cells}<td>${present}/${tw}</td></tr>`;
+    const pct = Math.round((present / tw) * 100);
+    return `<tr><td>${i + 1}</td><td>${s.name}</td>${cells}<td>${present}/${tw}</td><td>${pct}%</td></tr>`;
   }).join('');
   
   const title = classGroup === 'all' || classGroup === 'الكل' ? 'كل الفصول' : classGroup;
   openPrintWindow(`
     <div class="print-area">
-      <div class="print-header"><h1>☩ كشف الحضور - ${title} ☩</h1></div>
-      <table style="font-size:0.6rem;"><thead><tr><th>#</th><th>الاسم</th>${headerCols}<th>الحضور</th></tr></thead><tbody>${rows}</tbody></table>
+      <div class="print-header">
+        <h1>☩ كشف الحضور - ${title} ☩</h1>
+        <p>${AppData.settings.centerName}</p>
+      </div>
+      <table style="font-size:0.7rem;">
+        <thead><tr><th>#</th><th>الاسم</th>${headerCols}<th>الحضور</th><th>%</th></tr></thead>
+        <tbody>${rows}</tbody>
+      </table>
+      <div class="print-footer">تم الطباعة بواسطة: ${State.currentUser?.data?.name || '—'} • ${new Date().toLocaleString('ar-EG')}</div>
     </div>
   `, `حضور_${title}`);
 }
@@ -3403,6 +3463,7 @@ function printGradesReport(classGroup) {
         <thead><tr><th>#</th><th>الاسم</th><th>الفصل</th>${subjects.map(s => `<th>${s.icon} ${s.label}</th>`).join('')}<th>المجموع</th><th>المتوسط</th><th>التقدير</th></tr></thead>
         <tbody>${rows}</tbody>
       </table>
+      <div class="print-footer">تم الطباعة بواسطة: ${State.currentUser?.data?.name || '—'} • ${new Date().toLocaleString('ar-EG')}</div>
     </div>
   `, `درجات_${title}`);
 }
@@ -3418,17 +3479,17 @@ function printEvalReport(classGroup) {
     const rows = students.map((s, i) => {
       const cells = weeks.map(w => {
         const e = AppData.evaluations.find(x => x.studentId === s.id && x.week === w && x.subject === sub.value);
-        return `<td>${e ? e.score : '—'}</td>`;
+        return `<td style="text-align:center;">${e ? e.score : '—'}</td>`;
       }).join('');
       const scores = AppData.evaluations.filter(e => e.studentId === s.id && e.subject === sub.value).map(e => e.score);
       const avg = scores.length > 0 ? (scores.reduce((a, b) => a + b, 0) / scores.length).toFixed(1) : '—';
-      return `<tr><td>${i + 1}</td><td>${s.name}</td>${cells}<td><strong>${avg}</strong></td></tr>`;
+      return `<tr><td>${i + 1}</td><td>${s.name}</td>${cells}<td style="text-align:center;"><strong>${avg}</strong></td></tr>`;
     }).join('');
     
     return `
       <div style="margin-bottom:30px;page-break-inside:avoid;">
-        <h3>${sub.icon} ${sub.label}</h3>
-        <table style="font-size:0.65rem;">
+        <h3 style="color:#0B1F3A;border-bottom:2px solid #C9A227;padding-bottom:6px;">${sub.icon} ${sub.label}</h3>
+        <table style="font-size:0.68rem;">
           <thead><tr><th>#</th><th>الاسم</th>${weeks.map(w => `<th>أ${w}</th>`).join('')}<th>المتوسط</th></tr></thead>
           <tbody>${rows}</tbody>
         </table>
@@ -3441,6 +3502,7 @@ function printEvalReport(classGroup) {
     <div class="print-area">
       <div class="print-header"><h1>☩ كشف التقييمات - ${title} ☩</h1></div>
       ${sections}
+      <div class="print-footer">تم الطباعة بواسطة: ${State.currentUser?.data?.name || '—'} • ${new Date().toLocaleString('ar-EG')}</div>
     </div>
   `, `تقييمات_${title}`);
 }
@@ -3454,7 +3516,7 @@ function printExamsReport(classGroup) {
     const cells = subjects.map(sub => {
       const e = AppData.exams.find(x => x.studentId === s.id && x.subject === sub.value);
       const weights = GRADING_SYSTEM.getWeights(sub.value);
-      return `<td>${e ? `${e.score} / ${weights.exam}` : '—'}</td>`;
+      return `<td style="text-align:center;">${e ? `${e.score} / ${weights.exam}` : '—'}</td>`;
     }).join('');
     return `<tr><td>${i + 1}</td><td>${s.name}</td><td>${s.classGroup}</td>${cells}</tr>`;
   }).join('');
@@ -3467,6 +3529,7 @@ function printExamsReport(classGroup) {
         <thead><tr><th>#</th><th>الاسم</th><th>الفصل</th>${subjects.map(s => `<th>${s.icon} ${s.label}</th>`).join('')}</tr></thead>
         <tbody>${rows}</tbody>
       </table>
+      <div class="print-footer">تم الطباعة بواسطة: ${State.currentUser?.data?.name || '—'} • ${new Date().toLocaleString('ar-EG')}</div>
     </div>
   `, `امتحانات_${title}`);
 }
@@ -3484,9 +3547,15 @@ function printNotesReport(classGroup) {
   
   const sections = Object.values(byStudent).filter(x => x.notes.length > 0).map(item => `
     <div style="margin-bottom:20px;page-break-inside:avoid;">
-      <h4>${item.student.name} (${item.student.id}) - ${item.student.classGroup}</h4>
+      <h4 style="color:#0B1F3A;">${item.student.name} (${item.student.id}) - ${item.student.classGroup}</h4>
       ${item.notes.map(n => `
-        <div class="note-card"><div class="note-header"><span>أسبوع ${n.week} - ${Helpers.getCategoryLabel(n.category)}</span><span>${Helpers.formatDate(n.createdAt)}</span></div><div class="note-body">${Helpers.escapeHtml(n.text)}</div></div>
+        <div class="note-card" style="background:#fff8e1;border-right:4px solid #C9A227;padding:10px;margin-bottom:8px;">
+          <div style="display:flex;justify-content:space-between;font-size:0.8rem;color:#666;margin-bottom:4px;">
+            <span>أسبوع ${n.week} - ${Helpers.getCategoryLabel(n.category)}</span>
+            <span>${Helpers.formatDate(n.createdAt)}</span>
+          </div>
+          <div style="font-size:0.88rem;">${Helpers.escapeHtml(n.text)}</div>
+        </div>
       `).join('')}
     </div>
   `).join('');
@@ -3496,6 +3565,7 @@ function printNotesReport(classGroup) {
     <div class="print-area">
       <div class="print-header"><h1>☩ تقرير الافتقاد - ${title} ☩</h1></div>
       ${sections || '<p style="text-align:center;padding:20px;">لا توجد ملاحظات</p>'}
+      <div class="print-footer">تم الطباعة بواسطة: ${State.currentUser?.data?.name || '—'} • ${new Date().toLocaleString('ar-EG')}</div>
     </div>
   `, `افتقاد_${title}`);
 }
@@ -3651,9 +3721,9 @@ document.addEventListener('DOMContentLoaded', init);
 Object.assign(window, {
   State, AppData, Helpers, GRADING_SYSTEM,
   handleLogin, switchLoginTab, closeModal, showToast, toggleSidebar,
-  saveAttendanceBulk, adminSetAttendance, changeWeek,
+  saveAttendanceBulk, markAllPresent, markAllAbsent, changeWeek,
   saveQuickEvaluations, saveExamsBulk,
-  changeServantPassword,
+  changeServantPassword, changeAdminPassword,
   openAddStudentModal, saveNewStudent, regenerateStudentCode, copyToClipboard,
   openEditStudentModal, updateStudentData, deleteStudentConfirm, updateDeaconOptions,
   openAddServantModal, saveNewServant, toggleAllClasses, updateAllClassesCheckbox,
